@@ -58,17 +58,6 @@
     transition-timing-function: cubic-bezier(.4, 0, .2, 1);
 }
 
-.logo__animation {
-    width: 24px;
-    height: 24px;
-    -webkit-animation: tada;
-    animation: tada;
-    -webkit-animation-duration: 3s;
-    animation-duration: 3s;
-    -webkit-animation-iteration-count: infinite;
-    animation-iteration-count: infinite;
-}
-
 .header__title {
     font-size: 30px;
     line-height: 1.72;
