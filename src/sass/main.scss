@@ -14,3 +14,25 @@
 body{
     background-color: aqua;
 }
+
+a {
+    text-decoration: none;
+}
+
+li, p, ul {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    list-style: none;
+}
+
+.link {
+    cursor: pointer;
+}
+
+form {
+    margin-top: 0em;
+    display: block;
+}

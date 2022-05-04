@@ -1,1 +1,8 @@
 $black-color: #000;
+$white-color: #FFFFFF;
+
+*,
+:after,
+:before {
+    box-sizing: border-box;
+}

@@ -1,9 +1,35 @@
-<header>
+<header class="header">
+  <div class="nav__container">
+    <a class="logo" href="#">
+      <svg class="header__logo logo__animation">
+        <use href="./images/sprite.svg#main-logo" width="24px" height="24px"></use>
+      </svg>
+      <span class="header__title">Filmoteka</span>
+    </a>
 
-    <h1 class="title">Filmoteka</h1>
-
-    <form class="search-form" id="search-form">
-        <input type="text" name="searchQuery" autocomplete="off" placeholder="Search films..." />
-        <button type="submit" class="button-submit">Search</button>
-    </form>
+    <nav class="navigation">
+      <ul class="list menu">
+        <li class="navigation__item">
+          <a href="#" class="navigation__link">home</a>
+        </li>
+        <li class="navigation__item">
+          <a href="#" class="navigation__link">my library</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <form class="search" id="search-form">
+    <input
+      class="search__input"
+      type="text"
+      name="searchQuery"
+      autocomplete="off"
+      placeholder="Search films..."
+    />
+    <button type="submit" class="search__button">
+      <svg class="search__button-icon search-icon">
+        <use href="/images/sprite.svg#icon-search"></use>
+      </svg>
+    </button>
+  </form>
 </header>
