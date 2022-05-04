@@ -94,4 +94,4 @@ module.exports=require("./lib/axios");
 },{"./components/searchFilmsForm":"xIBQ","./components/hero":"xhSK"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/main");
 },{"./sass/main.scss":"clu1","./js/main":"d6sW"}]},{},["Focm"], null)
-//# sourceMappingURL=/Filmoteka/src.62516a78.js.map
+//# sourceMappingURL=/Filmoteka/src.25cca9ed.js.map
