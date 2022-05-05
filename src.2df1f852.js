@@ -1,6 +1,6 @@
 parcelRequire=function(e,r,t,n){var i,o="function"==typeof parcelRequire&&parcelRequire,u="function"==typeof require&&require;function f(t,n){if(!r[t]){if(!e[t]){var i="function"==typeof parcelRequire&&parcelRequire;if(!n&&i)return i(t,!0);if(o)return o(t,!0);if(u&&"string"==typeof t)return u(t);var c=new Error("Cannot find module '"+t+"'");throw c.code="MODULE_NOT_FOUND",c}p.resolve=function(r){return e[t][1][r]||r},p.cache={};var l=r[t]=new f.Module(t);e[t][0].call(l.exports,p,l,l.exports,this)}return r[t].exports;function p(e){return f(p.resolve(e))}}f.isParcelRequire=!0,f.Module=function(e){this.id=e,this.bundle=f,this.exports={}},f.modules=e,f.cache=r,f.parent=o,f.register=function(r,t){e[r]=[function(e,r){r.exports=t},{}]};for(var c=0;c<t.length;c++)try{f(t[c])}catch(e){i||(i=e)}if(t.length){var l=f(t[t.length-1]);"object"==typeof exports&&"undefined"!=typeof module?module.exports=l:"function"==typeof define&&define.amd?define(function(){return l}):n&&(this[n]=l)}if(parcelRequire=f,i)throw i;return f}({"clu1":[function(require,module,exports) {
 
-},{}],"xIBQ":[function(require,module,exports) {
+},{"/home/runner/work/Filmoteka/Filmoteka/src/images/header-background-image.jpg":[["header-background-image.e253ba1c.jpg","uIMs"],"uIMs"]}],"xIBQ":[function(require,module,exports) {
 const e={searchForm:document.getElementById("search-form")};
 },{}],"j62P":[function(require,module,exports) {
 "use strict";function e(e){return console.log(e),e.map(({title:e})=>`\n    <li class="photo-card">\n        <p>${e}</p>\n    </li>\n    `).join("")}Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=e;
@@ -94,4 +94,4 @@ module.exports=require("./lib/axios");
 },{"./components/searchFilmsForm":"xIBQ","./components/hero":"xhSK"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/main");
 },{"./sass/main.scss":"clu1","./js/main":"d6sW"}]},{},["Focm"], null)
-//# sourceMappingURL=/Filmoteka/src.25cca9ed.js.map
+//# sourceMappingURL=/Filmoteka/src.2df1f852.js.map
