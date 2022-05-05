@@ -2,12 +2,10 @@
  * Главный файл стилей.
  * Все паршалы подключаются сюда.
  */
-
-// Стили для файла с примером HTML-фрагмента
-// @import './example';
 @import './utils/variables';
 @import './components/common';
 @import './components/header';
 @import './components/hero';
 @import './components/footer';
+@import './components/on.top';
 @import './components/theme';
