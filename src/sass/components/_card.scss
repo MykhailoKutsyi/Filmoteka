@@ -51,3 +51,8 @@
     text-transform: capitalize;
     color: $orange-color;
 }
+
+.item__text--fill-orange {
+    background-color: $orange-color;
+    color: $white-color;
+}
