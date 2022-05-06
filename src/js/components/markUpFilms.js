@@ -3,21 +3,40 @@ import { IMG_URL } from '../utils/constants';
 export default function markUpFilms(data) {
   console.log(data);
   return data
-    .map(({ poster_path, genre_ids, id, release_date, title, vote_average }) => {
+    .map(({ poster_path, genre_ids, id, release_date, title }) => {
       return `
     <li class="item" id="${id}">
       <div class="item__image-box">
         <img src="${IMG_URL + poster_path}" alt="Poster of ${title}" class="item__image" />
       </div>
       <p class="item__text">${title}<br />
-        <span class="item__text--orange">${genre_ids} | ${release_date}</span>
-        <span class="item__text--fill-orange">${vote_average}</span>
+        <span class="item__text--orange">${genre_ids} | ${release_date.slice(0, 4)}</span>
       </p>
     </li>
     `;
     })
     .join('');
 }
+
+// Це функція для відмалювання розмітки в бібліотеці(черзі)
+// function markUpFilmsForLib(data) {
+//   console.log(data);
+//   return data
+//     .map(({ poster_path, genre_ids, id, release_date, title, vote_average }) => {
+//       return `
+//     <li class="item" id="${id}">
+//       <div class="item__image-box">
+//         <img src="${IMG_URL + poster_path}" alt="Poster of ${title}" class="item__image" />
+//       </div>
+//       <p class="item__text">${title}<br />
+//         <span class="item__text--orange">${genre_ids} | ${release_date.slice(0, 4)}</span>
+//         <span class="item__text--fill-orange">${vote_average}</span>
+//       </p>
+//     </li>
+//     `;
+//     })
+//     .join('');
+// }
 
 // {data: {…}, status: 200, statusText: '', headers: {…}, config: {…}, …}
 // config: {transitional: {…}, transformRequest: Array(1), transformResponse: Array(1), timeout: 0, adapter: ƒ, …}
