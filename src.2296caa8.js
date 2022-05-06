@@ -100,4 +100,4 @@ const t=document.querySelector("#theme-check"),e={LIGHT:"light-theme",DARK:"dark
 },{"./components/searchFilmsForm":"xIBQ","./components/hero":"xhSK","./components/onTeamClick":"biHM","./components/theme":"l9EJ","./components/on-top":"ws3u"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/main");
 },{"./sass/main.scss":"clu1","./js/main":"d6sW"}]},{},["Focm"], null)
-//# sourceMappingURL=/Filmoteka/src.dec2f575.js.map
+//# sourceMappingURL=/Filmoteka/src.2296caa8.js.map
