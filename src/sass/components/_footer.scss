@@ -4,7 +4,14 @@
     background: $footer-background;
     color: $text-color;
 }
-
+.teammate-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+.teammate-list__item {
+    width: 300px;
+    outline: 1px solid black;
+}
 .overlay {
     opacity: 0;
     visibility: hidden;
@@ -25,7 +32,8 @@
 
 
     width: 100%;
-    max-width: 500px;
+    max-width: 1000px;
+    // height: 300px;
 
     position: fixed;
     top: 50%;

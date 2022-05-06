@@ -1,8 +1,12 @@
+import markUpTeammate from './markUpTeammate';
+import data from '../../data.json';
+
 const refs = {
   teamLink: document.querySelector('.js-open-modal'),
   modal: document.querySelector('.modal'),
   overlay: document.querySelector('.js-overlay-modal'),
   closeModal: document.querySelector('.js-modal-close'),
+  teammateList: document.querySelector('.teammate-list'),
 };
 
 refs.teamLink.addEventListener('click', function (e) {
@@ -33,3 +37,8 @@ refs.overlay.addEventListener('click', function () {
   document.querySelector('.modal.active').classList.remove('active');
   this.classList.remove('active');
 });
+
+markUp(data);
+function markUp(data) {
+  refs.teammateList.insertAdjacentHTML('beforeend', markUpTeammate(data));
+}

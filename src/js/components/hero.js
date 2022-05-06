@@ -18,5 +18,5 @@ function pushFetch() {
 }
 
 function markUp(data) {
-  refs.imagesList.insertAdjacentHTML('beforeend', markUpFilms(data.results));
+  // refs.imagesList.insertAdjacentHTML('beforeend', markUpFilms(data.results));
 }

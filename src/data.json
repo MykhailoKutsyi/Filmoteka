@@ -1,0 +1,71 @@
+[
+  {
+    "id": 1,
+    "image": "https://cdn-icons-png.flaticon.com/512/616/616438.png",
+    "name": "Kutsyi Mykhailo",
+    "role": "Team Lead",
+    "about": "Оформлення модального вікна з командою"
+  },
+  {
+    "id": 2,
+    "image": "https://cdn-icons-png.flaticon.com/512/1998/1998592.png",
+    "name": "Hordienko Olga",
+    "role": "Scrum master",
+    "about": "Оформлення модального вікна з командою"
+  },
+  {
+    "id": 3,
+    "image": "https://cdn-icons-png.flaticon.com/512/2977/2977285.png",
+    "name": "Osadchy Nikita",
+    "role": "Developer",
+    "about": "Оформлення модального вікна з командою"
+  },
+  {
+    "id": 4,
+    "image": "https://cdn-icons-png.flaticon.com/512/2977/2977285.png",
+    "name": "Sugonyako Aleksey",
+    "role": "Developer",
+    "about": "Оформлення модального вікна з командою"
+  },
+  {
+    "id": 5,
+    "image": "https://cdn-icons-png.flaticon.com/512/1998/1998749.png",
+    "name": "Dryzhak Nikita",
+    "role": "Developer",
+    "about": "Оформлення модального вікна з командою"
+  },{
+    "id": 6,
+    "image": "https://cdn-icons-png.flaticon.com/512/616/616438.png",
+    "name": "Orlovskiy Pavlo",
+    "role": "Developer",
+    "about": "Оформлення модального вікна з командою"
+  },
+  {
+    "id": 7,
+    "image": "https://cdn-icons-png.flaticon.com/512/1998/1998592.png",
+    "name": "Skuba Anatolii",
+    "role": "Developer",
+    "about": "Оформлення модального вікна з командою"
+  },
+  {
+    "id": 8,
+    "image": "https://cdn-icons-png.flaticon.com/512/2977/2977285.png",
+    "name": "Bakush Nazar",
+    "role": "Developer",
+    "about": "Оформлення модального вікна з командою"
+  },
+  {
+    "id": 9,
+    "image": "https://cdn-icons-png.flaticon.com/512/1998/1998749.png",
+    "name": "Lakhno Oleksandr",
+    "role": "Developer",
+    "about": "Оформлення модального вікна з командою"
+  },
+  {
+    "id": 10,
+    "image": "https://cdn-icons-png.flaticon.com/512/2977/2977285.png",
+    "name": "Subotin Oleg",
+    "role": "Developer",
+    "about": "Оформлення модального вікна з командою"
+  }
+]
