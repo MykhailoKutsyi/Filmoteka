@@ -26,6 +26,14 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top;
+
+    @media screen and (min-width: 768px) {
+        padding: 45px 60px 20px;
+    }
+    @media screen and (min-width: 1024px) {
+            background-image: linear-gradient(90deg, rgba(0, 0, 0, .56), rgba(0, 0, 0, .56)),
+            url(/images/header-background-image-desktop.jpg);
+    }
 };
 
 .nav__container {
@@ -46,6 +54,14 @@
     @media screen and (max-width: 767px) {
         margin-right: 112px;
     }
+
+    @media screen and (min-width: 768px) {
+        margin-right: 303px;
+    }
+
+    @media screen and (min-width: 1024px) {
+        margin-right: 642px;
+    }
 }
 
 .header__logo {
@@ -56,6 +72,9 @@
     transition-property: stroke;
     transition-duration: .25s;
     transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+    @media screen and (min-width: 768px) {
+        margin-right: 10px;
+    }
 }
 
 .logo__animation {
@@ -96,6 +115,16 @@
     line-height: 1.16;
     color: #fff;
     text-transform: uppercase;
+}
+
+.navigation__link.current:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 34px;
+    height: 3px;
+    bottom: 0px;
+    background-color: #ff6b08;
 }
 
 .search {
