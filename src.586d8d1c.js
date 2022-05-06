@@ -5,7 +5,7 @@ const e={searchForm:document.getElementById("search-form")};
 },{}],"JjlO":[function(require,module,exports) {
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.URL=exports.API_KEY=exports.IMG_URL=void 0;const e="https://image.tmdb.org/t/p/w500";exports.IMG_URL=e;const t="e1780eaef9609cf3d5283262d6798136";exports.API_KEY=t;const o="https://api.themoviedb.org/3/";exports.URL=o;
 },{}],"j62P":[function(require,module,exports) {
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=t;var e=require("../utils/constants");function t(t){return console.log(t),t.map(({poster_path:t,genre_ids:s,id:a,release_date:n,title:i,vote_average:l})=>`\n    <li class="item" id="${a}">\n      <div class="item__image-box">\n        <img src="${e.IMG_URL+t}" alt="Poster of ${i}" class="item__image" />\n      </div>\n      <p class="item__text">${i}<br />\n        <span class="item__text--orange">${s} | ${n}</span>\n        <span class="item__text--fill-orange">${l}</span>\n      </p>\n    </li>\n    `).join("")}
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=t;var e=require("../utils/constants");function t(t){return console.log(t),t.map(({poster_path:t,genre_ids:s,id:i,release_date:n,title:a})=>`\n    <li class="item" id="${i}">\n      <div class="item__image-box">\n        <img src="${e.IMG_URL+t}" alt="Poster of ${a}" class="item__image" />\n      </div>\n      <p class="item__text">${a}<br />\n        <span class="item__text--orange">${s} | ${n.slice(0,4)}</span>\n      </p>\n    </li>\n    `).join("")}
 },{"../utils/constants":"JjlO"}],"EDTP":[function(require,module,exports) {
 "use strict";module.exports=function(r,n){return function(){for(var t=new Array(arguments.length),e=0;e<t.length;e++)t[e]=arguments[e];return r.apply(n,t)}};
 },{}],"S1cf":[function(require,module,exports) {
@@ -100,4 +100,4 @@ const t=document.querySelector("#theme-check"),e={LIGHT:"light-theme",DARK:"dark
 },{"./components/searchFilmsForm":"xIBQ","./components/hero":"xhSK","./components/onTeamClick":"biHM","./components/theme":"l9EJ","./components/on-top":"ws3u"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/main");
 },{"./sass/main.scss":"clu1","./js/main":"d6sW"}]},{},["Focm"], null)
-//# sourceMappingURL=/Filmoteka/src.0977ddb4.js.map
+//# sourceMappingURL=/Filmoteka/src.586d8d1c.js.map
