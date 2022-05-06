@@ -88,7 +88,7 @@ module.exports=require("./lib/axios");
 },{"./lib/axios":"nUiQ"}],"y4l9":[function(require,module,exports) {
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.getSearchMovie=exports.getMovieById=exports.getTrendingMovies=void 0;var e=require("../utils/constants");const t=require("axios"),r=()=>{const r=`${e.URL}trending/movie/day?api_key=${e.API_KEY}`;return t.get(r)};exports.getTrendingMovies=r;const o=r=>{const o=`${e.URL}movie/${r}?api_key=${e.API_KEY}`;return t.get(o)};exports.getMovieById=o;const s=r=>{const o=`${e.URL}search/movie?api_key=${e.API_KEY}&query=${r}`;return t.get(o)};exports.getSearchMovie=s;
 },{"../utils/constants":"JjlO","axios":"dZBD"}],"xhSK":[function(require,module,exports) {
-"use strict";var e=r(require("./markUpFilms")),t=require("../services/API");function r(e){return e&&e.__esModule?e:{default:e}}const i={imagesList:document.querySelector(".films-list")};function n(){try{return(0,t.getTrendingMovies)().then(e=>{s(e.data)})}catch(e){console.log(e)}}function s(e){}n();
+"use strict";var e=r(require("./markUpFilms")),t=require("../services/API");function r(e){return e&&e.__esModule?e:{default:e}}const s={imagesList:document.querySelector(".films-list")};function i(){try{return(0,t.getTrendingMovies)().then(e=>{n(e.data)})}catch(e){console.log(e)}}function n(t){s.imagesList.insertAdjacentHTML("beforeend",(0,e.default)(t.results))}i();
 },{"./markUpFilms":"j62P","../services/API":"y4l9"}],"fXKH":[function(require,module,exports) {
 "use strict";function t(t){return console.log(t),t.map(({id:t,image:e,name:i,role:a,about:s})=>`\n    <li class="teammate-list__item" id=${t}>\n        <div class="teammate-list__item--photo">\n            <img src=${e}\n                alt="${i}'s photo"\n                width="30" />\n        </div>\n        <div class="teammate-list__item--description">\n            <p class="teammate-list__item--name">${i}</p>\n            <p class="teammate-list__item--role">${a}</p>\n            <p class="teammate-list__item--about">${s}</p>\n        </div>\n    </li>\n    `).join("")}Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=t;
 },{}],"boCh":[function(require,module,exports) {
@@ -104,4 +104,4 @@ const t=document.querySelector("#theme-check"),e={LIGHT:"light-theme",DARK:"dark
 },{"./components/searchFilmsForm":"xIBQ","./components/hero":"xhSK","./components/onTeamClick":"biHM","./components/theme":"l9EJ","./components/on-top":"ws3u"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/main");
 },{"./sass/main.scss":"clu1","./js/main":"d6sW"}]},{},["Focm"], null)
-//# sourceMappingURL=/Filmoteka/src.12947387.js.map
+//# sourceMappingURL=/Filmoteka/src.7584ba5c.js.map
