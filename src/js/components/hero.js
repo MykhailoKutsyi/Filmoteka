@@ -1,9 +1,12 @@
 import markUpFilms from './markUpFilms';
 import { getTrendingMovies } from '../services/API';
+import { onCardsSelect } from './card-modal';
 
 const refs = {
   imagesList: document.querySelector('.films-list'),
 };
+
+// modalRefs.cardModalCloseBtn.addEventListener('click', onCardModalClose);
 
 pushFetch();
 
@@ -24,4 +27,5 @@ function pushFetch() {
 
 function markUp(data) {
   refs.imagesList.insertAdjacentHTML('beforeend', markUpFilms(data.results));
+  onCardsSelect();
 }

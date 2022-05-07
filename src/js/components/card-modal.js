@@ -1,5 +1,4 @@
 import { getMovieById } from '../services/API';
-import { getTrendingMovies, getMovieById } from '../services/API';
 import { API_KEY, URL, IMG_URL } from '../utils/constants';
 // getMovieById(453395).then(d => console.log(d.data));
 
@@ -9,18 +8,24 @@ import { API_KEY, URL, IMG_URL } from '../utils/constants';
 //   onCardsSelect();
 // }
 
-const backdrop = document.querySelector('.item-modal-backdrop');
-const cardModalCloseBtn = document.querySelector('button.item-modal__close-btn');
-const cardModal = document.querySelector('.item-modal__wrapper');
+export const modalRefs = {
+  backdrop: document.querySelector('.item-modal-backdrop'),
+  cardModalCloseBtn: document.querySelector('button.item-modal__close-btn'),
+  cardModal: document.querySelector('.item-modal__wrapper'),
+};
 
-cardModalCloseBtn.addEventListener('click', onCardModalClose);
+// const backdrop = document.querySelector('.item-modal-backdrop');
+// const cardModalCloseBtn = document.querySelector('button.item-modal__close-btn');
+// const cardModal = document.querySelector('.item-modal__wrapper');
 
-function onCardModalClose(e) {
-  backdrop.classList.add('is-hidden');
-  cardModal.innerHTML = '';
+modalRefs.cardModalCloseBtn.addEventListener('click', onCardModalClose);
+
+export function onCardModalClose(e) {
+  modalRefs.backdrop.classList.add('is-hidden');
+  modalRefs.cardModal.innerHTML = '';
 }
 
-function onCardsSelect() {
+export function onCardsSelect() {
   const cards = document.querySelectorAll('.card-item');
 
   console.log('cards', cards);
@@ -28,22 +33,21 @@ function onCardsSelect() {
   cards.forEach(onEventListnerSet);
 }
 
-function onEventListnerSet(element) {
+export function onEventListnerSet(element) {
   element.addEventListener('click', onClick);
 }
 
-function onClick(e) {
+export function onClick(e) {
   onModalMarkupPrepair(e.currentTarget.id);
-  backdrop.classList.remove('is-hidden');
-  console.log(e.currentTarget.id);
+  modalRefs.backdrop.classList.remove('is-hidden');
 }
 
-function onModalMarkupPrepair(filmId) {
+export function onModalMarkupPrepair(filmId) {
   getMovieById(filmId).then(onDataPrepair);
   // getMovieById(453395).then(d => console.log(d.data));
 }
 
-function onDataPrepair(d) {
+export function onDataPrepair(d) {
   const data = d.data;
   onModalMarkup(data);
 }
@@ -76,7 +80,7 @@ function onDataPrepair(d) {
 // vote_count: 381
 // [[Prototype]]: Object
 
-function onModalMarkup({
+export function onModalMarkup({
   poster_path,
   genres,
   title,
@@ -86,7 +90,7 @@ function onModalMarkup({
   popularity,
   overview,
 }) {
-  cardModal.insertAdjacentHTML(
+  modalRefs.cardModal.insertAdjacentHTML(
     'beforeend',
     `<div class="item-modal__img-box"><img src="${
       IMG_URL + poster_path
