@@ -1,22 +1,55 @@
 import { IMG_URL } from '../utils/constants';
+import { convertIdInGenre, movieGenresManipulationsMarkup } from './genres.js';
+
+const refs = {
+  imagesList: document.querySelector('.films-list'),
+};
 
 export default function markUpFilms(data) {
   console.log(data);
-  return data
-    .map(({ poster_path, genre_ids, id, release_date, title }) => {
-      return `
-    <li class="item" id="${id}">
-      <div class="item__image-box">
-        <img src="${IMG_URL + poster_path}" alt="Poster of ${title}" class="item__image" />
-      </div>
-      <p class="item__text">${title}<br />
-        <span class="item__text--orange">${genre_ids} | ${release_date.slice(0, 4)}</span>
-      </p>
-    </li>
-    `;
-    })
-    .join('');
-}
+  data.forEach((result) => {
+    let posterPath = result.poster_path;
+    let genreIds = result.genre_ids;
+    let movieId = result.id;
+    let movieDate = result.release_date;
+    let title = result.original_title;
+                
+    let movieGenres = [];
+    for (let i = 0; i < genreIds.length; i += 1) {
+      let genre = convertIdInGenre(genreIds[i]);
+      movieGenres.push(genre);
+    };
+                
+    const movieMarkup = document.createElement('li');
+    movieMarkup.setAttribute("id", movieId);
+    movieMarkup.classList.add('item');
+    movieMarkup.innerHTML = `                    
+       <div class="item__image-box">
+         <img src="${IMG_URL + posterPath}" alt="Poster of ${title}" class="item__image" />
+       </div>
+       <p class="item__text">${title}<br />
+         <span class="item__text--orange">${movieGenresManipulationsMarkup(movieGenres)} | ${movieDate?movieDate.slice(0, 4):''}</span>
+       </p>     
+       `;
+    refs.imagesList.appendChild(movieMarkup);
+  });
+
+  // return data
+  //   .map(({ poster_path, genre_ids, id, release_date, title }) => {
+      
+  //     return `
+  //   <li class="item" id="${id}">
+  //     <div class="item__image-box">
+  //       <img src="${IMG_URL + poster_path}" alt="Poster of ${title}" class="item__image" />
+  //     </div>
+  //     <p class="item__text">${title}<br />
+  //       <span class="item__text--orange">${convertIdInGenre(genre_ids)} | ${release_date.slice(0, 4)}</span>
+  //     </p>
+  //   </li> 
+  //   `;
+  //   })
+  //   .join('');
+};
 
 // Це функція для відмалювання розмітки в бібліотеці(черзі)
 // function markUpFilmsForLib(data) {
