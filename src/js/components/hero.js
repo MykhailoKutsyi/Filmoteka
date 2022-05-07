@@ -1,9 +1,10 @@
 import markUpFilms from './markUpFilms';
 import { getTrendingMovies } from '../services/API';
 
-const refs = {
-  imagesList: document.querySelector('.films-list'),
-};
+// const refs = {
+//   imagesList: document.querySelector('.films-list'),
+// };
+
 pushFetch();
 
 function pushFetch() {
@@ -18,5 +19,9 @@ function pushFetch() {
 }
 
 function markUp(data) {
-  refs.imagesList.insertAdjacentHTML('beforeend', markUpFilms(data.results));
-}
+  markUpFilms(data.results);
+};
+
+// function markUp(data) {
+//   refs.imagesList.insertAdjacentHTML('beforeend', markUpFilms(data.results));
+// }
