@@ -41,5 +41,5 @@ export function movieGenresManipulationsMarkup(arr) {
         };
     } else {
         return '';
-    }    
+    };    
 };
