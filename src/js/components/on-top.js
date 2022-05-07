@@ -5,14 +5,14 @@ const arrowBottom = document.querySelector('#arrowBottom');
 function showArrows() {
   // висота вікна (область перегляду браузера)
   let viewportHeight = document.documentElement.clientHeight;
-    console.log(pageYOffset);
-    console.log(viewportHeight);  
+    // console.log(pageYOffset);
+    // console.log(viewportHeight);  
       // высота HTML-страницы
     let htmlHeight = document.documentElement.scrollHeight;
-    console.log(htmlHeight)
+    // console.log(htmlHeight)
       // обмежувач за висотою для видимості нижньої стрілки
   let heightLimiter = htmlHeight - 2 * viewportHeight;
-    console.log(heightLimiter); 
+    // console.log(heightLimiter); 
     
   if (pageYOffset < viewportHeight) {
     //   arrowTop.hidden === true;
