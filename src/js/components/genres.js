@@ -32,7 +32,7 @@ export function convertIdInGenre(id) {
 };
 
 export function movieGenresManipulationsMarkup(arr) {
-    let string = ' and others';
+    let string = ', Other';
     if (arr) {
         if (arr.length <= 2) {
         return arr.slice().join(', ');
@@ -41,5 +41,5 @@ export function movieGenresManipulationsMarkup(arr) {
         };
     } else {
         return '';
-    }    
+    };    
 };
