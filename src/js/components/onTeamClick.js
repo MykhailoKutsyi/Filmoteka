@@ -9,36 +9,41 @@ const refs = {
   teammateList: document.querySelector('.teammate-list'),
 };
 
-refs.teamLink.addEventListener('click', function (e) {
-  e.preventDefault();
+function openModal() {
   refs.modal.classList.add('active');
   refs.overlay.classList.add('active');
+  document.body.addEventListener('keydown', onEscPress);
+  markUpModal(data);
+}
+
+function closeModal() {
+  refs.modal.classList.remove('active');
+  refs.overlay.classList.remove('active');
+  document.body.removeEventListener('keydown', onEscPress);
+  refs.teammateList.innerHTML = '';
+  // refs.teammateList.removeChild(refs.teammateList);
+}
+
+function onEscPress(e) {
+  const key = e.keyCode;
+  if (key == 27) {
+    closeModal();
+  }
+}
+
+refs.teamLink.addEventListener('click', function (e) {
+  e.preventDefault();
+  openModal();
 });
 
 refs.closeModal.addEventListener('click', function (e) {
-  refs.modal.classList.remove('active');
-  refs.overlay.classList.remove('active');
+  closeModal();
 });
-
-document.body.addEventListener(
-  'keyup',
-  function (e) {
-    const key = e.keyCode;
-
-    if (key == 27) {
-      document.querySelector('.modal.active').classList.remove('active');
-      document.querySelector('.overlay').classList.remove('active');
-    }
-  },
-  false,
-);
 
 refs.overlay.addEventListener('click', function () {
-  document.querySelector('.modal.active').classList.remove('active');
-  this.classList.remove('active');
+  closeModal();
 });
 
-markUp(data);
-function markUp(data) {
+function markUpModal(data) {
   refs.teammateList.insertAdjacentHTML('beforeend', markUpTeammate(data));
 }
