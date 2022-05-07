@@ -1,9 +1,5 @@
-body.light-theme {
-  background-color: rgb(220, 220, 220);
-  background-image: url(../images/fon.jpg);
-}
-
 body.dark-theme {
+  color: white;
   background-color: rgb(1, 1, 1);
   background-image: url(../images/stars.jpg);
 }
@@ -75,4 +71,9 @@ body.dark-theme {
 /* Other States */
 .lyf:focus {
   outline: 0;
+}
+
+.footerDark {
+  color: white;
+  background-color: rgb(0, 0, 0);
 }
