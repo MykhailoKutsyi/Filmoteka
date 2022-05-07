@@ -17,12 +17,12 @@ export default function markUpFilms(data) {
       movieGenres.push(genre);
       };
     return `  
-       <li class="item" id="${movieId}">                
-        <div class="item__image-box">
-          <img src="${IMG_URL + posterPath}" alt="Poster of ${title}" class="item__image" />
+       <li class="card-item" id="${movieId}">                
+        <div class="card-item__image-box">
+          <img src="${IMG_URL + posterPath}" alt="Poster of ${title}" class="card-item__image" />
         </div>
-        <p class="item__text">${title}<br />
-         <span class="item__text--orange">${movieGenresManipulationsMarkup(movieGenres)} | ${movieDate?movieDate.slice(0, 4):''}</span>
+        <p class="card-item__text">${title}<br />
+         <span class="card-item__text--orange">${movieGenresManipulationsMarkup(movieGenres)} | ${movieDate?movieDate.slice(0, 4):''}</span>
         </p>   
         </li>    
        `;
@@ -49,19 +49,20 @@ export default function markUpFilms(data) {
   
   
 
+
 // Це функція для відмалювання розмітки в бібліотеці(черзі)
 // function markUpFilmsForLib(data) {
 //   console.log(data);
 //   return data
 //     .map(({ poster_path, genre_ids, id, release_date, title, vote_average }) => {
 //       return `
-//     <li class="item" id="${id}">
-//       <div class="item__image-box">
-//         <img src="${IMG_URL + poster_path}" alt="Poster of ${title}" class="item__image" />
+//     <li class="card-item" id="${id}">
+//       <div class="card-item__image-box">
+//         <img src="${IMG_URL + poster_path}" alt="Poster of ${title}" class="card-item__image" />
 //       </div>
-//       <p class="item__text">${title}<br />
-//         <span class="item__text--orange">${genre_ids} | ${release_date.slice(0, 4)}</span>
-//         <span class="item__text--fill-orange">${vote_average}</span>
+//       <p class="card-item__text">${title}<br />
+//         <span class="card-item__text--orange">${genre_ids} | ${release_date.slice(0, 4)}</span>
+//         <span class="card-item__text--fill-orange">${vote_average}</span>
 //       </p>
 //     </li>
 //     `;
