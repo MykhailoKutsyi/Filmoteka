@@ -101,7 +101,7 @@ export function onModalMarkup({
         <li class="item-modal__txt-line">
           <p class="item-modal__txt-prop">Vote/Votes</p>
         <p class="item-modal__txt-prop-value item-modal__txt-prop-value--num">
-          <span class="item-modal__txt-prop-value--orange">${vote_average}</span>/${vote_count}</span
+          <span class="item-modal__txt-prop-value--orange">${vote_average}</span><span class="item-modal__txt-prop-value--slash">/</span><span>${vote_count}</span
         ></p>
       </li>
         <li class="item-modal__txt-line">
@@ -110,7 +110,7 @@ export function onModalMarkup({
       </li>
         <li class="item-modal__txt-line">
           <p class="item-modal__txt-prop">Original Title</p>
-        <p class="item-modal__txt-prop-value">${original_title}</p>
+        <p class="item-modal__txt-prop-value item-modal__txt-prop-value--up">${original_title}</p>
       </li>
         <li class="item-modal__txt-line">
           <p class="item-modal__txt-prop">Genre</p>
