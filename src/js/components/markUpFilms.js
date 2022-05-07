@@ -7,29 +7,29 @@ const refs = {
 
 export default function markUpFilms(data) {
   console.log(data);
-  data.forEach((result) => {
-    let posterPath = result.poster_path;
-    let genreIds = result.genre_ids;
-    let movieId = result.id;
-    let movieDate = result.release_date;
-    let title = result.original_title;
-                
+  data.map(
+    ({
+      poster_path: posterPath,
+      genre_ids: genreIds,
+      id: movieId,
+      release_date: movieDate,
+      original_title: title,}) =>{                
     let movieGenres = [];
     for (let i = 0; i < genreIds.length; i += 1) {
       let genre = convertIdInGenre(genreIds[i]);
       movieGenres.push(genre);
     };
                 
-    const movieMarkup = document.createElement('li');
-    movieMarkup.setAttribute("id", movieId);
-    movieMarkup.classList.add('item');
-    movieMarkup.innerHTML = `                    
+    const movieMarkup = document.createElement('div');
+    movieMarkup.innerHTML = `  
+      <li class="item" id="${movieId}">                
        <div class="item__image-box">
          <img src="${IMG_URL + posterPath}" alt="Poster of ${title}" class="item__image" />
        </div>
        <p class="item__text">${title}<br />
          <span class="item__text--orange">${movieGenresManipulationsMarkup(movieGenres)} | ${movieDate?movieDate.slice(0, 4):''}</span>
-       </p>     
+       </p>   
+       </li>    
        `;
     refs.imagesList.appendChild(movieMarkup);
   });
