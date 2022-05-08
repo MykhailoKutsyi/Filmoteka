@@ -1,5 +1,6 @@
 import './components/preloader';
 import './components/searchFilmsForm';
+import './components/filters-genres';
 import './components/hero';
 import './components/header';
 import './components/onTeamClick';
