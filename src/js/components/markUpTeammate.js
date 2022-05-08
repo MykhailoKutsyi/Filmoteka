@@ -1,19 +1,26 @@
+import githubIcon from '../../images/github.png';
+import linkedinIcon from '../../images/linkedin.png';
 export default function markUpTeammate(data) {
-  console.log(data);
   return data
-    .map(({ id, image, name, role, about }) => {
+    .map(({ id, image, name, role, about, link }) => {
       return `
     <li class="teammate-list__item" id=${id}>
-        <div class="teammate-list__item--photo">
-            <img src=${image}
-                alt="${name}'s photo"
-                width="30" />
-        </div>
-        <div class="teammate-list__item--description">
-            <p class="teammate-list__item--name">${name}</p>
-            <p class="teammate-list__item--role">${role}</p>
-            <p class="teammate-list__item--about">${about}</p>
-        </div>
+      <a class="teammate-list__item--link" href=${link} target="_blank">
+        <img class="teammate-list__item--image" src=${image} alt="${name}'s photo" width="100" >
+      </a>
+      <div class="teammate-list__item--description">
+        <p class="teammate-list__item--name">${name}</p>
+        <p class="teammate-list__item--role">${role}</p>
+        <p class="teammate-list__item--about">${about}</p>
+      </div>
+      <div class="teammate-list__item--socials">
+        <a class="teammate-list__item--link" href=${link} target="_blank">
+          <img class="teammate-list__item--icon" src=${githubIcon} alt="githubIcon" width=40px />
+        </a>
+        <a class="teammate-list__item--link" href=${link} target="_blank">
+          <img class="teammate-list__item--image" src=${linkedinIcon} alt="githubIcon" width=60px />
+        </a>
+      </div>
     </li>
     `;
     })

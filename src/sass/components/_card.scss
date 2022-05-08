@@ -1,6 +1,7 @@
 .card-item {
     @media screen and (min-width: 320px) {
         width: 280px;
+        margin-bottom: 20px;
     }
     
     @media screen and (min-width: 768px) {
@@ -16,7 +17,7 @@
     }
 
     cursor: pointer;
-    background-color: $white-color;
+    // background-color: $white-color;
 }
 
 .card-item__image {
