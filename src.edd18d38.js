@@ -116,4 +116,4 @@ const e=document.querySelector("#arrowTop"),t=document.querySelector("#arrowBott
 },{"./components/preloader":"meUZ","./components/searchFilmsForm":"xIBQ","./components/hero":"xhSK","./components/header":"NNYM","./components/onTeamClick":"biHM","./components/theme":"l9EJ","./components/on-top":"ws3u","./components/card-modal":"ok9B"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/main");
 },{"./sass/main.scss":"clu1","./js/main":"d6sW"}]},{},["Focm"], null)
-//# sourceMappingURL=/Filmoteka/src.44162e41.js.map
+//# sourceMappingURL=/Filmoteka/src.edd18d38.js.map
