@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<header class="header">
+<header class="header header-home">
   <div class="nav__container">
     <a class="logo" href="#">
       <svg class="header__logo logo__animation">
@@ -11,13 +11,17 @@
     <nav class="navigation">
       <ul class="list menu">
         <li class="navigation__item">
-          <a href="#" class="navigation__link nav__link-home current">home</a>
+          <a href="#" class="navigation__link nav__link-home current open-home-btn">home</a>
         </li>
         <li class="navigation__item">
-          <a href="#" class="navigation__link nav__link-library">my library</a>
+          <a href="#" class="navigation__link nav__link-library open-my-library-btn">my library</a>
         </li>
       </ul>
     </nav>
+  </div>
+  <div class="header-buttons-library">
+    <button class="library-btn library-active-btn">WATCHED</button>
+    <button class="library-btn ">QUEUE</button>
   </div>
   <form class="search" id="search-form">
     <input

@@ -1,6 +1,7 @@
-.item {
+.card-item {
     @media screen and (min-width: 320px) {
         width: 280px;
+        margin-bottom: 20px;
     }
     
     @media screen and (min-width: 768px) {
@@ -16,15 +17,15 @@
     }
 
     cursor: pointer;
-    background-color: $white-color;
+    // background-color: $white-color;
 }
 
-.item__image {
+.card-item__image {
     object-fit: cover;
     border-radius: 5px;
 }
 
-.item__image-box {
+.card-item__image-box {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border-bottom-left-radius: 5px;
@@ -45,7 +46,7 @@
     }
 }
 
-.item__text {
+.card-item__text {
     margin-top: 10px;
     padding-left: 1px;
     font-size: 12px;
@@ -55,20 +56,20 @@
     text-transform: uppercase;
 }
 
-.item__text--black {
+.card-item__text--black {
     color: $black-color;
 }
 
-.item__text--white {
+.card-item__text--white {
     color: $white-color;
 }
 
-.item__text--orange {
+.card-item__text--orange {
     text-transform: capitalize;
     color: $orange-color;
 }
 
-.item__text--fill-orange {
+.card-item__text--fill-orange {
     background-color: $orange-color;
     color: $white-color;
     display: inline-block;
