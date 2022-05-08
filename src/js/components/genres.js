@@ -43,3 +43,11 @@ export function movieGenresManipulationsMarkup(arr) {
         return '';
     };    
 };
+
+export function movieGenresModalMarkup(arr) {
+    if (arr) {
+        return arr.join(', ');
+    } else {
+        return '';
+    };    
+};
