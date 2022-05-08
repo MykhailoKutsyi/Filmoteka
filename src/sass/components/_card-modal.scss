@@ -13,7 +13,7 @@ h4 {
     justify-content: center;
     align-items: center;
     z-index: 101;
-    overflow: auto;
+    overflow: scroll;
     // transition: opacity 250ms $cubic, visibility 250ms $cubic;
 
     &.is-hidden {
@@ -28,23 +28,27 @@ h4 {
     font-weight: 500;
     letter-spacing: 0em;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-        
-    @media screen and (min-width: 320px) {
+           
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        top: 20px;
+        bottom: 38px;
         width: 280px;
         padding-left: 20px;
         padding-right: 20px;
         padding-top: 48px;
         padding-bottom: 40px;
+        overflow: auto;
     }
     
     @media screen and (min-width: 768px) {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         width: 704px;
         padding-top: 40px;
         padding-left: 36px;
         padding-right: 72px;
+        padding-bottom: 40px;
         display: flex;
         justify-content: center;
     }
@@ -65,8 +69,6 @@ h4 {
 }
 
 .item-modal__wrapper {
-    
-    
     
         @media screen and (min-width: 768px) {
             display: flex;
