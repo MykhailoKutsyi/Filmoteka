@@ -17,14 +17,14 @@ function createTrailerLink(elementRef) {
       .then(data => {
         const id = data.results[0].key;
         const instance = basicLightbox.create(`
-  <iframe width="560" height="315" src='https://www.youtube.com/embed/${id}'frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe width="1400" height="700" src='https://www.youtube.com/embed/${id}'frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 `);
         instance.show();
         modalClBtTrailer(instance);
       })
       .catch(() => {
         const instance = basicLightbox.create(`
-    <iframe width="560" height="315" src='http://www.youtube.com/embed/zwBpUdZ0lrQ' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <img width="1400" height="700" src="https://moviemaker.minitool.com/images/uploads/articles/2020/08/youtube-video-not-available/youtube-video-not-available-1.png" alt="no found trailer" class="trailer_video">
       `);
 
         instance.show();
