@@ -135,4 +135,4 @@ var e,t=arguments[3];!function(t,r){"object"==typeof exports&&"object"==typeof m
 },{"./components/preloader":"meUZ","./components/searchFilmsForm":"xIBQ","./components/hero":"xhSK","./components/header":"NNYM","./components/onTeamClick":"biHM","./components/theme":"l9EJ","./components/on-top":"ws3u","./components/card-modal":"ok9B","./components/trailers":"sER4","./components/slider":"t4Rl","../../node_modules/basiclightbox/dist/basicLightbox.min.css":"jRvc"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/main");
 },{"./sass/main.scss":"clu1","./js/main":"d6sW"}]},{},["Focm"], null)
-//# sourceMappingURL=/Filmoteka/src.cd81c2d9.js.map
+//# sourceMappingURL=/Filmoteka/src.c0d34d94.js.map
