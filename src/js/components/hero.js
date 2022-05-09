@@ -7,12 +7,13 @@ const refs = {
 };
 
 // modalRefs.cardModalCloseBtn.addEventListener('click', onCardModalClose);
-
+let pageNum = 1;
 pushFetch();
 
 function pushFetch() {
+  
   try {
-    const response = getTrendingMovies();
+    const response = getTrendingMovies(pageNum);
     return response.then(data => {
       markUp(data.data);
     });
@@ -29,3 +30,23 @@ function markUp(data) {
   refs.imagesList.insertAdjacentHTML('beforeend', markUpFilms(data.results));
   onCardsSelect();
 }
+
+
+// let isScrolled = false;
+
+// const infiniteScroll = () => {
+//   if (window.scrollY > (document.body.offsetHeight ,1) && !isScrolled) {
+// isScrolled = true;
+// pageNum +=1;
+// pushFetch(pageNum);
+// setTimeout(() => {
+//   isScrolled = false;
+
+// }, 0);
+// }
+// }
+
+// window.onscroll = function () { infiniteScroll(); }
+// window.onload = () => {
+//   getTrendingMovies(pageNum);
+// }

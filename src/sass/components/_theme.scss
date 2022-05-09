@@ -1,13 +1,11 @@
 body.dark-theme {
-  color: white;
+  color: $white-color;
   background-color: rgb(1, 1, 1);
   background-image: url(../images/stars.jpg);
 }
 
-.lyf {
-  background-color: rgba(0, 0, 0, 0.7);
+.switch {
   border-radius: 0.75em;
-  box-shadow: 0.125em 0.125em 0 0.125em rgba(0, 0, 0, 0.3) inset;
   color: #fdea7b;
   display: flex;
   align-items: center;
@@ -22,13 +20,13 @@ body.dark-theme {
   cursor: pointer;
 }
 
-.lyf:before,
-.lyf:after {
+.switch:before,
+.switch:after {
   content: '';
   display: block;
 }
 
-.lyf:before {
+.switch:before {
   background-color: #d7d7d7;
   border-radius: 50%;
   width: 1.2em;
@@ -37,7 +35,7 @@ body.dark-theme {
   z-index: 1;
 }
 
-.lyf:after {
+.switch:after {
   background: linear-gradient(transparent 50%, rgba(0, 0, 0, 0.15) 0) 0 50% / 50% 100%,
     repeating-linear-gradient(90deg, #bbb 0, #bbb, #bbb 20%, #999 20%, #999 40%) 0 50% / 50% 100%,
     radial-gradient(circle at 50% 50%, #888 25%, transparent 26%);
@@ -53,27 +51,31 @@ body.dark-theme {
 }
 
 /* Checked */
-.lyf:checked {
-  background-color: rgba(0, 0, 0, 0.45);
-  box-shadow: 0.125em 0.125em 0 0.125em rgba(0, 0, 0, 0.1) inset;
-}
-
-.lyf:checked:before {
+.switch:checked:before {
   background-color: currentColor;
   transform: translateX(125%);
 }
 
-.lyf:checked:after {
+.switch:checked:after {
   border-left-color: currentColor;
   transform: translateX(-2.5%) rotateY(180deg);
 }
 
-/* Other States */
-.lyf:focus {
+.switch:focus {
   outline: 0;
 }
 
-.footerDark {
-  color: white;
-  background-color: rgb(0, 0, 0);
+.dark-theme .footer,
+.dark-theme .js-open-modal {
+  color: $white-color;
+  background-color: $black-color;
+}
+
+.dark-theme .item-modal,
+.dark-theme .item-modal__close-btn {
+  background-color: $black-color;
+}
+
+.dark-theme .item-modal__close-btn-icon{
+  fill: $white-color
 }

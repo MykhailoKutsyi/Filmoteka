@@ -20,8 +20,11 @@ function closeModal() {
   refs.modal.classList.remove('active');
   refs.overlay.classList.remove('active');
   document.body.removeEventListener('keydown', onEscPress);
+  setTimeout(cleanTeam, 300);
+}
+
+function cleanTeam() {
   refs.teammateList.innerHTML = '';
-  // refs.teammateList.removeChild(refs.teammateList);
 }
 
 function onEscPress(e) {
