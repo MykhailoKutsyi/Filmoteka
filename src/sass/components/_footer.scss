@@ -5,7 +5,12 @@
     color: $text-color;
 }
 
-.modal-title {
+.footer__text {
+    font-size: 16px;
+    line-height: 1.19;
+}
+
+.modal__title {
     margin-bottom: 10px;
 }
 
@@ -39,10 +44,12 @@
 
 .teammate-list__item--name {
     margin-top: 5px;
+    font-size: 14px;
     font-weight: 700;
 }
 
 .teammate-list__item--role {
+    font-size: 13px;
     font-style: italic;
 }
 
