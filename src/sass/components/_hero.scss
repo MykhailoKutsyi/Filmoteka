@@ -20,6 +20,6 @@
     flex-wrap: wrap;
 }
 
-
-// buttons for header in My library section
-
+.main-container {
+min-height: calc(100vh - 80px);
+}
