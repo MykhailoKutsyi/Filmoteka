@@ -13,7 +13,7 @@ h4 {
     justify-content: center;
     align-items: center;
     z-index: 101;
-    overflow: scroll;
+    overflow: auto;
     // transition: opacity 250ms $cubic, visibility 250ms $cubic;
 
     &.is-hidden {
