@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<header class="header header-home">
+  <div class="nav__container">
+    <a class="logo" href="#">
+      <svg class="header__logo logo__animation">
+        <use href="./images/sprite.svg#main-logo" width="24px" height="24px"></use>
+      </svg>
+      <span class="header__title">Filmoteka</span>
+    </a>
+
+    <nav class="navigation">
+      <ul class="list menu">
+        <li class="navigation__item">
+          <a href="#" class="navigation__link nav__link-home current open-home-btn">home</a>
+        </li>
+        <li class="navigation__item">
+          <a href="#" class="navigation__link nav__link-library open-my-library-btn">my library</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div class="header-buttons-library">
+    <button class="library-btn library-active-btn">WATCHED</button>
+    <button class="library-btn ">QUEUE</button>
+  </div>
+  <form class="search" id="search-form">
+    <input
+      class="search__input"
+      type="text"
+      name="searchQuery"
+      autocomplete="off"
+      placeholder="Search films..."
+    />
+    <button type="submit" class="search__button">
+      <svg class="search__button-icon search-icon">
+        <use href="/images/sprite.svg#icon-search"></use>
+      </svg>
+    </button>
+  </form>
+  <p class="js_search-error visually-hidden">
+    Search result not successful. Enter the correct movie name and
+  </p>
+  <!-- Переключатель темы -->
+  <input class="lyf" type="checkbox" id="theme-check" />
+</header>
