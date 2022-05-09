@@ -11,9 +11,7 @@ export default function markUpTeammate(data) {
       <div class="teammate-list__item--description">
         <p class="teammate-list__item--name">${name}</p>
         <p class="teammate-list__item--role">${role}</p>
-        <p class="teammate-list__item--about">${about}</p>
-      </div>
-      <div class="teammate-list__item--socials">
+         <div class="teammate-list__item--socials">
         <a class="teammate-list__item--link" href=${link} target="_blank">
           <img class="teammate-list__item--icon" src=${githubIcon} alt="githubIcon" width=40px />
         </a>
@@ -21,6 +19,9 @@ export default function markUpTeammate(data) {
           <img class="teammate-list__item--image" src=${linkedinIcon} alt="githubIcon" width=60px />
         </a>
       </div>
+        <p class="teammate-list__item--about">${about}</p>
+      </div>
+     
     </li>
     `;
     })
