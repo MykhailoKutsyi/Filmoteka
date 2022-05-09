@@ -110,7 +110,7 @@ module.exports=[{id:1,image:"https://avatars.githubusercontent.com/u/91030243?v=
 },{"./markUpTeammate":"fXKH","../../data.json":"boCh"}],"l9EJ":[function(require,module,exports) {
 const t=document.querySelector("#theme-check"),e=document.querySelector(".footer"),o=document.querySelector(".js-open-modal"),s={DEFAULT:"default-theme",DARK:"dark-theme",FooterDARK:"footerDark"};function c(){document.body.classList.toggle(s.DARK),document.body.classList.toggle(s.DEFAULT),e.classList.toggle(s.FooterDARK),e.classList.toggle(s.DEFAULT),o.classList.toggle(s.FooterDARK),o.classList.toggle(s.DEFAULT),a()}function a(){document.body.classList.contains(s.DEFAULT)?(t.setAttribute("checked",!1),localStorage.setItem("active-theme",s.DEFAULT)):document.body.classList.contains(s.DARK)&&(t.setAttribute("checked",!0),localStorage.setItem("active-theme",s.DARK))}function l(){localStorage.getItem("active-theme")===s.DARK&&c()}document.body.classList.add(s.DEFAULT),e.classList.add(s.DEFAULT),o.classList.add(s.DEFAULT),t.addEventListener("change",c),l();
 },{}],"ws3u":[function(require,module,exports) {
-const e=document.querySelector("#arrowTop"),t=document.querySelector("#arrowBottom");function o(){let t=document.documentElement.clientHeight,o=document.documentElement.scrollHeight-2*t;pageYOffset<t&&e.classList.add("arrow-item-show"),pageYOffset>o&&e.classList.add("arrow-item-show")}window.addEventListener("scroll",o),e.addEventListener("click",function(){scrollTo(pageXOffset,0)}),t.addEventListener("click",function(){let e=document.documentElement.scrollHeight;scrollTo(pageXOffset,e)});
+const e=document.querySelector("#arrowTop"),t=document.querySelector("#arrowBottom");function o(){let t=document.documentElement.clientHeight,o=document.documentElement.scrollHeight-2*t;pageYOffset<t&&e.classList.add("arrow-show"),pageYOffset>o&&e.classList.add("arrow-show")}window.addEventListener("scroll",o),e.addEventListener("click",function(){scrollTo(pageXOffset,0)}),t.addEventListener("click",function(){let e=document.documentElement.scrollHeight;scrollTo(pageXOffset,e)});
 },{}],"BNjD":[function(require,module,exports) {
 var define;
 var global = arguments[3];
@@ -135,4 +135,4 @@ var e,t=arguments[3];!function(t,r){"object"==typeof exports&&"object"==typeof m
 },{"./components/preloader":"meUZ","./components/searchFilmsForm":"xIBQ","./components/hero":"xhSK","./components/header":"NNYM","./components/onTeamClick":"biHM","./components/theme":"l9EJ","./components/on-top":"ws3u","./components/card-modal":"ok9B","./components/trailers":"sER4","./components/slider":"t4Rl","../../node_modules/basiclightbox/dist/basicLightbox.min.css":"jRvc"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/main");
 },{"./sass/main.scss":"clu1","./js/main":"d6sW"}]},{},["Focm"], null)
-//# sourceMappingURL=/Filmoteka/src.b61c375d.js.map
+//# sourceMappingURL=/Filmoteka/src.cd81c2d9.js.map
