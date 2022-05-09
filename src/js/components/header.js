@@ -1,8 +1,39 @@
+// search by word
+import markUpFilms from './markUpFilms';
+import { getSearchMovie } from '../services/API';
+import { onCardsSelect } from './card-modal';
+
+const refs = {
+  imagesList: document.querySelector('.films-list'),
+};
+
+pushFetch();
+
+
+
+function pushFetch() {
+  try {
+    const response = getSearchMovie();
+    return response.then(data => {
+      markUp(data.data);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+function markUp(data) {
+  refs.imagesList.insertAdjacentHTML('beforeend', markUpFilms(data.results));
+  onCardsSelect();
+}
+
+// header activity
 
 const homeNavEl = document.querySelector('.nav__link-home');
 const libraryNavEl = document.querySelector('.nav__link-library');
 const headerEl = document.querySelector('.header');
 const formEl = document.querySelector('.search');
+const searchnput = document.querySelector('.search__input')
 
 
 libraryNavEl.addEventListener('click', onLibraryClick);
