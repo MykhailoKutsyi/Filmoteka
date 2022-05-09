@@ -1,6 +1,7 @@
 import { getMovieById } from '../services/API';
 import { API_KEY, URL, IMG_URL } from '../utils/constants';
 import { convertIdInGenre, movieGenresModalMarkup } from './genres.js';
+import { librarys } from './addLibreryBtn';
 // getMovieById(453395).then(d => console.log(d.data));
 
 // Как подключать функцию в файле hero.js
@@ -112,6 +113,7 @@ export function onModalMarkup({
   vote_count: voteNum,
   popularity: popularity,
   overview: overview,
+  id: id,
 }) {
   let arr = [];
   for (const genre of allGenres) {
@@ -158,9 +160,10 @@ export function onModalMarkup({
       <h4 class="item-modal__subtitle">About</h4>
       <p class="item-modal__desc">${overview ? overview : ''}</p>
       <div class="item-modal__btns">
-        <button class="item-modal__btn focused">add to Watched</button>
-        <button class="item-modal__btn">add to queue</button>
+        <button class="item-modal__btn add-watch focused">add to Watched</button>
+        <button class="item-modal__btn add-queue">add to queue</button>
       </div>
     </div>`,
   );
+librarys(id);
 }
