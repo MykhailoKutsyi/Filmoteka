@@ -16,7 +16,7 @@ const glide = new Glide('.glide', {
 glide.mount();
 
 function renderTrendy() {
-  const url = `https://api.themoviedb.org/3/trending/all/day?api_key=e1780eaef9609cf3d5283262d6798136`;
+  const url = `https://api.themoviedb.org/3/trending/all/week?api_key=e1780eaef9609cf3d5283262d6798136`;
   return fetch(url)
   
     .then(response => response.json())
