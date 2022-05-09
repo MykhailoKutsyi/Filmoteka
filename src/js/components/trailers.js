@@ -24,7 +24,7 @@ function createTrailerLink(elementRef) {
       })
       .catch(() => {
         const instance = basicLightbox.create(`
-    <iframe width="560" height="315" src='http://www.youtube.com/embed/zwBpUdZ0lrQ' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <img width="560" height="315" src="https://moviemaker.minitool.com/images/uploads/articles/2020/08/youtube-video-not-available/youtube-video-not-available-1.png" alt="no found trailer" class="trailer_video">
       `);
 
         instance.show();
