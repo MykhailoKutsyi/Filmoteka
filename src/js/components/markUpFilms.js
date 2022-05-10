@@ -1,8 +1,14 @@
 import { IMG_URL } from '../utils/constants';
 import { convertIdInGenre, movieGenresManipulationsMarkup } from './genres.js';
+const MOVIE_STORAGE_KEY = 'movies';
+
+function setItemsToLS(data) {
+  localStorage.setItem(MOVIE_STORAGE_KEY, JSON.stringify(data));
+};
 
 export default function markUpFilms(data) {
   console.log(data);
+  setItemsToLS(data);
   return data.map(
     ({
       poster_path: posterPath,
@@ -28,26 +34,6 @@ export default function markUpFilms(data) {
        `;
   }).join('');
 };
-
-
-// що було до жанрів
-// return data
-  //   .map(({ poster_path, genre_ids, id, release_date, title }) => {
-      
-  //     return `
-  //   <li class="item" id="${id}">
-  //     <div class="item__image-box">
-  //       <img src="${IMG_URL + poster_path}" alt="Poster of ${title}" class="item__image" />
-  //     </div>
-  //     <p class="item__text">${title}<br />
-  //       <span class="item__text--orange">${convertIdInGenre(genre_ids)} | ${release_date.slice(0, 4)}</span>
-  //     </p>
-  //   </li> 
-  //   `;
-  //   })
-  //   .join('');
-  
-  
 
 
 // Це функція для відмалювання розмітки в бібліотеці(черзі)
