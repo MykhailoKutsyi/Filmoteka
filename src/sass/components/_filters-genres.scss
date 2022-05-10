@@ -1,66 +1,83 @@
 .filters{
-    width: 400px;
-    // height: 100%;
+    margin-top: 30px;
     background: #232234;
     padding: 24px;
     border-radius: 25px;
 }
 
-.filters_title{
-    color: #fff;
-    font-size: 26px;
+.filters__filter{
+    background-color: #1e1e2e;
+    border-radius: 4px;
+    border-style: none;
+    color: #b8b8b8;
+    cursor: pointer;
+    font-size: 12px;
+    padding: 8px;
     text-align: center;
-    margin-bottom: 20px;
+    width: 100%;
+    margin-bottom: 15px;
+    border-bottom: 4px solid #383854;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    
+    &:hover,
+    &:focus {
+        opacity: .75;
+    }
 }
 
-.filters_genres-hidden{
+.filters__genres-hidden{
     display: none;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
 }
 
-.filters_values{
+.filters__values{
+    width: 100%;
     text-transform: capitalize;
     text-align: center;
-    font-size: 22px;
+    font-size: 12px;
     color: #b8b8b8;
-    padding: 16px;
+    padding: 8px;
     background-color: #1e1e2e;
-    margin-bottom: 20px;
+    margin-bottom: 8px;
     border-top: 4px solid #383854;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
 
-.filters_item{
-    border: 1px solid #383854;
-    border-bottom: 0;
-    padding: 10px;
+.filters__list{
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
-    
-    &:first-child{
-        border-radius: 15px 15px 0 0;
-    }
-    &:last-child {
-        border-radius: 0 0 15px 15px;
-        border-bottom: 1px solid #383854;
-    }
+    justify-content: center;
 }
 
-.filters_checkbox{
+.filters__item{
+    border-bottom: 0;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    border-radius: 7px;
+    border: 1px solid #383854;
+    margin: 5px;
+}
+
+.filters__checkbox{
     color: #fff;
-    width: 24px;
-    height: 24px;
+    // width: 22px;
+    // height: 22px;
     cursor: pointer;
 }
 
-.filters_label{
+.filters__label{
+    cursor: pointer;
     text-transform: capitalize;
-    font-size: 22px;
+    font-size: 14px;
     color: #fff;
-    margin-left: 20px;
+    margin-left: 10px;
     display: block;
     width: 100%;
 }
