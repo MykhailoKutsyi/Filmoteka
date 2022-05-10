@@ -112,7 +112,7 @@ module.exports=[{id:1,image:"https://avatars.githubusercontent.com/u/91030243?v=
 },{"./markUpFooterModal":"Bq6Y","../../data.json":"boCh"}],"l9EJ":[function(require,module,exports) {
 const e=document.querySelector("#theme-check"),t={DEFAULT:"default-theme",DARK:"dark-theme"};function c(){document.body.classList.toggle(t.DARK),document.body.classList.toggle(t.DEFAULT),o()}function o(){document.body.classList.contains(t.DEFAULT)?(e.setAttribute("checked",!1),localStorage.setItem("active-theme",t.DEFAULT)):document.body.classList.contains(t.DARK)&&(e.setAttribute("checked",!0),localStorage.setItem("active-theme",t.DARK))}function s(){localStorage.getItem("active-theme")===t.DARK&&c()}document.body.classList.add(t.DEFAULT),e.addEventListener("change",c),s();
 },{}],"ws3u":[function(require,module,exports) {
-const e=document.querySelector("#arrowTop"),t=document.querySelector("#arrowBottom");function o(){let t=document.documentElement.clientHeight,o=document.documentElement.scrollHeight-2*t;pageYOffset<t&&e.classList.add("arrow-show"),pageYOffset>o&&e.classList.add("arrow-show")}window.addEventListener("scroll",o),e.addEventListener("click",function(){scrollTo(pageXOffset,0)}),t.addEventListener("click",function(){let e=document.documentElement.scrollHeight;scrollTo(pageXOffset,e)});
+const e=document.querySelector("#arrowTop"),t=document.querySelector("#arrowBottom"),o=document.querySelector(".header"),n=document.querySelector(".footer");function c(){let t=document.documentElement.clientHeight,o=document.documentElement.scrollHeight-2*t;pageYOffset<t&&e.classList.add("arrow--show"),pageYOffset>o&&e.classList.add("arrow--show")}function r(e){window.scroll({left:0,top:e.offsetTop,behavior:"smooth"})}window.addEventListener("scroll",c),e.addEventListener("click",function(){r(o)}),t.addEventListener("click",function(){document.documentElement.scrollHeight;r(n)});
 },{}],"BNjD":[function(require,module,exports) {
 var define;
 var global = arguments[3];
@@ -137,4 +137,4 @@ var e,t=arguments[3];!function(t,r){"object"==typeof exports&&"object"==typeof m
 },{"./components/preloader":"meUZ","./components/searchFilmsForm":"xIBQ","./components/hero":"xhSK","./components/header":"NNYM","./components/onFooterLinkClick":"TLvV","./components/theme":"l9EJ","./components/on-top":"ws3u","./components/card-modal":"ok9B","./components/trailers":"sER4","./components/slider":"t4Rl","../../node_modules/basiclightbox/dist/basicLightbox.min.css":"jRvc"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/main");
 },{"./sass/main.scss":"clu1","./js/main":"d6sW"}]},{},["Focm"], null)
-//# sourceMappingURL=/Filmoteka/src.72920400.js.map
+//# sourceMappingURL=/Filmoteka/src.4dbb5771.js.map
