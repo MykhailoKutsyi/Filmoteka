@@ -3,7 +3,7 @@
 const LOCALSTORAGE_KEY_Watched = 'WatchedLibrary';
 const LOCALSTORAGE_KEY_Queue = 'QueueLibrary';
 
- export function librarys (id)
+ export function librarys (dataMovie)
 
  {
 const btnRefs = {
@@ -11,24 +11,25 @@ const btnRefs = {
     addToQueueBtn:document.querySelector('.add-queue'),
   }
 
-  checkMovieWatched(id);
-  checkMovieQueue(id);
+  checkMovieWatched(dataMovie.id);
+  checkMovieQueue(dataMovie.id);
 
-    console.log(btnRefs.addToQueueBtn);
-   console.log(btnRefs.addToWatchedBtn);
-  
+    
   function checkMovieWatched(id) {
+  
     checkHelperWatched();
-    if (JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY_Watched)).includes(id)) {
-      btnWatchChangeRemowe();
+        //   JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY_Watched)).map(LSdataMovie => LSdataMovie.id.includes(id));
+        // console.log(id);
+    if (JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY_Watched)).some(LSdataMovie => LSdataMovie.id === id)){
+      btnWatchedChangeRemowe();
     } else {
-      btnWatchChangeAdd();
+      btnWatchedChangeAdd();
     }
   }
 
  function checkMovieQueue(id) {
     checkHelperQueue();
-    if (JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY_Queue)).includes(id)) {
+    if (JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY_Queue)).some(LSdataMovie => LSdataMovie.id === id)) {
       btnQueueChangeRemowe();
     } else {
       btnQueueChangeAdd();
@@ -38,16 +39,17 @@ const btnRefs = {
   function addToWatched(e) {
     e.preventDefault();
     const dataToSave = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY_Watched));
-    dataToSave.push(id);
+    dataToSave.push(dataMovie);
+    console.log(dataMovie.title);
     const dataToSaveString = JSON.stringify(dataToSave);
     localStorage.setItem(LOCALSTORAGE_KEY_Watched, dataToSaveString);
-    console.log("addWtch done");
-    btnWatchChangeRemowe();
+    console.log("addWtched done");
+    btnWatchedChangeRemowe();
   }
   function addToQueue(e) {
     e.preventDefault();
     const dataToSave = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY_Queue));
-    dataToSave.push(id);
+    dataToSave.push(dataMovie);
     const dataToSaveString = JSON.stringify(dataToSave);
     localStorage.setItem(LOCALSTORAGE_KEY_Queue, dataToSaveString);
     console.log("addQue done");
@@ -57,17 +59,19 @@ const btnRefs = {
   function removeMovieFromWatched(e) {
     e.preventDefault();
     const dataToChange = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY_Watched));
-    dataToChange.splice(dataToChange.indexOf(id),1);
+    const movieIndex = dataToChange.findIndex(movie => movie.id === dataMovie.id);
+    dataToChange.splice(movieIndex, 1);
     const dataToSave = JSON.stringify(dataToChange);
     localStorage.setItem(LOCALSTORAGE_KEY_Watched, dataToSave);
-    console.log('removeWatch done')
-    btnWatchChangeAdd();
+    console.log('removeWatched done')
+    btnWatchedChangeAdd();
   }
 
   function removeMovieFromQueue(e) {
     e.preventDefault();
     const dataToChange = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY_Queue));
-    dataToChange.splice(dataToChange.indexOf(id),1);
+    const movieIndex = dataToChange.findIndex(movie => movie.id === dataMovie.id);
+    dataToChange.splice(movieIndex, 1);
     const dataToSave = JSON.stringify(dataToChange)
     localStorage.setItem(LOCALSTORAGE_KEY_Queue, dataToSave);
     console.log('removeQue done')
@@ -78,7 +82,8 @@ const btnRefs = {
     if (localStorage.getItem(LOCALSTORAGE_KEY_Watched) === null) {
       const LS_watched_data = [];
       localStorage.setItem(LOCALSTORAGE_KEY_Watched, JSON.stringify(LS_watched_data));
-      btnWatchChangeAdd();
+      btnWatchedChangeAdd();
+      console.log('checkHelper made check');
 
     }
   }
@@ -87,16 +92,17 @@ const btnRefs = {
       const LS_queue_data = [];
       localStorage.setItem(LOCALSTORAGE_KEY_Queue, JSON.stringify(LS_queue_data));
       btnQueueChangeAdd();
+      console.log('checkHelper made check');
       }
   }
 
-  function btnWatchChangeRemowe() {
+  function btnWatchedChangeRemowe() {
     btnRefs.addToWatchedBtn.removeEventListener('click', addToWatched);
     btnRefs.addToWatchedBtn.textContent = 'Remove from Watched';
     btnRefs.addToWatchedBtn.addEventListener('click', removeMovieFromWatched);
   }
 
-  function btnWatchChangeAdd() {
+  function btnWatchedChangeAdd() {
     btnRefs.addToWatchedBtn.removeEventListener('click', removeMovieFromWatched);
     btnRefs.addToWatchedBtn.textContent = 'Add to watched';
     btnRefs.addToWatchedBtn.addEventListener('click', addToWatched);

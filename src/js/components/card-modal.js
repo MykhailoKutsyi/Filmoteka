@@ -1,7 +1,7 @@
 import { getMovieById } from '../services/API';
 import { API_KEY, URL, IMG_URL } from '../utils/constants';
 import { convertIdInGenre, movieGenresModalMarkup } from './genres.js';
-import { librarys } from './addLibreryBtn';
+import { librarys } from './addLibraryBtn';
 // getMovieById(453395).then(d => console.log(d.data));
 
 // Как подключать функцию в файле hero.js
@@ -165,5 +165,17 @@ export function onModalMarkup({
       </div>
     </div>`,
   );
-librarys(id);
+librarys(
+{
+  poster_path: posterPath,
+  genres: allGenres,
+  title: title,
+  original_title: origTitle,
+  vote_average: vote,
+  vote_count: voteNum,
+  popularity: popularity,
+  overview: overview,
+  id: id,
+}
+);
 }
