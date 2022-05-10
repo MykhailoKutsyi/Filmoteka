@@ -1,18 +1,27 @@
+import markUpFilms from './markUpFilms';
+import { getSearchMovie } from '../services/API';
+import { onCardsSelect } from './card-modal';
+
+// header activity
 
 const homeNavEl = document.querySelector('.nav__link-home');
 const libraryNavEl = document.querySelector('.nav__link-library');
 const headerEl = document.querySelector('.header');
-const formEl = document.querySelector('.search');
+const searchForm = document.querySelector('.search');
+const searchnput = document.querySelector('.search__input')
 
 
 libraryNavEl.addEventListener('click', onLibraryClick);
 homeNavEl.addEventListener('click', onHomeClick)
 
+
+
+
 function onLibraryClick(event) {
     homeNavEl.classList.remove('current')
     event.target.classList.add('current')
     libraryNavEl.disabled = true;
-    formEl.classList.add('visually-hidden')
+   searchForm.classList.add('visually-hidden')
     
 
     headerEl.classList.add('header-library')
@@ -22,7 +31,7 @@ function onHomeClick(event) {
     libraryNavEl.classList.remove('current');
     event.target.classList.add('current')
     headerEl.classList.remove('header-library');
-    formEl.classList.remove('visually-hidden')
+   searchForm.classList.remove('visually-hidden')
 
 }
 
@@ -57,5 +66,40 @@ function changeCurrentPageOnHome() {
     filmsList.classList.remove('visually-hidden')
     header.classList.add('header-home')
     header.classList.remove('header-library')
+}
+
+
+
+// search by word
+searchForm.addEventListener('submit', onSubmitForm);
+
+const refs = {
+  imagesList: document.querySelector('.films-list'),
+};
+
+function onSubmitForm(e) {
+  e.preventDefault();
+  if (!searchnput.value ) {
+    return;
+  }
+  pushFetch(searchnput.value);
+  
+}
+
+function pushFetch(movie) {
+  try {
+    const response = getSearchMovie(movie);
+    return response.then(data => {
+      markUp(data.data);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+function markUp(data) {
+  refs.imagesList.innerHTML= '';
+  refs.imagesList.insertAdjacentHTML('beforeend', markUpFilms(data.results));
+  onCardsSelect();
 }
 
