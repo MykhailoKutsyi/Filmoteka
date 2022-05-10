@@ -9,7 +9,7 @@ export default function markUpFilms(data) {
       genre_ids: genreIds,
       id: movieId,
       release_date: movieDate,
-      original_title: title,
+      title: title,
     }) => {                
     let movieGenres = [];
     for (let i = 0; i < genreIds.length; i += 1) {
@@ -19,7 +19,7 @@ export default function markUpFilms(data) {
     return `  
        <li class="card-item" id="${movieId}">                
         <div class="card-item__image-box">
-          <img src="${IMG_URL + posterPath}" alt="Poster of ${title}" class="card-item__image" />
+          <img src="${IMG_URL + posterPath}" alt="Poster of ${title? title:""}" class="card-item__image" />
         </div>
         <p class="card-item__text">${title}<br />
          <span class="card-item__text--orange">${movieGenresManipulationsMarkup(movieGenres)} | ${movieDate?movieDate.slice(0, 4):''}</span>
@@ -28,26 +28,6 @@ export default function markUpFilms(data) {
        `;
   }).join('');
 };
-
-
-// що було до жанрів
-// return data
-  //   .map(({ poster_path, genre_ids, id, release_date, title }) => {
-      
-  //     return `
-  //   <li class="item" id="${id}">
-  //     <div class="item__image-box">
-  //       <img src="${IMG_URL + poster_path}" alt="Poster of ${title}" class="item__image" />
-  //     </div>
-  //     <p class="item__text">${title}<br />
-  //       <span class="item__text--orange">${convertIdInGenre(genre_ids)} | ${release_date.slice(0, 4)}</span>
-  //     </p>
-  //   </li> 
-  //   `;
-  //   })
-  //   .join('');
-  
-  
 
 
 // Це функція для відмалювання розмітки в бібліотеці(черзі)
