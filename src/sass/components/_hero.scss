@@ -13,7 +13,7 @@
     }
 }
 
-.films-list {
+.films-list, .films-list-watched, .films-list-queue {
     display: flex;
     flex-wrap: wrap;
 }
