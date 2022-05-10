@@ -36,7 +36,7 @@
     "image": "https://avatars.githubusercontent.com/u/87204570?v=4",
     "name": "Dryzhak Nikita",
     "role": "Developer",
-    "about": "Оформлення та реалізація сторінки My Library",
+    "about": "Верстка контейнеру головної сторінки та сторінки 'My Library'",
     "link": "https://github.com/NikitaDryzhak"
   },{
     "id": 6,
@@ -59,7 +59,7 @@
     "image": "https://avatars.githubusercontent.com/u/87301129?v=4",
     "name": "Bakush Nazar",
     "role": "Developer",
-    "about": "",
+    "about": "Оформлення та реалізація сторінки 'My Library'. Функціонал ApiLocalstorage.",
     "link": "https://github.com/Nazkamaz"
   },
   {
@@ -75,7 +75,7 @@
     "image": "https://avatars.githubusercontent.com/u/87891790?v=4",
     "name": "Subotin Oleg",
     "role": "Developer",
-    "about": "Функціонал ApiLocalstorage.",
+    "about": "Реалізація роботи блоку Main та модального вікна картки фільму. ApiLocalstorage.",
     "link": "https://github.com/OlegSubotin"
   }
 ]
