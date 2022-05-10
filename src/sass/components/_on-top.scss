@@ -5,33 +5,26 @@
   cursor: pointer;
   background-color: transparent;
   border-radius: 50%;
-  z-index: 9999;
+  z-index: 19;
 }
-.arrow-up {
+.arrow--up {
   bottom: 60px;
   @media screen and (min-width: 768px) {
     right: 30px;
   }
 }
-.arrow-down {
+.arrow--down {
   bottom: 20px;
   @media screen and (min-width: 768px) {
     right: 30px;
-    @media screen and (min-width: 1024px) {
-    }
   }
 }
-.arrow-show {
+.arrow--show {
   display: block;
 }
-// .arrow-disabled {
-//   pointer-events: none;
-//   cursor: default;
-//   opacity: 0;
-// }
-.arrow-icon {
+.arrow__icon {
   fill: $orange-color;
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: $cubic;
   width: 44px;
   height: 44px;
   &:hover,
