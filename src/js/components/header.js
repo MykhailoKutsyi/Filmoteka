@@ -1,3 +1,7 @@
+import markUpFilms from './markUpFilms';
+import { getSearchMovie } from '../services/API';
+import { onCardsSelect } from './card-modal';
+
 // header activity
 
 const homeNavEl = document.querySelector('.nav__link-home');
@@ -67,10 +71,6 @@ function changeCurrentPageOnHome() {
 
 
 // search by word
-import markUpFilms from './markUpFilms';
-import { getSearchMovie } from '../services/API';
-import { onCardsSelect } from './card-modal';
-
 searchForm.addEventListener('submit', onSubmitForm);
 
 const refs = {
