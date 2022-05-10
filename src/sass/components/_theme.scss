@@ -1,13 +1,30 @@
-body.dark-theme {
-  color: white;
+.dark-theme {
+  color: $white-color;
   background-color: rgb(1, 1, 1);
   background-image: url(../images/stars.jpg);
+
+  .footer,
+  .js-open-modal {
+    color: $white-color;
+    background-color: $black-color;
+  }
+
+  .item-modal,
+  .item-modal__close-btn {
+    background-color: $black-color;
+  }
+
+  .item-modal__close-btn-icon {
+    fill: $white-color
+  }
+
+  .slider-wrapper {
+    background-color: transparent;
+  }
 }
 
-.lyf {
-  background-color: rgba(0, 0, 0, 0.7);
+.switch {
   border-radius: 0.75em;
-  box-shadow: 0.125em 0.125em 0 0.125em rgba(0, 0, 0, 0.3) inset;
   color: #fdea7b;
   display: flex;
   align-items: center;
@@ -20,60 +37,48 @@ body.dark-theme {
   -moz-appearance: none;
   appearance: none;
   cursor: pointer;
-}
 
-.lyf:before,
-.lyf:after {
-  content: '';
-  display: block;
-}
+  &:before,
+  &:after {
+    content: '';
+    display: block;
+  }
 
-.lyf:before {
-  background-color: #d7d7d7;
-  border-radius: 50%;
-  width: 1.2em;
-  height: 1.2em;
-  transition: background-color 0.1s 0.3s ease-out, transform 0.3s ease-out;
-  z-index: 1;
-}
+  &:before {
+    background-color: #d7d7d7;
+    border-radius: 50%;
+    width: 1.2em;
+    height: 1.2em;
+    transition: background-color 0.1s 0.3s ease-out, transform 0.3s ease-out;
+    z-index: 1;
+  }
 
-.lyf:after {
-  background: linear-gradient(transparent 50%, rgba(0, 0, 0, 0.15) 0) 0 50% / 50% 100%,
-    repeating-linear-gradient(90deg, #bbb 0, #bbb, #bbb 20%, #999 20%, #999 40%) 0 50% / 50% 100%,
-    radial-gradient(circle at 50% 50%, #888 25%, transparent 26%);
-  background-repeat: no-repeat;
-  border: 0.25em solid transparent;
-  border-left: 0.4em solid #d8d8d8;
-  border-right: 0 solid transparent;
-  transition: border-left-color 0.1s 0.3s ease-out, transform 0.3s ease-out;
-  transform: translateX(-22.5%);
-  transform-origin: 25% 50%;
-  width: 1.2em;
-  height: 1em;
-}
+  &:after {
+    background: linear-gradient(transparent 50%, rgba(0, 0, 0, 0.15) 0) 0 50% / 50% 100%,
+      repeating-linear-gradient(90deg, #bbb 0, #bbb, #bbb 20%, #999 20%, #999 40%) 0 50% / 50% 100%,
+      radial-gradient(circle at 50% 50%, #888 25%, transparent 26%);
+    background-repeat: no-repeat;
+    border: 0.25em solid transparent;
+    border-left: 0.4em solid #d8d8d8;
+    border-right: 0 solid transparent;
+    transition: border-left-color 0.1s 0.3s ease-out, transform 0.3s ease-out;
+    transform: translateX(-22.5%);
+    transform-origin: 25% 50%;
+    width: 1.2em;
+    height: 1em;
+  }
 
-/* Checked */
-.lyf:checked {
-  background-color: rgba(0, 0, 0, 0.45);
-  box-shadow: 0.125em 0.125em 0 0.125em rgba(0, 0, 0, 0.1) inset;
-}
+  &:focus {
+    outline: 0;
+  }
 
-.lyf:checked:before {
-  background-color: currentColor;
-  transform: translateX(125%);
-}
+  &:checked:before {
+    background-color: currentColor;
+    transform: translateX(125%);
+  }
 
-.lyf:checked:after {
-  border-left-color: currentColor;
-  transform: translateX(-2.5%) rotateY(180deg);
-}
-
-/* Other States */
-.lyf:focus {
-  outline: 0;
-}
-
-.footerDark {
-  color: white;
-  background-color: rgb(0, 0, 0);
+  &:checked:after {
+    border-left-color: currentColor;
+    transform: translateX(-2.5%) rotateY(180deg);
+  }
 }
