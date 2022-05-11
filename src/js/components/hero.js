@@ -25,10 +25,10 @@ export function pushFetch() {
   try {
     const response = getTrendingMovies(pageNum);
     sessionStorage.setItem('calculatedPageNum', pageNum);
-    return response.then(data => {
+    return response.then(({ data }) => {
       console.log('data', data);
 
-      markUp(data.data);
+      markUp(data);
     });
   } catch (error) {
     console.log(error);

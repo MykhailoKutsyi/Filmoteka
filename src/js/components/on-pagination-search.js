@@ -10,6 +10,7 @@ import { markUp } from './header';
 //   return response;
 // };
 
+//в подальшому винести в api.js
 function getSearchMoviePage(movie, page) {
   const url = `${URL}search/movie?api_key=${API_KEY}&query=${movie}&page=${page}`;
   const response = axios.get(url);
@@ -59,6 +60,9 @@ function onMarkupClean() {
   pageNumWrapper.innerHTML = '';
 }
 
+// в подальшому зробити функцію і декілька разів її визвати
+// замість повтору кода
+
 function onStartBtn() {
   sessionStorage.setItem('calculatedPageNum', 1);
   onMarkupClean();
@@ -94,7 +98,7 @@ function onPlusBtn() {
   onMarkupClean();
   getSearchMoviePage(sessionStorage['movieName'], sessionStorage['calculatedPageNum']).then(
     data => {
-      markUp(data.data.results);
+      markUp(data.data);
     },
   );
 }
