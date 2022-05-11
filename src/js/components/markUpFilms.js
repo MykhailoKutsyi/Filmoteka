@@ -1,8 +1,14 @@
 import { IMG_URL } from '../utils/constants';
 import { convertIdInGenre, movieGenresManipulationsMarkup } from './genres.js';
+const MOVIE_STORAGE_KEY = 'movies';
+
+function setItemsToLS(data) {
+  localStorage.setItem(MOVIE_STORAGE_KEY, JSON.stringify(data));
+};
 
 export default function markUpFilms(data) {
   console.log(data);
+  setItemsToLS(data);
   return data.map(
     ({
       poster_path: posterPath,

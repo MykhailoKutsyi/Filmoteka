@@ -2,6 +2,7 @@ import './components/preloader';
 import './components/searchFilmsForm';
 import './components/hero';
 import './components/header';
+import './components/filters-genres';
 import './components/onFooterLinkClick';
 import './components/theme';
 import './components/on-top';
