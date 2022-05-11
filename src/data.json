@@ -4,7 +4,7 @@
     "image": "https://avatars.githubusercontent.com/u/91030243?v=4",
     "name": "Kutsyi Mykhailo",
     "role": "Team Lead",
-    "about": "Оформлення модального вікна з командою",
+    "about": "Оформлення блоку Footer та модального вікна з командою. Функціонал ApiService.",
     "link": "https://github.com/MykhailoKutsyi"
   },
   {
@@ -12,7 +12,7 @@
     "image": "https://avatars.githubusercontent.com/u/91278187?v=4",
     "name": "Hordienko Olga",
     "role": "Scrum master",
-    "about": "Оформлення модального вікна з командою",
+    "about": "Реалізація кнопок OnTop, OnBottom",
     "link": "https://github.com/HordiienkoOlha"
   },
   {
@@ -20,7 +20,7 @@
     "image": "https://avatars.githubusercontent.com/u/91738263?v=4",
     "name": "Osadchyi Nikita",
     "role": "Developer",
-    "about": "Оформлення модального вікна з командою",
+    "about": "Оформлення та функціонал блоку Header",
     "link": "https://github.com/NikitaOsa7"
   },
   {
@@ -28,7 +28,7 @@
     "image": "https://avatars.githubusercontent.com/u/91505310?v=4",
     "name": "Sugonyako Aleksey",
     "role": "Developer",
-    "about": "Оформлення модального вікна з командою",
+    "about": "Оформлення блоку Main та модального вікна з детальною інформацією фільму.",
     "link": "https://github.com/aleksgtd"
   },
   {
@@ -36,14 +36,14 @@
     "image": "https://avatars.githubusercontent.com/u/87204570?v=4",
     "name": "Dryzhak Nikita",
     "role": "Developer",
-    "about": "Оформлення модального вікна з командою",
+    "about": "Верстка контейнеру головної сторінки та сторінки 'My Library'",
     "link": "https://github.com/NikitaDryzhak"
   },{
     "id": 6,
     "image": "https://avatars.githubusercontent.com/u/62342343?v=4",
     "name": "Orlovskiy Pavlo",
     "role": "Developer",
-    "about": "Оформлення модального вікна з командою",
+    "about": "Реалізація слайдеру з популярними фільмами",
     "link": "https://github.com/Lorengreyn"
   },
   {
@@ -51,7 +51,7 @@
     "image": "https://avatars.githubusercontent.com/u/89809418?v=4",
     "name": "Skuba Anatolii",
     "role": "Developer",
-    "about": "Оформлення модального вікна з командою",
+    "about": "Оформлення, реалізація темної теми та компонента Loader (spinner).",
     "link": "https://github.com/AnatoliiSkuba"
   },
   {
@@ -59,7 +59,7 @@
     "image": "https://avatars.githubusercontent.com/u/87301129?v=4",
     "name": "Bakush Nazar",
     "role": "Developer",
-    "about": "Оформлення модального вікна з командою",
+    "about": "Оформлення та реалізація сторінки 'My Library'. Функціонал ApiLocalstorage.",
     "link": "https://github.com/Nazkamaz"
   },
   {
@@ -67,7 +67,7 @@
     "image": "https://avatars.githubusercontent.com/u/87613282?v=4",
     "name": "Lakhno Oleksandr",
     "role": "Developer",
-    "about": "Оформлення модального вікна з командою",
+    "about": "Додано Фавікон та сповіщення, якщо не знайдено фільм",
     "link": "https://github.com/OleksandrLakhno"
   },
   {
@@ -75,7 +75,7 @@
     "image": "https://avatars.githubusercontent.com/u/87891790?v=4",
     "name": "Subotin Oleg",
     "role": "Developer",
-    "about": "Оформлення модального вікна з командою",
+    "about": "Реалізація роботи блоку Main та модального вікна картки фільму. ApiLocalstorage.",
     "link": "https://github.com/OlegSubotin"
   }
 ]

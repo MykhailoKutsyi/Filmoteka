@@ -15,7 +15,7 @@ export default function markUpFilms(data) {
       genre_ids: genreIds,
       id: movieId,
       release_date: movieDate,
-      original_title: title,
+      title: title,
     }) => {                
     let movieGenres = [];
     for (let i = 0; i < genreIds.length; i += 1) {
@@ -25,7 +25,7 @@ export default function markUpFilms(data) {
     return `  
        <li class="card-item" id="${movieId}">                
         <div class="card-item__image-box">
-          <img src="${IMG_URL + posterPath}" alt="Poster of ${title}" class="card-item__image" />
+          <img src="${IMG_URL + posterPath}" alt="Poster of ${title? title:""}" class="card-item__image" />
         </div>
         <p class="card-item__text">${title}<br />
          <span class="card-item__text--orange">${movieGenresManipulationsMarkup(movieGenres)} | ${movieDate?movieDate.slice(0, 4):''}</span>

@@ -5,10 +5,10 @@
 }
 
 body {
-    font-family: Roboto,
-    sans-serif;
-    margin: 0px;
-    background: $body-background;
+    font-family: Roboto, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    background: $white-color;
     line-height: 1.33;
     color: $black-color
 }

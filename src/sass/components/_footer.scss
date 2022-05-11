@@ -5,21 +5,27 @@
     color: $text-color;
 }
 
-.modal-title {
+.footer__text {
+    font-size: 16px;
+    line-height: 1.19;
+}
+
+.modal__title {
     margin-bottom: 10px;
 }
 
 .teammate-list {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 .teammate-list__item {
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 2px;
+    margin-right: 2px;
     margin-bottom: 10px;
-    padding: 10px;
+    padding: 5px;
 
-    width: 200px;
+    width: 150px;
     
     border-radius: 4px;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 5px;
@@ -36,7 +42,24 @@
     margin-right: auto;
 }
 
+.teammate-list__item--name {
+    margin-top: 5px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.teammate-list__item--role {
+    font-size: 13px;
+    font-style: italic;
+}
+
+.teammate-list__item--about {
+    margin-top: 7px;
+    font-size: 12px;
+}
+
 .teammate-list__item--socials{
+    margin-top: 5px;
     display: flex;
     justify-content: center;
 }
@@ -51,7 +74,7 @@
     height: 100%;
     background-color: rgba(0, 0, 0, .5);
     z-index: 20;
-    transition: .3s all;
+    transition: $cubic all;
 }
 
 .modal {
@@ -59,9 +82,7 @@
     visibility: hidden;
     padding: 15px;
 
-    // height: 100vh;
-    overflow-y: scroll;
-
+    overflow-y: auto;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -72,19 +93,20 @@
     text-align: center;
     border-radius: 3px;
     background-color: #fff;
-    transition: 0.3s all;
+    transition: $cubic all;
 
     @media screen and (min-width: 320px) and (max-width: 768px){
-        max-width: 350px;
-        height: 350px;
+        width: 75vw;
+        height: 90vh;
+        // width: 250px;
+        // height: 1200px;
     }
     @media screen and (min-width: 768px) and (max-width: 1023px) {
         width: 700px;
         height: 550px;
     }
     @media screen and (min-width: 1024px) {
-        width: 1200px;
-        height: 650px;
+        width: 850px;
     }
 }
 

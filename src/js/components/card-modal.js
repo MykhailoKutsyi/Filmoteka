@@ -1,6 +1,7 @@
 import { getMovieById } from '../services/API';
 import { API_KEY, URL, IMG_URL } from '../utils/constants';
 import { convertIdInGenre, movieGenresModalMarkup } from './genres.js';
+import { librarys } from './addLibraryBtn';
 // getMovieById(453395).then(d => console.log(d.data));
 
 // Как подключать функцию в файле hero.js
@@ -22,16 +23,21 @@ export const modalRefs = {
 modalRefs.cardModalCloseBtn.addEventListener('click', onCardModalClose);
 
 export function onCardModalClose(e) {
-  modalRefs.backdrop.classList.add('is-hidden');
-  modalRefs.cardModal.innerHTML = '';
+  onClose();
 }
 
 export function onCardsSelect() {
   const cards = document.querySelectorAll('.card-item');
 
-  console.log('cards', cards);
-
   cards.forEach(onEventListnerSet);
+}
+
+function onBackdropClick(e) {
+  if (e.target !== e.currentTarget) {
+    return;
+  }
+
+  onClose();
 }
 
 export function onEventListnerSet(element) {
@@ -41,6 +47,23 @@ export function onEventListnerSet(element) {
 export function onClick(e) {
   onModalMarkupPrepair(e.currentTarget.id);
   modalRefs.backdrop.classList.remove('is-hidden');
+  modalRefs.backdrop.addEventListener('click', onBackdropClick);
+  document.body.addEventListener('keydown', onEscape);
+}
+
+function onEscape(e) {
+  if (e.keyCode !== 27) {
+    return;
+  }
+
+  onClose();
+}
+
+function onClose() {
+  modalRefs.backdrop.classList.add('is-hidden');
+  modalRefs.cardModal.innerHTML = '';
+  modalRefs.backdrop.removeEventListener('click', onBackdropClick);
+  document.body.removeEventListener('keydown', onEscape);
 }
 
 export function onModalMarkupPrepair(filmId) {
@@ -89,35 +112,44 @@ export function onModalMarkup({
   vote_average: vote,
   vote_count: voteNum,
   popularity: popularity,
-  overview:overview,
+  overview: overview,
+  id: id,
 }) {
   let arr = [];
   for (const genre of allGenres) {
-  let realGenre = convertIdInGenre(genre.id);
-  arr.push(realGenre);
-  };
+    let realGenre = convertIdInGenre(genre.id);
+    arr.push(realGenre);
+  }
 
   modalRefs.cardModal.insertAdjacentHTML(
     'beforeend',
-    `<div class="item-modal__img-box"><img src="${
-      IMG_URL + posterPath
-    }" alt="Poster of ${title?title:""}" class="item-modal__img" /></div>
+    `<div class="item-modal__img-box"><img src="${IMG_URL + posterPath}" alt="Poster of ${
+      title ? title : ''
+    }" class="item-modal__img" /></div>
     <div class="item-modal__desc-box">
-      <h3 class="item-modal__title">${title?title:""}</h3>
+      <h3 class="item-modal__title">${title ? title : ''}</h3>
       <ul class="item-modal__txt">
         <li class="item-modal__txt-line">
           <p class="item-modal__txt-prop">Vote/Votes</p>
         <p class="item-modal__txt-prop-value item-modal__txt-prop-value--num">
-          <span class="item-modal__txt-prop-value--orange">${vote?vote:""}</span><span class="item-modal__txt-prop-value--slash">/</span><span>${voteNum?voteNum:""}</span
+          <span class="item-modal__txt-prop-value--orange">${
+            vote ? vote : ''
+          }</span><span class="item-modal__txt-prop-value--slash">/</span><span>${
+      voteNum ? voteNum : ''
+    }</span
         ></p>
       </li>
         <li class="item-modal__txt-line">
           <p class="item-modal__txt-prop">Popularity</p>
-        <p class="item-modal__txt-prop-value item-modal__txt-prop-value--num">${popularity?popularity:""}</p>
+        <p class="item-modal__txt-prop-value item-modal__txt-prop-value--num">${
+          popularity ? popularity : ''
+        }</p>
       </li>
         <li class="item-modal__txt-line">
           <p class="item-modal__txt-prop">Original Title</p>
-        <p class="item-modal__txt-prop-value item-modal__txt-prop-value--up">${origTitle?origTitle:""}</p>
+        <p class="item-modal__txt-prop-value item-modal__txt-prop-value--up">${
+          origTitle ? origTitle : ''
+        }</p>
       </li>
         <li class="item-modal__txt-line">
           <p class="item-modal__txt-prop">Genre</p>
@@ -126,11 +158,24 @@ export function onModalMarkup({
       </ul>
 
       <h4 class="item-modal__subtitle">About</h4>
-      <p class="item-modal__desc">${overview?overview:""}</p>
+      <p class="item-modal__desc">${overview ? overview : ''}</p>
       <div class="item-modal__btns">
-        <button class="item-modal__btn focused">add to Watched</button>
-        <button class="item-modal__btn">add to queue</button>
+        <button class="item-modal__btn add-watch focused">add to Watched</button>
+        <button class="item-modal__btn add-queue">add to queue</button>
       </div>
     </div>`,
   );
+librarys(
+{
+  poster_path: posterPath,
+  genres: allGenres,
+  title: title,
+  original_title: origTitle,
+  vote_average: vote,
+  vote_count: voteNum,
+  popularity: popularity,
+  overview: overview,
+  id: id,
+}
+);
 }

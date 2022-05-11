@@ -2,7 +2,7 @@
 @import 'node_modules/@glidejs/glide/src/assets/sass/glide.theme';
 
 .slider-wrapper {
-  background-color: rgb(247, 247, 247);
+  background-color: inherit;
   padding-bottom: 20px;
   font-size: 13px;
 
@@ -23,9 +23,7 @@
   padding-top: 5px;
   padding-bottom: 5px;
   text-align: center;
-
   color: $svgColor;
-  font-family: $mainFont;
   font-size: 14px;
   font-weight: 700;
   line-height: 2;
@@ -48,7 +46,6 @@
 
   width: 38px;
   height: 18px;
-  font-family: $mainFont;
   font-weight: 500;
   font-size: 13px;
   line-height: 1.1;
@@ -73,7 +70,6 @@
   width: 70px;
 
   pointer-events: none;
-  font-family: 'Roboto', sans-serif;
 
   background-color: rgba(255, 255, 255, 0.8);
 
@@ -94,7 +90,6 @@
 
 .btn-youtube-text-slider {
   position: absolute;
-  font-family: 'Roboto', sans-serif;
   font-size: 16px;
   color: #c4302b;
   cursor: pointer;
