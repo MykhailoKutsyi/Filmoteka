@@ -94,7 +94,7 @@ function onPlusBtn() {
   onMarkupClean();
   getSearchMoviePage(sessionStorage['movieName'], sessionStorage['calculatedPageNum']).then(
     data => {
-      markUp(data.data);
+      markUp(data.data.results);
     },
   );
 }
