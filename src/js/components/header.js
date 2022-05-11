@@ -147,17 +147,17 @@ function pushFetchSearch(movie) {
 
 
 function markUp(data) {
+  console.log('onSearch', data);
   refs.imagesList.innerHTML= '';
   refs.imagesList.insertAdjacentHTML('beforeend', markUpFilms(data));
 // =======
 // export function markUp(data) {
-//   console.log('onSearch', data);
 //   refs.imagesList.innerHTML = '';
 
-//   refs.imagesList.insertAdjacentHTML('beforeend', markUpFilms(data.results));
-//   pageNumWrapper.insertAdjacentHTML('beforeend', makePagesMarkup(getPageNum()));
-//   sessionStorage.setItem('maxPages', data.total_pages);
-//   onPageBtnsSelect();
+  // refs.imagesList.insertAdjacentHTML('beforeend', markUpFilms(data));
+  pageNumWrapper.insertAdjacentHTML('beforeend', makePagesMarkup(getPageNum()));
+  sessionStorage.setItem('maxPages', data.total_pages);
+  onPageBtnsSelect();
 // >>>>>>> dev
   onCardsSelect();
 }
