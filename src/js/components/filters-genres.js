@@ -46,8 +46,7 @@ function onCheckboxClick() {
     return filters;
 };
 
-// =========================markup filters-genres ========================
-
+// ========================= markup filters-genres ========================
 
 export function markupFiltersOfGenres(genre) {
     const filtersMarkup = document.createElement("li");
@@ -63,17 +62,15 @@ export function markupFiltersOfGenres(genre) {
     checkboxEl.addEventListener('click', onCheckboxClick);
 };
 
-// ================ check in local storage if there are already chosen genres
+// ================ check in local storage if there are already chosen genres ======
 
 export function checkForChosenGenres() {
         if (localStorage.getItem(FILTERS_STORAGE_KEY) === null) {
-        // console.log('first')
         return;
     } else {
         let arr = localStorage.getItem(FILTERS_STORAGE_KEY);
         JSON.parse(arr).forEach(el => {
             const element = document.querySelector(`input[id='${el}']`);
-            // console.log(element);
             element.checked = true;
             filters.push(element.value);
             valueEl.innerHTML = text + filters.map(filter=>convertIdInGenre(Number(filter))).join(", ");
@@ -83,7 +80,7 @@ export function checkForChosenGenres() {
     return filters;
 };
 
-// ========================== button event=========
+// ========================== filter button event=========
 
 filtersBtn.addEventListener('click', onFilterBtnClick);
 
@@ -92,15 +89,20 @@ function onFilterBtnClick() {
         filtersBtn.disabled = true;
     } else {
         let filterNum = filters.map(filter => Number(filter));
-        console.log(filterNum);
         imagesList.innerHTML = '';
         let allMovies = localStorage.getItem(MOVIE_STORAGE_KEY);
         for (const movie of JSON.parse(allMovies)) {
             let genreIds = movie.genre_ids;
             let op = filterNum.every(element => genreIds.indexOf(element) > -1);
             if (op === true) {
-                console.log(movie);
-                const movieEl = document.createElement('li');
+                renderFilteredMovies(movie);                
+            };
+        };
+    };
+};
+
+function renderFilteredMovies(movie) {
+    const movieEl = document.createElement('li');
                 movieEl.setAttribute('id', `${movie.id}`);
                 movieEl.classList.add('card-item');
                 let movieGenres = [];
@@ -118,7 +120,4 @@ function onFilterBtnClick() {
                 `;
                 imagesList.appendChild(movieEl);
                 onCardsSelect();
-            };
-        };
-    };
 };
