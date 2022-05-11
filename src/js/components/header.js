@@ -8,68 +8,37 @@ const homeNavEl = document.querySelector('.nav__link-home');
 const libraryNavEl = document.querySelector('.nav__link-library');
 const headerEl = document.querySelector('.header');
 const searchForm = document.querySelector('.search');
-const searchnput = document.querySelector('.search__input')
+const searchInput = document.querySelector('.search__input');
+const libraryButtons = document.querySelector('.header-buttons-library');
+const filmsList = document.querySelector('.films-list');
 
 
 libraryNavEl.addEventListener('click', onLibraryClick);
 homeNavEl.addEventListener('click', onHomeClick)
 
 
-
-
 function onLibraryClick(event) {
     homeNavEl.classList.remove('current')
     event.target.classList.add('current')
     libraryNavEl.disabled = true;
-   searchForm.classList.add('visually-hidden')
-    
-
+    searchForm.classList.add('visually-hidden')
+    libraryButtons.classList.remove('visually-hidden')
+    filmsList.classList.add('visually-hidden')
+    headerEl.classList.remove('header-home')
     headerEl.classList.add('header-library')
 };
 
 function onHomeClick(event) {
+  libraryButtons.classList.add('visually-hidden')
     libraryNavEl.classList.remove('current');
     event.target.classList.add('current')
     headerEl.classList.remove('header-library');
-   searchForm.classList.remove('visually-hidden')
-
-}
-
-const myLibraryBtn = document.querySelector('.open-my-library-btn')
-const homeBtn = document.querySelector('.open-home-btn')
-const headerSearchForm = document.querySelector('.search')
-const libraryButtons = document.querySelector('.header-buttons-library')
-const filmsList = document.querySelector('.films-list')
-const header = document.querySelector('.header')
-
-homeBtn.addEventListener('click', changeCurrentPageOnHome)
-myLibraryBtn.addEventListener('click', changeCurrentPageOnLibrary)
-
-libraryButtons.classList.add('visually-hidden')
-
-function changeCurrentPageOnLibrary() {
-    myLibraryBtn.classList.add('current')
-    homeBtn.classList.remove('current')
-    headerSearchForm.classList.add('visually-hidden')
-    libraryButtons.classList.remove('visually-hidden')
-    filmsList.classList.add('visually-hidden')
-    header.classList.remove('header-home')
-    header.classList.add('header-library')
-
-}
-
-function changeCurrentPageOnHome() {
-    myLibraryBtn.classList.remove('current')
-    homeBtn.classList.add('current')
-    headerSearchForm.classList.remove('visually-hidden')
-    libraryButtons.classList.add('visually-hidden')
+    searchForm.classList.remove('visually-hidden')
     filmsList.classList.remove('visually-hidden')
-    header.classList.add('header-home')
-    header.classList.remove('header-library')
+    headerEl.classList.add('header-home')
 }
 
-
-
+  libraryButtons.classList.add('visually-hidden')
 // search by word
 searchForm.addEventListener('submit', onSubmitForm);
 
@@ -79,10 +48,12 @@ const refs = {
 
 function onSubmitForm(e) {
   e.preventDefault();
-  if (!searchnput.value ) {
+  if (!searchInput.value) {
     return;
   }
-  pushFetch(searchnput.value);
+
+  pushFetch(searchInput.value);
+  console.log(searchInput.value);
   
 }
 
