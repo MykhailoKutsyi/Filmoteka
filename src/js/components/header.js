@@ -1,6 +1,7 @@
 import markUpFilms from './markUpFilms';
 import { getSearchMovie } from '../services/API';
 import { onCardsSelect } from './card-modal';
+import { renderWatchedLibrary, renderQueueLibrary} from './libraryRender'
 
 // header activity
 
@@ -10,9 +11,17 @@ const headerEl = document.querySelector('.header');
 const searchForm = document.querySelector('.search');
 const searchnput = document.querySelector('.search__input')
 
+export const refsLibrary = {
+    watchedBtn: document.querySelector('.library-btn_watched'),
+    queueBtn: document.querySelector('.library-btn_queue'),
+    watchedList: document.querySelector('.films-list-watched'),
+    queueList: document.querySelector('.films-list-queue'),
+  }
 
 libraryNavEl.addEventListener('click', onLibraryClick);
-homeNavEl.addEventListener('click', onHomeClick)
+homeNavEl.addEventListener('click', onHomeClick);
+refsLibrary.watchedBtn.addEventListener('click', renderWatchedLibrary);
+refsLibrary.queueBtn.addEventListener('click', renderQueueLibrary);
 
 
 
@@ -55,6 +64,8 @@ function changeCurrentPageOnLibrary() {
     filmsList.classList.add('visually-hidden')
     header.classList.remove('header-home')
     header.classList.add('header-library')
+    refsLibrary.watchedList.classList.remove('visually-hidden')
+    refsLibrary.queueList.classList.remove('visually-hidden')
 
 }
 
@@ -66,6 +77,8 @@ function changeCurrentPageOnHome() {
     filmsList.classList.remove('visually-hidden')
     header.classList.add('header-home')
     header.classList.remove('header-library')
+    refsLibrary.queueList.classList.add('visually-hidden');
+    refsLibrary.watchedList.classList.add('visually-hidden');
 }
 
 
@@ -90,7 +103,7 @@ function pushFetch(movie) {
   try {
     const response = getSearchMovie(movie);
     return response.then(data => {
-      markUp(data.data);
+      markUp(data.data.results);
     });
   } catch (error) {
     console.log(error);
@@ -99,7 +112,7 @@ function pushFetch(movie) {
 
 function markUp(data) {
   refs.imagesList.innerHTML= '';
-  refs.imagesList.insertAdjacentHTML('beforeend', markUpFilms(data.results));
+  refs.imagesList.insertAdjacentHTML('beforeend', markUpFilms(data));
   onCardsSelect();
 }
 
