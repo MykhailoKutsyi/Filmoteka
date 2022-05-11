@@ -69,27 +69,29 @@ libraryButtons.classList.add('visually-hidden');
 
 function changeCurrentPageOnLibrary() {
 // <<<<<<< render-librarys
-    myLibraryBtn.classList.add('current')
-    homeBtn.classList.remove('current')
-    headerSearchForm.classList.add('visually-hidden')
-    libraryButtons.classList.remove('visually-hidden')
-    filmsList.classList.add('visually-hidden')
-    header.classList.remove('header-home')
-    header.classList.add('header-library')
-    refsLibrary.watchedList.classList.remove('visually-hidden')
-    refsLibrary.queueList.classList.remove('visually-hidden')
+    myLibraryBtn.classList.add('current');
+    homeBtn.classList.remove('current');
+    headerSearchForm.classList.add('visually-hidden');
+    libraryButtons.classList.remove('visually-hidden');
+    filmsList.classList.add('visually-hidden');
+    header.classList.remove('header-home');
+    header.classList.add('header-library');
+    refsLibrary.watchedList.classList.remove('visually-hidden');
+    refsLibrary.queueList.classList.remove('visually-hidden');
 }
 
 function changeCurrentPageOnHome() {
-    myLibraryBtn.classList.remove('current')
-    homeBtn.classList.add('current')
-    headerSearchForm.classList.remove('visually-hidden')
-    libraryButtons.classList.add('visually-hidden')
-    filmsList.classList.remove('visually-hidden')
-    header.classList.add('header-home')
-    header.classList.remove('header-library')
+    myLibraryBtn.classList.remove('current');
+    homeBtn.classList.add('current');
+    headerSearchForm.classList.remove('visually-hidden');
+    libraryButtons.classList.add('visually-hidden');
+    filmsList.classList.remove('visually-hidden');
+    header.classList.add('header-home');
+    header.classList.remove('header-library');
     refsLibrary.queueList.classList.add('visually-hidden');
     refsLibrary.watchedList.classList.add('visually-hidden');
+    pageNumWrapper.innerHTML = '';
+    filmsList.innerHTML = '';
 // =======
 //   myLibraryBtn.classList.add('current');
 //   homeBtn.classList.remove('current');
