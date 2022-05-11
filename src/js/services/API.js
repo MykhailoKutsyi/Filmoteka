@@ -19,3 +19,4 @@ export const getSearchMovie = movie => {
   const response = axios.get(url);
   return response;
 };
+
