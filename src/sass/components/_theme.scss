@@ -15,11 +15,50 @@
   }
 
   .item-modal__close-btn-icon {
-    fill: $white-color
+    fill: $white-color;
   }
 
   .slider-wrapper {
     background-color: transparent;
+  }
+
+  .arrow__icon:hover,
+  .arrow__icon:focus {
+    fill: $white-color;
+  }
+
+  .modal {
+    background-color: $black-color;
+  }
+
+  .slider-card:hover {
+    box-shadow: rgb(255 255 255 / 95%) 0px 1px 20px;
+    transform: scale(1.05, 1.05);
+    transition: 350ms;
+  }
+
+  .card-item:hover {
+    box-shadow: rgb(255 255 255 / 95%) 0px 1px 20px;
+    transform: scale(1.05, 1.05);
+    transition: 350ms;
+  }
+
+  .teammate-list__item {
+    color: $white-color;
+    box-shadow: rgb(255 255 255 / 95%) 0px 1px 5px;
+    transform: scale(1, 1);
+    transition: 350ms;
+  }
+
+  .teammate-list__item:hover {
+    cursor: pointer;
+    box-shadow: rgb(255 255 255 / 95%) 0px 1px 20px;
+    transform: scale(1.05, 1.05);
+    transition: 350ms;
+  }
+
+  .teammate-list__item--icon {
+    content: url(../images/githubBlack.png);
   }
 }
 

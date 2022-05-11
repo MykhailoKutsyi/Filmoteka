@@ -1,23 +1,28 @@
 import { IMG_URL } from '../utils/constants';
 import { convertIdInGenre, movieGenresManipulationsMarkup } from './genres.js';
+const MOVIE_STORAGE_KEY = 'movies';
+
+function setItemsToLS(data) {
+  localStorage.setItem(MOVIE_STORAGE_KEY, JSON.stringify(data));
+};
 
 export default function markUpFilms(data) {
   console.log('markUpFilmsData', data);
-  return data
-    .map(
-      ({
-        poster_path: posterPath,
-        genre_ids: genreIds,
-        id: movieId,
-        release_date: movieDate,
-        title: title,
-      }) => {
-        let movieGenres = [];
-        for (let i = 0; i < genreIds.length; i += 1) {
-          let genre = convertIdInGenre(genreIds[i]);
-          movieGenres.push(genre);
-        }
-        return `  
+  setItemsToLS(data);
+  return data.map(
+    ({
+      poster_path: posterPath,
+      genre_ids: genreIds,
+      id: movieId,
+      release_date: movieDate,
+      title: title,
+    }) => {                
+    let movieGenres = [];
+    for (let i = 0; i < genreIds.length; i += 1) {
+      let genre = convertIdInGenre(genreIds[i]);
+      movieGenres.push(genre);
+      };
+    return `  
        <li class="card-item" id="${movieId}">                
         <div class="card-item__image-box">
           <img src="${IMG_URL + posterPath}" alt="Poster of ${

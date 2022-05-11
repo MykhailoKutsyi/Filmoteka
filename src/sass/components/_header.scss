@@ -181,6 +181,7 @@
     border-bottom: 0.5px solid #fff;
     transition-property: border-bottom;
     margin: 0;
+    outline: none;
 }
 
 .search__input::placeholder {
@@ -204,8 +205,8 @@
 
 .search__button-icon {
     position: absolute;
-    right: 0;
-    bottom: 2px;
+    left: -4px;
+    bottom: -1px;
     stroke: #fff;
     transition-property: stroke;
 }

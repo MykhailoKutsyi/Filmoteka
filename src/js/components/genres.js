@@ -1,4 +1,5 @@
 const axios = require('axios');
+import {checkForChosenGenres, markupFiltersOfGenres } from './filters-genres';
 
 const API_KEY = 'd738edb014e8e3b583b9023797190025';
 const STORAGE_KEY = 'genres';
@@ -18,7 +19,9 @@ async function fetchGenres () {
 function saveLocalStorage() {
     fetchGenres()
         .then((genres) => {            
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(genres));            
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(genres));
+            genres.forEach(genre => markupFiltersOfGenres(genre));
+            checkForChosenGenres();
     });
 };
 
