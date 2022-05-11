@@ -114,6 +114,7 @@ export function onModalMarkup({
   popularity: popularity,
   overview: overview,
   id: id,
+  release_date: movieDate,
 }) {
   let arr = [];
   for (const genre of allGenres) {
@@ -165,10 +166,11 @@ export function onModalMarkup({
       </div>
     </div>`,
   );
+const genresArray = allGenres.flatMap(genre => genre.id);
 librarys(
 {
   poster_path: posterPath,
-  genres: allGenres,
+  genre_ids: genresArray,
   title: title,
   original_title: origTitle,
   vote_average: vote,
@@ -176,6 +178,7 @@ librarys(
   popularity: popularity,
   overview: overview,
   id: id,
-}
+  release_date: movieDate,
+  }
 );
 }
