@@ -1,9 +1,9 @@
 import { convertIdInGenre, movieGenresManipulationsMarkup } from "./genres";
-import { IMG_URL } from '../utils/constants';
+import { IMG_URL, STORAGE_KEY_MOVIES, STORAGE_KEY_FILTERS } from '../utils/constants';
 import { onCardsSelect } from './card-modal';
 
-
-const filtersContainer = document.querySelector('.filters');
+const filtersWrapper = document.querySelector('.filters');
+const filtersOpenBtn = document.querySelector('.filters__choose');
 const filtersHideContainer = document.querySelector('.js-hide');
 const filtersList = document.querySelector('.js-filters-list');
 let valueEl = document.getElementById('filters-values');
@@ -11,17 +11,14 @@ const filtersBtn = document.querySelector('.filters__filter');
 let imagesList= document.querySelector('.films-list')
 
 const text = "You've chosen: ";
-const FILTERS_STORAGE_KEY = 'filters';
-const MOVIE_STORAGE_KEY = 'movies';
 let filters = [];
 
-// ================ filters container listener=======================
-filtersContainer.addEventListener('mouseover', () => {
-    filtersHideContainer.classList.remove('filters__genres-hidden');
-});
+filtersBtn.addEventListener('click', onFilterBtnClick);
 
-filtersContainer.addEventListener('mouseout', () => {
-    filtersHideContainer.classList.add('filters__genres-hidden');
+// ================ filters container listener=======================
+
+filtersOpenBtn.addEventListener('click', () => {
+    filtersHideContainer.classList.toggle('filters__genres-hidden');
 });
 
 // ================ checkbox listener=================
@@ -36,12 +33,11 @@ function onCheckboxClick() {
     };
 
     if (filters.length === 0) {
-        localStorage.removeItem(FILTERS_STORAGE_KEY);
-        document.location.reload();
+        localStorage.removeItem(STORAGE_KEY_FILTERS);
     };
 
     if (filters.length !==0) {
-        localStorage.setItem(FILTERS_STORAGE_KEY, JSON.stringify(filters));
+        localStorage.setItem(STORAGE_KEY_FILTERS, JSON.stringify(filters));
     };  
     return filters;
 };
@@ -65,10 +61,10 @@ export function markupFiltersOfGenres(genre) {
 // ================ check in local storage if there are already chosen genres ======
 
 export function checkForChosenGenres() {
-        if (localStorage.getItem(FILTERS_STORAGE_KEY) === null) {
+        if (localStorage.getItem(STORAGE_KEY_FILTERS) === null) {
         return;
     } else {
-        let arr = localStorage.getItem(FILTERS_STORAGE_KEY);
+        let arr = localStorage.getItem(STORAGE_KEY_FILTERS);
         JSON.parse(arr).forEach(el => {
             const element = document.querySelector(`input[id='${el}']`);
             element.checked = true;
@@ -82,15 +78,14 @@ export function checkForChosenGenres() {
 
 // ========================== filter button event=========
 
-filtersBtn.addEventListener('click', onFilterBtnClick);
-
 function onFilterBtnClick() {
     if (filters.length === 0) {
-        filtersBtn.disabled = true;
+        valueEl.innerHTML = '! choose a genre !'
+        return;
     } else {
         let filterNum = filters.map(filter => Number(filter));
         imagesList.innerHTML = '';
-        let allMovies = localStorage.getItem(MOVIE_STORAGE_KEY);
+        let allMovies = localStorage.getItem(STORAGE_KEY_MOVIES);
         for (const movie of JSON.parse(allMovies)) {
             let genreIds = movie.genre_ids;
             let op = filterNum.every(element => genreIds.indexOf(element) > -1);
@@ -103,21 +98,30 @@ function onFilterBtnClick() {
 
 function renderFilteredMovies(movie) {
     const movieEl = document.createElement('li');
-                movieEl.setAttribute('id', `${movie.id}`);
-                movieEl.classList.add('card-item');
-                let movieGenres = [];
-                for (let i = 0; i < movie.genre_ids.length; i += 1) {
-                let genre = convertIdInGenre(movie.genre_ids[i]);
-                movieGenres.push(genre);
-                };
-                movieEl.innerHTML = `
-                    <div class="card-item__image-box">
-                    <img src="${IMG_URL + movie.poster_path}" alt="Poster of ${movie.title}" class="card-item__image" />
-                    </div>
-                    <p class="card-item__text">${movie.title}<br />
-                    <span class="card-item__text--orange">${movieGenresManipulationsMarkup(movieGenres)} | ${movie.release_date?movie.release_date.slice(0, 4):''}</span>
-                    </p>  
-                `;
-                imagesList.appendChild(movieEl);
-                onCardsSelect();
+    movieEl.setAttribute('id', `${movie.id}`);
+    movieEl.classList.add('card-item');
+    let movieGenres = [];
+    for (let i = 0; i < movie.genre_ids.length; i += 1) {
+        let genre = convertIdInGenre(movie.genre_ids[i]);
+        movieGenres.push(genre);
+    };
+    movieEl.innerHTML = `
+        <div class="card-item__image-box">
+        <img src="${IMG_URL + movie.poster_path}" alt="Poster of ${movie.title}" class="card-item__image" />
+        </div>
+        <p class="card-item__text">${movie.title}<br />
+        <span class="card-item__text--orange">${movieGenresManipulationsMarkup(movieGenres)} | ${movie.release_date?movie.release_date.slice(0, 4):''}</span>
+        </p>  
+    `;
+    imagesList.appendChild(movieEl);
+    onCardsSelect();
+};
+
+export function checkFilmsSearched(data) {
+    if (data.length === 0) {
+        filtersWrapper.classList.add('filters__genres-hidden')
+    } else {
+        filtersWrapper.classList.remove('filters__genres-hidden');
+        filtersHideContainer.classList.add('filters__genres-hidden');
+    };
 };

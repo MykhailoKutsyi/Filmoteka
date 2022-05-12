@@ -19,3 +19,9 @@ export const getSearchMovie = movie => {
   const response = axios.get(url);
   return response;
 };
+
+export const getGenres = () => {
+  const url = `${URL}genre/movie/list?api_key=${API_KEY}&language=en-US`;
+  const response = axios.get(url);
+  return response;
+};

@@ -1,32 +1,32 @@
-const axios = require('axios');
+import { getGenres } from '../services/API';
+import { STORAGE_KEY_GENRES } from '../utils/constants'
 import {checkForChosenGenres, markupFiltersOfGenres } from './filters-genres';
 
-const API_KEY = 'd738edb014e8e3b583b9023797190025';
-const STORAGE_KEY = 'genres';
+
 
 saveLocalStorage();
 
-async function fetchGenres () {
-    URL = 'https://api.themoviedb.org/3/genre/movie/list?api_key=';
+function pushFetch () {
     try {
-        const { data } = await axios.get(`${URL}${API_KEY}&language=en-US`);
-        return data.genres ;
+        const response = getGenres();
+        return response.then(data => data.data.genres);
     } catch (error) {
         console.log(error);
     };
 };
 
 function saveLocalStorage() {
-    fetchGenres()
-        .then((genres) => {            
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(genres));
+    pushFetch()
+        .then((genres) => {   
+            console.log(genres)
+            localStorage.setItem(STORAGE_KEY_GENRES, JSON.stringify(genres));
             genres.forEach(genre => markupFiltersOfGenres(genre));
             checkForChosenGenres();
     });
 };
 
 export function convertIdInGenre(id) {
-    let  arr = localStorage.getItem(STORAGE_KEY)
+    let  arr = localStorage.getItem(STORAGE_KEY_GENRES)
     for (const el of JSON.parse(arr)) {
         if (el.id === id) {
             return el.name;
