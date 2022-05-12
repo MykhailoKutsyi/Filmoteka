@@ -1,47 +1,49 @@
 import { IMG_URL, STORAGE_KEY_MOVIES } from '../utils/constants';
 import { convertIdInGenre, movieGenresManipulationsMarkup } from './genres.js';
 import { checkFilmsSearched } from './filters-genres';
-import {refsLibrary} from './header';
-
+import { refsLibrary } from './header';
 
 export function setItemsToLocalStorage(data) {
   localStorage.setItem(STORAGE_KEY_MOVIES, JSON.stringify(data));
-};
+}
 
 export default function markUpFilms(data) {
   console.log('markUpFilmsData', data);
   refsLibrary.filtersWrapper.style.display = 'contents';
-// <<<<<<< feature/genres-refactor
+  // <<<<<<< feature/genres-refactor
   checkFilmsSearched(data);
   setItemsToLocalStorage(data);
-// =======
-//   console.log('markUpFilmsData', data);
-//   setItemsToLS(data);
-// >>>>>>> dev
-  return data.map(
-    ({
-      poster_path: posterPath,
-      genre_ids: genreIds,
-      id: movieId,
-      release_date: movieDate,
-      title: title,
-    }) => {                
-    let movieGenres = [];
-    for (let i = 0; i < genreIds.length; i += 1) {
-      let genre = convertIdInGenre(genreIds[i]);
-      movieGenres.push(genre);
-      };
-    return `  
+  // =======
+  //   console.log('markUpFilmsData', data);
+  //   setItemsToLS(data);
+  // >>>>>>> dev
+  return data
+    .map(
+      ({
+        poster_path: posterPath,
+        genre_ids: genreIds,
+        id: movieId,
+        release_date: movieDate,
+        title: title,
+      }) => {
+        let movieGenres = [];
+        for (let i = 0; i < genreIds.length; i += 1) {
+          let genre = convertIdInGenre(genreIds[i]);
+          movieGenres.push(genre);
+        }
+        return `  
        <li class="card-item" id="${movieId}">                
         <div class="card-item__image-box">
           <img src="${IMG_URL + posterPath}" alt="Poster of ${
-          title ? title : ''
+          title ? title : 'current film'
         }" class="card-item__image" />
         </div>
-        <p class="card-item__text">${title}<br />
-         <span class="card-item__text--orange">${movieGenresManipulationsMarkup(movieGenres)} | ${
-          movieDate ? movieDate.slice(0, 4) : ''
-        }</span>
+        <p class="card-item__text">${title ? title : 'Title: Unavaliable'}<br />
+         <span class="card-item__text--orange">${
+           movieGenresManipulationsMarkup(movieGenres)
+             ? movieGenresManipulationsMarkup(movieGenres)
+             : 'Genres: Unavaliable'
+         } | ${movieDate ? movieDate.slice(0, 4) : 'Date: Unavaliable'}</span>
         </p>   
         </li>    
        `;

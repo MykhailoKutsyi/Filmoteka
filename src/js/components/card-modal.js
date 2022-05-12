@@ -83,41 +83,43 @@ export function onModalMarkup({
   modalRefs.cardModal.insertAdjacentHTML(
     'beforeend',
     `<div class="item-modal__img-box"><img src="${IMG_URL + posterPath}" alt="Poster of ${
-      title ? title : ''
+      title ? title : 'current film'
     }" class="item-modal__img" /></div>
     <div class="item-modal__desc-box">
-      <h3 class="item-modal__title">${title ? title : ''}</h3>
+      <h3 class="item-modal__title">${title ? title : 'Title: Unavaliable'}</h3>
       <ul class="item-modal__txt">
         <li class="item-modal__txt-line">
           <p class="item-modal__txt-prop">Vote/Votes</p>
         <p class="item-modal__txt-prop-value item-modal__txt-prop-value--num">
           <span class="item-modal__txt-prop-value--orange">${
-            vote ? vote : ''
+            vote ? vote : 'Unavaliable'
           }</span><span class="item-modal__txt-prop-value--slash">/</span><span>${
-      voteNum ? voteNum : ''
+      voteNum ? voteNum : 'Unavaliable'
     }</span
         ></p>
       </li>
         <li class="item-modal__txt-line">
           <p class="item-modal__txt-prop">Popularity</p>
         <p class="item-modal__txt-prop-value item-modal__txt-prop-value--num">${
-          popularity ? popularity : ''
+          popularity ? popularity : 'Unavaliable'
         }</p>
       </li>
         <li class="item-modal__txt-line">
           <p class="item-modal__txt-prop">Original Title</p>
         <p class="item-modal__txt-prop-value item-modal__txt-prop-value--up">${
-          origTitle ? origTitle : ''
+          origTitle ? origTitle : 'Unavaliable'
         }</p>
       </li>
         <li class="item-modal__txt-line">
           <p class="item-modal__txt-prop">Genre</p>
-        <p class="item-modal__txt-prop-value">${movieGenresModalMarkup(arr)}</p>
+        <p class="item-modal__txt-prop-value">${
+          movieGenresModalMarkup(arr) ? movieGenresModalMarkup(arr) : 'Unavaliable'
+        }</p>
       </li>
       </ul>
 
-      <h4 class="item-modal__subtitle">About</h4>
-      <p class="item-modal__desc">${overview ? overview : ''}</p>
+      <h4 class="item-modal__subtitle">${overview ? overview : ' '}</h4>
+      <p class="item-modal__desc">${overview ? overview : 'Film description: Unavaliable'}</p>
       <div class="item-modal__btns">
         <button class="item-modal__btn add-watch">add to Watched</button>
         <button class="item-modal__btn add-queue">add to queue</button>

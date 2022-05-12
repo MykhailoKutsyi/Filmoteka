@@ -1,6 +1,7 @@
 import { getTrendingMoviesPage } from '../services/API';
 import { setItemsToLocalStorage } from './markUpFilms';
 import { refs, markUp, pageNumWrapper } from './hero';
+import { hederRef, scrollTo } from './on-top';
 
 export function getPageNum() {
   return Number(sessionStorage['calculatedPageNum']);
@@ -56,19 +57,23 @@ function onTrendingPageMarkupChange() {
 function onStartBtn() {
   sessionStorage.setItem('calculatedPageNum', 1);
   onTrendingPageMarkupChange();
+  scrollTo(hederRef);
 }
 
 function onEndBtn() {
   sessionStorage.setItem('calculatedPageNum', sessionStorage['maxPages']);
   onTrendingPageMarkupChange();
+  scrollTo(hederRef);
 }
 
 function onMinusBtn() {
   sessionStorage.setItem('calculatedPageNum', getPageNum() - 1);
   onTrendingPageMarkupChange();
+  scrollTo(hederRef);
 }
 
 function onPlusBtn() {
   sessionStorage.setItem('calculatedPageNum', getPageNum() + 1);
   onTrendingPageMarkupChange();
+  scrollTo(hederRef);
 }
