@@ -84,10 +84,10 @@ export function onModalMarkup({
   modalRefs.cardModal.insertAdjacentHTML(
     'beforeend',
     `<div class="item-modal__img-box"><img src="${IMG_URL + posterPath}" onerror="this.src='https://michaelnakache.com/wp-content/uploads/2018/08/movie-poster-coming-soon-2.png';" alt="Poster of ${
-      title ? title : ''
+      title ? title : 'Title unavailable'
     }" class="item-modal__img" /></div>
     <div class="item-modal__desc-box">
-      <h3 class="item-modal__title">${title ? title : ''}</h3>
+      <h3 class="item-modal__title">${title ? title : 'Title unavailable'}</h3>
       <ul class="item-modal__txt">
         <li class="item-modal__txt-line">
           <p class="item-modal__txt-prop">Vote/Votes</p>

@@ -39,9 +39,9 @@ export default function markUpFilms(data) {
           title ? title : ''
         }" onerror="this.src='https://michaelnakache.com/wp-content/uploads/2018/08/movie-poster-coming-soon-2.png';" class="card-item__image" />
         </div>
-        <p class="card-item__text">${title}<br />
+        <p class="card-item__text">${title ? title : 'Title unavailable'}<br />
          <span class="card-item__text--orange">${movieGenresManipulationsMarkup(movieGenres)} | ${
-          movieDate ? movieDate.slice(0, 4) : 'No release date'
+          movieDate ? movieDate.slice(0, 4) : 'Date unavailable'
         }</span>
         </p>   
         </li>    

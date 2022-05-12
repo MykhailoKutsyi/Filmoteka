@@ -38,7 +38,7 @@ export function movieGenresManipulationsMarkup(arr) {
     let string = ', Other';
     if (arr) {
         if (arr.length === 0) {
-        return 'No genre';
+        return 'Genre unavailable';
     }   else 
         if (arr.length <= 2) {
         return arr.slice().join(', ');
@@ -50,7 +50,7 @@ export function movieGenresManipulationsMarkup(arr) {
 
 export function movieGenresModalMarkup(arr) {
     if (arr.length === 0) {
-        return 'No genre'
+        return 'Genre unavailable'
     } else
     if (arr) {
         return arr.join(', ');
