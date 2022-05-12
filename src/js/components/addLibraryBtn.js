@@ -106,24 +106,28 @@ const btnRefs = {
     btnRefs.addToWatchedBtn.removeEventListener('click', addToWatched);
     btnRefs.addToWatchedBtn.textContent = 'Remove from Watched';
     btnRefs.addToWatchedBtn.addEventListener('click', removeMovieFromWatched);
+    btnRefs.addToWatchedBtn.classList.add('focused')
   }
 
   function btnWatchedChangeAdd() {
     btnRefs.addToWatchedBtn.removeEventListener('click', removeMovieFromWatched);
     btnRefs.addToWatchedBtn.textContent = 'Add to watched';
     btnRefs.addToWatchedBtn.addEventListener('click', addToWatched);
+    btnRefs.addToWatchedBtn.classList.remove('focused')
   }
 
   function btnQueueChangeRemowe() {
     btnRefs.addToQueueBtn.removeEventListener('click', addToQueue);
     btnRefs.addToQueueBtn.textContent = 'Remove from Queue';
     btnRefs.addToQueueBtn.addEventListener('click', removeMovieFromQueue);
+    btnRefs.addToQueueBtn.classList.add('focused')
   }
 
   function btnQueueChangeAdd() {
     btnRefs.addToQueueBtn.removeEventListener('click', removeMovieFromQueue);
     btnRefs.addToQueueBtn.textContent = 'Add to Queue';
     btnRefs.addToQueueBtn.addEventListener('click', addToQueue);
+    btnRefs.addToQueueBtn.classList.remove('focused')
   }}
 
   function watchedLibraryChange(e){
