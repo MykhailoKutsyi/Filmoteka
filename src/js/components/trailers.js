@@ -24,7 +24,7 @@ function createTrailerLink(elementRef) {
       })
       .catch(() => {
         const instance = basicLightbox.create(`
-    <img width="980" height="525S" src="https://moviemaker.minitool.com/images/uploads/articles/2020/08/youtube-video-not-available/youtube-video-not-available-1.png" alt="no found trailer" class="trailer_video">
+    <img width="980" height="525" src="https://moviemaker.minitool.com/images/uploads/articles/2020/08/youtube-video-not-available/youtube-video-not-available-1.png" alt="no found trailer" class="trailer_video">
       `);
 
         instance.show();
