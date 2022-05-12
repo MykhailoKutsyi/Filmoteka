@@ -8,8 +8,14 @@ function setItemsToLocalStorage(data) {
 };
 
 export default function markUpFilms(data) {
+  console.log('markUpFilmsData', data);
+// <<<<<<< feature/genres-refactor
   checkFilmsSearched(data);
   setItemsToLocalStorage(data);
+// =======
+//   console.log('markUpFilmsData', data);
+//   setItemsToLS(data);
+// >>>>>>> dev
   return data.map(
     ({
       poster_path: posterPath,
@@ -26,16 +32,21 @@ export default function markUpFilms(data) {
     return `  
        <li class="card-item" id="${movieId}">                
         <div class="card-item__image-box">
-          <img src="${IMG_URL + posterPath}" alt="Poster of ${title? title:""}" class="card-item__image" />
+          <img src="${IMG_URL + posterPath}" alt="Poster of ${
+          title ? title : ''
+        }" class="card-item__image" />
         </div>
         <p class="card-item__text">${title}<br />
-         <span class="card-item__text--orange">${movieGenresManipulationsMarkup(movieGenres)} | ${movieDate?movieDate.slice(0, 4):''}</span>
+         <span class="card-item__text--orange">${movieGenresManipulationsMarkup(movieGenres)} | ${
+          movieDate ? movieDate.slice(0, 4) : ''
+        }</span>
         </p>   
         </li>    
        `;
-  }).join('');
-};
-
+      },
+    )
+    .join('');
+}
 
 // Це функція для відмалювання розмітки в бібліотеці(черзі)
 // function markUpFilmsForLib(data) {

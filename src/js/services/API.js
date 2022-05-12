@@ -1,6 +1,6 @@
 import { API_KEY, URL } from '../utils/constants';
 
-const axios = require('axios');
+export const axios = require('axios');
 
 export const getTrendingMovies = () => {
   const url = `${URL}trending/movie/day?api_key=${API_KEY}`;
