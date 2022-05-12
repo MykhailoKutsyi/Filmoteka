@@ -9,20 +9,33 @@
         margin-right: 32px;
         margin-bottom: 32px;
         
+       
+    }
+    @media screen and (min-width: 768px) and (max-width: 1023px) {
+        &:nth-child(2n) {
+                margin-right: 0;
+            }
     }
     
     @media screen and (min-width: 1024px) {
         width: 309px;
         margin-right: 16px;
+
+        &:nth-child(3n+3) {
+            margin-right: 0;
+        }
     }
 
     cursor: pointer;
     // background-color: $white-color;
 }
 
+
 .card-item__image {
     object-fit: cover;
     border-radius: 5px;
+    height: 100%;
+    width: 100%;
 }
 
 .card-item__image-box {

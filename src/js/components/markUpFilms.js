@@ -29,16 +29,17 @@ export default function markUpFilms(data) {
       let genre = convertIdInGenre(genreIds[i]);
       movieGenres.push(genre);
       };
+      
     return `  
        <li class="card-item" id="${movieId}">                
         <div class="card-item__image-box">
           <img src="${IMG_URL + posterPath}" alt="Poster of ${
           title ? title : ''
-        }" class="card-item__image" />
+        }" onerror="this.src='https://michaelnakache.com/wp-content/uploads/2018/08/movie-poster-coming-soon-2.png';" class="card-item__image" />
         </div>
         <p class="card-item__text">${title}<br />
          <span class="card-item__text--orange">${movieGenresManipulationsMarkup(movieGenres)} | ${
-          movieDate ? movieDate.slice(0, 4) : ''
+          movieDate ? movieDate.slice(0, 4) : 'No release date'
         }</span>
         </p>   
         </li>    
