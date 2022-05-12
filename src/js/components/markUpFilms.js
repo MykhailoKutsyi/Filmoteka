@@ -1,14 +1,15 @@
-import { IMG_URL } from '../utils/constants';
+import { IMG_URL, STORAGE_KEY_MOVIES } from '../utils/constants';
 import { convertIdInGenre, movieGenresManipulationsMarkup } from './genres.js';
-const MOVIE_STORAGE_KEY = 'movies';
+import { checkFilmsSearched } from './filters-genres';
 
-function setItemsToLS(data) {
-  localStorage.setItem(MOVIE_STORAGE_KEY, JSON.stringify(data));
+
+function setItemsToLocalStorage(data) {
+  localStorage.setItem(STORAGE_KEY_MOVIES, JSON.stringify(data));
 };
 
 export default function markUpFilms(data) {
-  console.log(data);
-  setItemsToLS(data);
+  checkFilmsSearched(data);
+  setItemsToLocalStorage(data);
   return data.map(
     ({
       poster_path: posterPath,
