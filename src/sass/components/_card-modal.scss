@@ -261,6 +261,12 @@ border-style: solid;
     }
 }
 
+.item-modal__btn:hover {
+    transition: all .3s cubic-bezier(.4, 0, .2, 1);
+        border-color: #FF6B01;
+            color: #FF6B01;
+}
+
 button.item-modal__btn + button.item-modal__btn {
     @media screen and (min-width: 1024px) {
             margin-left: 15px;
@@ -272,5 +278,9 @@ button.item-modal__btn + button.item-modal__btn {
 border-style: none;
 background-color: #FF6B01;
 color: $white-color;
+transition: all .25s cubic-bezier(.4, 0, .2, 1);
 }
-
+.focused:hover {
+    transition: color .25s cubic-bezier(.4, 0, .2, 1);
+        color: #020201;
+}
