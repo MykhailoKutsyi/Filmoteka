@@ -1,4 +1,7 @@
 .card-item {
+    font-weight: 500;
+    letter-spacing: 0em;
+
     @media screen and (min-width: 320px) {
         width: 280px;
         margin-bottom: 20px;
@@ -17,7 +20,6 @@
     }
 
     cursor: pointer;
-    // background-color: $white-color;
 }
 
 .card-item__image {
@@ -31,7 +33,7 @@
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     overflow: hidden;
-    // width: 100%;
+    
     @media screen and (min-width: 320px) {
         height: 402px;
     }
@@ -49,10 +51,6 @@
 .card-item__text {
     margin-top: 10px;
     padding-left: 1px;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0em;
-    text-align: left;
     text-transform: uppercase;
 }
 

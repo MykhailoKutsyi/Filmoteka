@@ -1,22 +1,7 @@
-import { axios } from '../services/API';
-import { API_KEY, URL } from '../utils/constants';
-
+import { getSearchMoviePage } from '../services/API';
 import { refs, pageNumWrapper } from './hero';
 import { markUp } from './header';
 import { setItemsToLocalStorage } from './markUpFilms';
-
-// const getTrendingMoviesPage = page => {
-//   const url = `${URL}trending/movie/day?api_key=${API_KEY}&page=${page}`;
-//   const response = axios.get(url);
-//   return response;
-// };
-
-//в подальшому винести в api.js
-function getSearchMoviePage(movie, page) {
-  const url = `${URL}search/movie?api_key=${API_KEY}&query=${movie}&page=${page}`;
-  const response = axios.get(url);
-  return response;
-}
 
 export function getPageNum() {
   return Number(sessionStorage['calculatedPageNum']);
@@ -61,11 +46,7 @@ function onMarkupClean() {
   pageNumWrapper.innerHTML = '';
 }
 
-// в подальшому зробити функцію і декілька разів її визвати
-// замість повтору кода
-
-function onStartBtn() {
-  sessionStorage.setItem('calculatedPageNum', 1);
+function onSearchPageMarkupChange() {
   onMarkupClean();
   getSearchMoviePage(sessionStorage['movieName'], sessionStorage['calculatedPageNum']).then(
     data => {
@@ -73,37 +54,24 @@ function onStartBtn() {
       markUp(data.data);
     },
   );
+}
+
+function onStartBtn() {
+  sessionStorage.setItem('calculatedPageNum', 1);
+  onSearchPageMarkupChange();
 }
 
 function onEndBtn() {
   sessionStorage.setItem('calculatedPageNum', sessionStorage['maxPages']);
-  onMarkupClean();
-  getSearchMoviePage(sessionStorage['movieName'], sessionStorage['calculatedPageNum']).then(
-    data => {
-      setItemsToLocalStorage(data.data);
-      markUp(data.data);
-    },
-  );
+  onSearchPageMarkupChange();
 }
 
 function onMinusBtn() {
   sessionStorage.setItem('calculatedPageNum', getPageNum() - 1);
-  onMarkupClean();
-  getSearchMoviePage(sessionStorage['movieName'], sessionStorage['calculatedPageNum']).then(
-    data => {
-      setItemsToLocalStorage(data.data);
-      markUp(data.data);
-    },
-  );
+  onSearchPageMarkupChange();
 }
 
 function onPlusBtn() {
   sessionStorage.setItem('calculatedPageNum', getPageNum() + 1);
-  onMarkupClean();
-  getSearchMoviePage(sessionStorage['movieName'], sessionStorage['calculatedPageNum']).then(
-    data => {
-      setItemsToLocalStorage(data.data);
-      markUp(data.data);
-    },
-  );
+  onSearchPageMarkupChange();
 }
