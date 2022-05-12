@@ -82,26 +82,13 @@
   background-color: #ff6b08;
 }
 
-// @media screen and (min-width: 300px) and (max-width: 692px) {
-//   .lightbox__button {
-//     top: 90px;
-//     right: 30px;
-//     right: calc(((100vw - 324px) / 2));
-//   }
-// }
 
-// @media screen and (min-width: 768px) {
-//   .lightbox__button {
-//     top: 100px;
-//     right: calc(((100vw - 668px) / 2));
-//   }
-// }
 
 @media screen and (min-width: 1024px) {
   .lightbox__button {
     top: 20px;
-right: 150px;
-    // right: calc(((100vw - 824px) / 2));
+    right: 150px;
+    
   }
 }
 
