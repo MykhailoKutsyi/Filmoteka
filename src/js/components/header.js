@@ -21,6 +21,7 @@ export const refsLibrary = {
   queueBtn: document.querySelector('.library-btn_queue'),
   watchedList: document.querySelector('.films-list-watched'),
   queueList: document.querySelector('.films-list-queue'),
+  filtersWrapper: document.querySelector('.filters')
 };
 
 libraryNavEl.addEventListener('click', onLibraryClick);
