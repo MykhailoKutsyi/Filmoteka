@@ -3,7 +3,7 @@ import { convertIdInGenre, movieGenresManipulationsMarkup } from './genres.js';
 import { checkFilmsSearched } from './filters-genres';
 
 
-function setItemsToLocalStorage(data) {
+export function setItemsToLocalStorage(data) {
   localStorage.setItem(STORAGE_KEY_MOVIES, JSON.stringify(data));
 };
 

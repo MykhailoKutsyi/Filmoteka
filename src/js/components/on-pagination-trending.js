@@ -1,5 +1,6 @@
 import { axios } from '../services/API';
 import { API_KEY, URL } from '../utils/constants';
+import { setItemsToLocalStorage } from './markUpFilms';
 
 import { refs, markUp, pageNumWrapper } from './hero';
 
@@ -56,6 +57,7 @@ function onStartBtn() {
   sessionStorage.setItem('calculatedPageNum', 1);
   onMarkupClean();
   getTrendingMoviesPage(sessionStorage['calculatedPageNum']).then(data => {
+    setItemsToLocalStorage(data.data);
     markUp(data.data);
   });
 }
@@ -64,6 +66,7 @@ function onEndBtn() {
   sessionStorage.setItem('calculatedPageNum', sessionStorage['maxPages']);
   onMarkupClean();
   getTrendingMoviesPage(sessionStorage['calculatedPageNum']).then(data => {
+    setItemsToLocalStorage(data.data);
     markUp(data.data);
   });
 }
@@ -72,6 +75,7 @@ function onMinusBtn() {
   sessionStorage.setItem('calculatedPageNum', getPageNum() - 1);
   onMarkupClean();
   getTrendingMoviesPage(sessionStorage['calculatedPageNum']).then(data => {
+    setItemsToLocalStorage(data.data);
     markUp(data.data);
   });
 }
@@ -80,6 +84,7 @@ function onPlusBtn() {
   sessionStorage.setItem('calculatedPageNum', getPageNum() + 1);
   onMarkupClean();
   getTrendingMoviesPage(sessionStorage['calculatedPageNum']).then(data => {
+    setItemsToLocalStorage(data.data);
     markUp(data.data);
   });
 }
