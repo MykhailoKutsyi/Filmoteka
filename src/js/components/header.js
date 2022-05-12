@@ -14,6 +14,7 @@ const searchForm = document.querySelector('.search');
 const searchInput = document.querySelector('.search__input');
 const libraryButtons = document.querySelector('.header-buttons-library');
 const filmsList = document.querySelector('.films-list');
+const filtersSection = document.querySelector('.filters')
 
 export const refsLibrary = {
   watchedBtn: document.querySelector('.library-btn_watched'),
@@ -41,6 +42,8 @@ function onHomeClick(event) {
   refsLibrary.watchedBtn.removeEventListener('click', renderWatchedLibrary);
 refsLibrary.queueBtn.removeEventListener('click', renderQueueLibrary);
   pushFetch();
+  filtersSection.classList.remove('visually-hidden')
+
 };
 
 function onLibraryClick(event) {
@@ -57,6 +60,7 @@ function onLibraryClick(event) {
   refsLibrary.watchedBtn.addEventListener('click', renderWatchedLibrary);
   refsLibrary.queueBtn.addEventListener('click', renderQueueLibrary);
   renderWatchedLibrary(event);
+  filtersSection.classList.add('visually-hidden')
 };
 
 libraryButtons.classList.add('visually-hidden');

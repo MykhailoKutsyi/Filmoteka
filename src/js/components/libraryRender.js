@@ -25,6 +25,8 @@ import {onCardsSelect} from './card-modal';
 
 export function renderWatchedLibrary(e) {
   e.preventDefault();
+  refsLibrary.watchedBtn.classList.add('library-active-btn')
+  refsLibrary.queueBtn.classList.remove('library-active-btn')
   const libData = JSON.parse(localStorage.getItem('WatchedLibrary'));
   console.log(libData);
   markUpLib(libData);
@@ -32,6 +34,8 @@ export function renderWatchedLibrary(e) {
 
 export function renderQueueLibrary(e) {
   e.preventDefault();
+  refsLibrary.watchedBtn.classList.remove('library-active-btn')
+  refsLibrary.queueBtn.classList.add('library-active-btn')
   const libData = JSON.parse(localStorage.getItem('QueueLibrary'));
   markUpLib(libData);
 }

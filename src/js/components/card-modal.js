@@ -161,7 +161,7 @@ export function onModalMarkup({
       <h4 class="item-modal__subtitle">About</h4>
       <p class="item-modal__desc">${overview ? overview : ''}</p>
       <div class="item-modal__btns">
-        <button class="item-modal__btn add-watch focused">add to Watched</button>
+        <button class="item-modal__btn add-watch">add to Watched</button>
         <button class="item-modal__btn add-queue">add to queue</button>
       </div>
     </div>`,
