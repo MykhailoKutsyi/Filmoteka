@@ -1,19 +1,26 @@
-.filters__filter{
-    font-size: 12px;
-    border-radius: 5px;
-    text-transform: uppercase;
-    background-color: transparent;
-    border: 2px solid rgba(255, 255, 255, .9);
+.filters{
+    margin-top: 30px;
+}
+
+.filters__btn{
     color: #818181;
-    margin: 0 auto;
-    cursor: pointer;
-    padding: 14px;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 2;
+    text-transform: uppercase;
+    text-shadow: 0 -1px 0 rgb(0 0 0 / 30%);
     text-align: center;
+    padding: 8px;
+    border: none;
+    border-radius: 6px;
+    margin: 0 auto;
     margin-bottom: 15px;
-    
-    &:hover,
-    &:focus {
-    opacity:0.6;
+    padding: 8px 15px;
+
+    &:hover{
+        background-color: #FF6B08;
+            color: #fff;;
     }
 }
 
@@ -26,7 +33,6 @@
 
 .filters__values{
     color: #818181;
-    font-family: "Roboto", sans-serif;
     font-size: 14px;
     font-weight: 700;
     line-height: 2;
@@ -93,7 +99,6 @@
         content: "-";
         transition: transform .3s ease-in-out;
     }
-
 }
 
 
