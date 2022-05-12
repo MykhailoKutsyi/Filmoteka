@@ -1,4 +1,5 @@
 import Glide from '@glidejs/glide';
+import { API_KEY, URL } from '../utils/constants';
 import filmsCardSliderTpl from './card-films-slider.hbs';
 import trailer from './trailers.js';
 const sliderContainer = document.querySelector('.js-slider-container');
@@ -16,7 +17,7 @@ const glide = new Glide('.glide', {
 glide.mount();
 
 function renderTrendy() {
-  const url = `https://api.themoviedb.org/3/trending/all/week?api_key=e1780eaef9609cf3d5283262d6798136`;
+  const url = `${URL}trending/all/week?api_key=${API_KEY}`;
   return fetch(url)
   
     .then(response => response.json())

@@ -1,15 +1,7 @@
-import { axios } from '../services/API';
-import { API_KEY, URL } from '../utils/constants';
+import { getTrendingMoviesPage } from '../services/API';
 import { setItemsToLocalStorage } from './markUpFilms';
-
 import { refs, markUp, pageNumWrapper } from './hero';
 import { showSpinner, hideSpinner } from './spinner';
-
-const getTrendingMoviesPage = page => {
-  const url = `${URL}trending/movie/day?api_key=${API_KEY}&page=${page}`;
-  const response = axios.get(url);
-  return response;
-};
 
 export function getPageNum() {
   return Number(sessionStorage['calculatedPageNum']);
@@ -54,46 +46,35 @@ function onMarkupClean() {
   pageNumWrapper.innerHTML = '';
 }
 
-function onStartBtn() {
-  showSpinner();
-  sessionStorage.setItem('calculatedPageNum', 1);
+function onTrendingPageMarkupChange() {
+showSpinner();
   onMarkupClean();
   getTrendingMoviesPage(sessionStorage['calculatedPageNum']).then(data => {
     setItemsToLocalStorage(data.data);
     markUp(data.data);
     hideSpinner();
   });
+}
+
+function onStartBtn() {
+  sessionStorage.setItem('calculatedPageNum', 1);
+  onTrendingPageMarkupChange();
 }
 
 function onEndBtn() {
   showSpinner();
   sessionStorage.setItem('calculatedPageNum', sessionStorage['maxPages']);
-  onMarkupClean();
-  getTrendingMoviesPage(sessionStorage['calculatedPageNum']).then(data => {
-    setItemsToLocalStorage(data.data);
-    markUp(data.data);
-    hideSpinner();
-  });
+  onTrendingPageMarkupChange();
 }
 
 function onMinusBtn() {
   showSpinner();
   sessionStorage.setItem('calculatedPageNum', getPageNum() - 1);
-  onMarkupClean();
-  getTrendingMoviesPage(sessionStorage['calculatedPageNum']).then(data => {
-    setItemsToLocalStorage(data.data);
-    markUp(data.data);
-    hideSpinner();
-  });
+  onTrendingPageMarkupChange();
 }
 
 function onPlusBtn() {
   showSpinner();
   sessionStorage.setItem('calculatedPageNum', getPageNum() + 1);
-  onMarkupClean();
-  getTrendingMoviesPage(sessionStorage['calculatedPageNum']).then(data => {
-    setItemsToLocalStorage(data.data);
-    markUp(data.data);
-    hideSpinner();
-  });
+  onTrendingPageMarkupChange();
 }

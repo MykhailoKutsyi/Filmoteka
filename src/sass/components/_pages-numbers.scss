@@ -22,6 +22,7 @@
     width: 100%;
     height: 100%;
     padding: 10px;
+    font-weight: 500;
 }
 
 .btn-num {
@@ -29,5 +30,13 @@
     justify-content: center;
     align-items: center;
     padding: 10px;
+    font-weight: 500;
+    border-width: 1px;
+        border-style: solid;
+    &:not([disabled]):hover, &:not([disabled]):focus {
+        transition: all .3s cubic-bezier(.4, 0, .2, 1);
+            border-color: #FF6B01;
+            color: #FF6B01;
+    }
 }
 

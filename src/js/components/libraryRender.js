@@ -30,6 +30,7 @@ export function renderWatchedLibrary(e) {
   const libData = JSON.parse(localStorage.getItem('WatchedLibrary'));
   console.log(libData);
   markUpLib(libData);
+  refsLibrary.filtersWrapper.style.display = 'none';
 }
 
 export function renderQueueLibrary(e) {
@@ -38,6 +39,7 @@ export function renderQueueLibrary(e) {
   refsLibrary.queueBtn.classList.add('library-active-btn')
   const libData = JSON.parse(localStorage.getItem('QueueLibrary'));
   markUpLib(libData);
+  refsLibrary.filtersWrapper.style.display = 'none';
 }
 
 function markUpLib(data) {

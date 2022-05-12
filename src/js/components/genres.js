@@ -37,17 +37,21 @@ export function convertIdInGenre(id) {
 export function movieGenresManipulationsMarkup(arr) {
     let string = ', Other';
     if (arr) {
+        if (arr.length === 0) {
+        return 'Genre unavailable';
+    }   else 
         if (arr.length <= 2) {
         return arr.slice().join(', ');
     } else {
         return arr.slice(0, 2).join(', ') + string.toLowerCase();
         };
-    } else {
-        return '';
-    };    
+    }  
 };
 
 export function movieGenresModalMarkup(arr) {
+    if (arr.length === 0) {
+        return 'Genre unavailable'
+    } else
     if (arr) {
         return arr.join(', ');
     } else {
