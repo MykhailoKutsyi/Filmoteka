@@ -1,11 +1,11 @@
-export { showErrorSearch,removeErrorSearch};
+export { removeErrorSearch,showErrorSearch};
 
-const error = document.querySelector('js_search-error');
+const error = document.querySelector('.js_search-error');
 
-function showErrorSearch() {
+function removeErrorSearch() {
     error.classList.add('visually-hidden');
 }
 
-function removeErrorSearch() {
+function showErrorSearch() {
     error.classList.remove('visually-hidden');
 }
