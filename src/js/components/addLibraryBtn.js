@@ -1,4 +1,6 @@
 // import {btnRefs} from './card-modal';
+import { libraryNavEl } from "./header";
+import {renderWatchedLibrary, renderQueueLibrary} from './libraryRender'
 
 const LOCALSTORAGE_KEY_Watched = 'WatchedLibrary';
 const LOCALSTORAGE_KEY_Queue = 'QueueLibrary';
@@ -44,6 +46,7 @@ const btnRefs = {
     const dataToSaveString = JSON.stringify(dataToSave);
     localStorage.setItem(LOCALSTORAGE_KEY_Watched, dataToSaveString);
     console.log("addWtched done");
+    watchedLibraryChange(e);
     btnWatchedChangeRemowe();
   }
   function addToQueue(e) {
@@ -53,6 +56,7 @@ const btnRefs = {
     const dataToSaveString = JSON.stringify(dataToSave);
     localStorage.setItem(LOCALSTORAGE_KEY_Queue, dataToSaveString);
     console.log("addQue done");
+    queueLibraryChange(e);
     btnQueueChangeRemowe();
   }
 
@@ -63,7 +67,8 @@ const btnRefs = {
     dataToChange.splice(movieIndex, 1);
     const dataToSave = JSON.stringify(dataToChange);
     localStorage.setItem(LOCALSTORAGE_KEY_Watched, dataToSave);
-    console.log('removeWatched done')
+    console.log('removeWatched done');
+    watchedLibraryChange(e);
     btnWatchedChangeAdd();
   }
 
@@ -74,7 +79,8 @@ const btnRefs = {
     dataToChange.splice(movieIndex, 1);
     const dataToSave = JSON.stringify(dataToChange)
     localStorage.setItem(LOCALSTORAGE_KEY_Queue, dataToSave);
-    console.log('removeQue done')
+    console.log('removeQue done');
+    queueLibraryChange(e)
     btnQueueChangeAdd();
   }
 
@@ -120,4 +126,13 @@ const btnRefs = {
     btnRefs.addToQueueBtn.addEventListener('click', addToQueue);
   }}
 
-  
+  function watchedLibraryChange(e){
+    if(libraryNavEl.classList.contains('current')){
+renderWatchedLibrary(e);
+    }
+  }
+  function queueLibraryChange(e){
+    if(libraryNavEl.classList.contains('current')){
+renderQueueLibrary(e);
+    }
+  }
