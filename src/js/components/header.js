@@ -1,14 +1,10 @@
 import markUpFilms from './markUpFilms';
 import { getSearchMovie } from '../services/API';
 import { onCardsSelect } from './card-modal';
-<<<<<<< Updated upstream
 import { renderWatchedLibrary, renderQueueLibrary } from './libraryRender';
 import { makePagesMarkup, onPageBtnsSelect, getPageNum } from './on-pagination-search';
 import { pageNumWrapper, pushFetch } from './hero';
-
-=======
 import { showErrorSearch, removeErrorSearch } from './searchError';
->>>>>>> Stashed changes
 // header activity
 
 const homeNavEl = document.querySelector('.nav__link-home');
@@ -94,12 +90,10 @@ const refs = {
 
 function onSubmitForm(e) {
   e.preventDefault();
-<<<<<<< Updated upstream
   if (!searchInput.value) {
     return;
   }
   pushFetchSearch(searchInput.value);
-=======
   if (!searchnput.value) {
     return;
   }
@@ -109,7 +103,6 @@ function onSubmitForm(e) {
   if (showErrorSearch) { 
     e.currentTarget.reset();
   }
->>>>>>> Stashed changes
 }
 
 function pushFetchSearch(movie) {
