@@ -3,6 +3,7 @@ import { API_KEY, URL } from '../utils/constants';
 
 import { refs, pageNumWrapper } from './hero';
 import { markUp } from './header';
+import { setItemsToLocalStorage } from './markUpFilms';
 
 // const getTrendingMoviesPage = page => {
 //   const url = `${URL}trending/movie/day?api_key=${API_KEY}&page=${page}`;
@@ -68,6 +69,7 @@ function onStartBtn() {
   onMarkupClean();
   getSearchMoviePage(sessionStorage['movieName'], sessionStorage['calculatedPageNum']).then(
     data => {
+      setItemsToLocalStorage(data.data);
       markUp(data.data);
     },
   );
@@ -78,6 +80,7 @@ function onEndBtn() {
   onMarkupClean();
   getSearchMoviePage(sessionStorage['movieName'], sessionStorage['calculatedPageNum']).then(
     data => {
+      setItemsToLocalStorage(data.data);
       markUp(data.data);
     },
   );
@@ -88,6 +91,7 @@ function onMinusBtn() {
   onMarkupClean();
   getSearchMoviePage(sessionStorage['movieName'], sessionStorage['calculatedPageNum']).then(
     data => {
+      setItemsToLocalStorage(data.data);
       markUp(data.data);
     },
   );
@@ -98,6 +102,7 @@ function onPlusBtn() {
   onMarkupClean();
   getSearchMoviePage(sessionStorage['movieName'], sessionStorage['calculatedPageNum']).then(
     data => {
+      setItemsToLocalStorage(data.data);
       markUp(data.data);
     },
   );
