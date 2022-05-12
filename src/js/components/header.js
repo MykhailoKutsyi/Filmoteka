@@ -74,10 +74,10 @@ function onSubmitForm(e) {
     return;
   }
   pushFetchSearch(searchInput.value);
-  if (!searchnput.value) {
+  if (!searchInput.value) {
     return;
   }
-  pushFetch(searchnput.value);
+  pushFetch(searchInput.value);
    showErrorSearch();
   setTimeout(removeErrorSearch,2000);
   if (showErrorSearch) { 
