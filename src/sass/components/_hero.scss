@@ -16,6 +16,7 @@
 .films-list, .films-list-watched, .films-list-queue {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .main-container {
