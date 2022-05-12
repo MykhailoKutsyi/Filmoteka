@@ -8,7 +8,7 @@ const filtersHideContainer = document.querySelector('.js-hide');
 const filtersList = document.querySelector('.js-filters-list');
 let valueEl = document.getElementById('filters-values');
 const filtersBtn = document.querySelector('.filters__filter');
-let imagesList= document.querySelector('.films-list')
+let moviesList= document.querySelector('.films-list')
 
 const text = "You've chosen: ";
 let filters = [];
@@ -84,12 +84,13 @@ function onFilterBtnClick() {
         return;
     } else {
         let filterNum = filters.map(filter => Number(filter));
-        imagesList.innerHTML = '';
+        moviesList.innerHTML = '';
         let allMovies = localStorage.getItem(STORAGE_KEY_MOVIES);
         for (const movie of JSON.parse(allMovies)) {
             let genreIds = movie.genre_ids;
             let op = filterNum.every(element => genreIds.indexOf(element) > -1);
             if (op === true) {
+                console.log(movie)
                 renderFilteredMovies(movie);                
             };
         };
@@ -113,7 +114,7 @@ function renderFilteredMovies(movie) {
         <span class="card-item__text--orange">${movieGenresManipulationsMarkup(movieGenres)} | ${movie.release_date?movie.release_date.slice(0, 4):''}</span>
         </p>  
     `;
-    imagesList.appendChild(movieEl);
+    moviesList.appendChild(movieEl);
     onCardsSelect();
 };
 
