@@ -3,6 +3,7 @@ import { API_KEY, URL } from '../utils/constants';
 import { setItemsToLocalStorage } from './markUpFilms';
 
 import { refs, markUp, pageNumWrapper } from './hero';
+import { showSpinner, hideSpinner } from './spinner';
 
 const getTrendingMoviesPage = page => {
   const url = `${URL}trending/movie/day?api_key=${API_KEY}&page=${page}`;
@@ -54,37 +55,45 @@ function onMarkupClean() {
 }
 
 function onStartBtn() {
+  showSpinner();
   sessionStorage.setItem('calculatedPageNum', 1);
   onMarkupClean();
   getTrendingMoviesPage(sessionStorage['calculatedPageNum']).then(data => {
     setItemsToLocalStorage(data.data);
     markUp(data.data);
+    hideSpinner();
   });
 }
 
 function onEndBtn() {
+  showSpinner();
   sessionStorage.setItem('calculatedPageNum', sessionStorage['maxPages']);
   onMarkupClean();
   getTrendingMoviesPage(sessionStorage['calculatedPageNum']).then(data => {
     setItemsToLocalStorage(data.data);
     markUp(data.data);
+    hideSpinner();
   });
 }
 
 function onMinusBtn() {
+  showSpinner();
   sessionStorage.setItem('calculatedPageNum', getPageNum() - 1);
   onMarkupClean();
   getTrendingMoviesPage(sessionStorage['calculatedPageNum']).then(data => {
     setItemsToLocalStorage(data.data);
     markUp(data.data);
+    hideSpinner();
   });
 }
 
 function onPlusBtn() {
+  showSpinner();
   sessionStorage.setItem('calculatedPageNum', getPageNum() + 1);
   onMarkupClean();
   getTrendingMoviesPage(sessionStorage['calculatedPageNum']).then(data => {
     setItemsToLocalStorage(data.data);
     markUp(data.data);
+    hideSpinner();
   });
 }

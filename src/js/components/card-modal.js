@@ -2,6 +2,7 @@ import { getMovieById } from '../services/API';
 import { API_KEY, URL, IMG_URL } from '../utils/constants';
 import { convertIdInGenre, movieGenresModalMarkup } from './genres.js';
 import { librarys } from './addLibraryBtn';
+import { showSpinner, hideSpinner } from './spinner';
 // getMovieById(453395).then(d => console.log(d.data));
 
 // Как подключать функцию в файле hero.js
@@ -45,6 +46,7 @@ export function onEventListnerSet(element) {
 }
 
 export function onClick(e) {
+  showSpinner();
   onModalMarkupPrepair(e.currentTarget.id);
   modalRefs.backdrop.classList.remove('is-hidden');
   modalRefs.backdrop.addEventListener('click', onBackdropClick);
@@ -74,6 +76,7 @@ export function onModalMarkupPrepair(filmId) {
 export function onDataPrepair(d) {
   const data = d.data;
   onModalMarkup(data);
+  hideSpinner();
 }
 
 // {adult: false, backdrop_path: '/ndCSoasjIZAMMDIuMxuGnNWu4DU.jpg', belongs_to_collection: {…}, budget: 200000000, genres: Array(3), …}
