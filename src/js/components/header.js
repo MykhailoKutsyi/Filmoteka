@@ -22,8 +22,7 @@ export const refsLibrary = {
 
 libraryNavEl.addEventListener('click', onLibraryClick);
 homeNavEl.addEventListener('click', onHomeClick);
-refsLibrary.watchedBtn.addEventListener('click', renderWatchedLibrary);
-refsLibrary.queueBtn.addEventListener('click', renderQueueLibrary);
+
 
 function onLibraryClick(event) {
   homeNavEl.classList.remove('current');
@@ -42,7 +41,7 @@ function onHomeClick(event) {
   searchForm.classList.remove('visually-hidden');
 }
 
-const myLibraryBtn = document.querySelector('.open-my-library-btn');
+export const myLibraryBtn = document.querySelector('.open-my-library-btn');
 const homeBtn = document.querySelector('.open-home-btn');
 const headerSearchForm = document.querySelector('.search');
 const libraryButtons = document.querySelector('.header-buttons-library');
@@ -64,6 +63,8 @@ function changeCurrentPageOnLibrary() {
   header.classList.add('header-library');
   refsLibrary.watchedList.classList.remove('visually-hidden');
   refsLibrary.queueList.classList.remove('visually-hidden');
+  refsLibrary.watchedBtn.addEventListener('click', renderWatchedLibrary);
+refsLibrary.queueBtn.addEventListener('click', renderQueueLibrary);
 }
 
 function changeCurrentPageOnHome() {
@@ -78,6 +79,8 @@ function changeCurrentPageOnHome() {
   refsLibrary.watchedList.classList.add('visually-hidden');
   pageNumWrapper.innerHTML = '';
   filmsList.innerHTML = '';
+  refsLibrary.watchedBtn.removeEventListener('click', renderWatchedLibrary);
+refsLibrary.queueBtn.removeEventListener('click', renderQueueLibrary);
   pushFetch();
 }
 

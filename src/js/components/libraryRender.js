@@ -25,6 +25,7 @@ import {onCardsSelect} from './card-modal';
 
 export function renderWatchedLibrary(e) {
   e.preventDefault();
+  
   const libData = JSON.parse(localStorage.getItem('WatchedLibrary'));
   console.log(libData);
   markUpLib(libData);

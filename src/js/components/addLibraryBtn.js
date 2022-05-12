@@ -1,4 +1,6 @@
 // import {btnRefs} from './card-modal';
+import {myLibraryBtn} from './header';
+import {renderWatchedLibrary} from './libraryRender';
 
 const LOCALSTORAGE_KEY_Watched = 'WatchedLibrary';
 const LOCALSTORAGE_KEY_Queue = 'QueueLibrary';
@@ -63,7 +65,8 @@ const btnRefs = {
     dataToChange.splice(movieIndex, 1);
     const dataToSave = JSON.stringify(dataToChange);
     localStorage.setItem(LOCALSTORAGE_KEY_Watched, dataToSave);
-    console.log('removeWatched done')
+    console.log('removeWatched done');
+    watchedLibraryChange(e);
     btnWatchedChangeAdd();
   }
 
@@ -74,7 +77,8 @@ const btnRefs = {
     dataToChange.splice(movieIndex, 1);
     const dataToSave = JSON.stringify(dataToChange)
     localStorage.setItem(LOCALSTORAGE_KEY_Queue, dataToSave);
-    console.log('removeQue done')
+    console.log('removeQue done');
+    watchedLibraryChange(e);
     btnQueueChangeAdd();
   }
 
@@ -120,4 +124,9 @@ const btnRefs = {
     btnRefs.addToQueueBtn.addEventListener('click', addToQueue);
   }}
 
-  
+  function watchedLibraryChange(e) {
+    console.log(myLibraryBtn);
+    if(myLibraryBtn.classList.contains('current')){
+renderWatchedLibrary(e);
+    }
+  } 
