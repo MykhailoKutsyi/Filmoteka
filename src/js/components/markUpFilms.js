@@ -43,16 +43,10 @@ export default function markUpFilms(data) {
         </p>   
         </li>    
        `;
-<<<<<<< Updated upstream
       },
     )
     .join('');
 }
-=======
-    }).join('');
-};
-
->>>>>>> Stashed changes
 
 // Це функція для відмалювання розмітки в бібліотеці(черзі)
 // function markUpFilmsForLib(data) {
