@@ -62,19 +62,16 @@ function onStartBtn() {
 }
 
 function onEndBtn() {
-  showSpinner();
   sessionStorage.setItem('calculatedPageNum', sessionStorage['maxPages']);
   onTrendingPageMarkupChange();
 }
 
 function onMinusBtn() {
-  showSpinner();
   sessionStorage.setItem('calculatedPageNum', getPageNum() - 1);
   onTrendingPageMarkupChange();
 }
 
 function onPlusBtn() {
-  showSpinner();
   sessionStorage.setItem('calculatedPageNum', getPageNum() + 1);
   onTrendingPageMarkupChange();
 }
