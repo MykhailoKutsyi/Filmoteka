@@ -14,7 +14,7 @@ h4 {
     align-items: center;
     z-index: 101;
     overflow: auto;
-    // transition: opacity 250ms $cubic, visibility 250ms $cubic;
+    // transition: opacity .3s cubic-bezier(.4, 0, .2, 1), visibility .3s cubic-bezier(.4, 0, .2, 1);
 
     &.is-hidden {
         opacity: 0;
@@ -24,7 +24,6 @@ h4 {
 }
 
 .item-modal {
-    font-size: 12px;
     font-weight: 500;
     letter-spacing: 0em;
     position: absolute;
@@ -59,8 +58,6 @@ h4 {
         padding-right: 16px;
     }
     
-    
-    
     &::-webkit-scrollbar {
         width: 0;
     }
@@ -69,7 +66,6 @@ h4 {
 }
 
 .item-modal__wrapper {
-    
         @media screen and (min-width: 768px) {
             display: flex;
         }
@@ -85,6 +81,11 @@ h4 {
     justify-content: center;
     align-items: center;
     background-color: $white-color;
+    &:hover .item-modal__close-btn-icon,
+        &:focus .item-modal__close-btn-icon {
+            transition: all .3s cubic-bezier(.4, 0, .2, 1);
+            fill: #FF6B01;
+        }
 }
 
 .item-modal__close-btn-icon {
@@ -153,9 +154,6 @@ h4 {
 
 .item-modal__txt {
     margin-bottom: 20px;
-        // font-size: 12px;
-        // font-weight: 500;
-        // letter-spacing: 0em;
 }
 
 .item-modal__txt-line {
@@ -177,7 +175,7 @@ h4 {
 }
 
 .item-modal__txt-prop-value {
-// color: $black-color;
+
 @media screen and (min-width: 320px) {
         flex-basis: calc(100% / 2);
     }
@@ -212,17 +210,11 @@ margin-left: 5px;
 .item-modal__subtitle {
     margin-bottom: 8px;
     text-transform: uppercase;
-        // font-size: 12px;
-        // font-weight: 500;
-        // letter-spacing: 0em;
 }
 
 .item-modal__desc {
     margin-bottom: 20px;
-        // font-size: 12px;
-        // font-weight: 500;
-        line-height: 1.67;
-        // letter-spacing: 0em;
+    line-height: 1.67;
 }
 
 .item-modal__btns {
@@ -261,6 +253,12 @@ border-style: solid;
     }
 }
 
+.item-modal__btn:hover {
+    transition: all .3s cubic-bezier(.4, 0, .2, 1);
+        border-color: #FF6B01;
+            color: #FF6B01;
+}
+
 button.item-modal__btn + button.item-modal__btn {
     @media screen and (min-width: 1024px) {
             margin-left: 15px;
@@ -272,5 +270,9 @@ button.item-modal__btn + button.item-modal__btn {
 border-style: none;
 background-color: #FF6B01;
 color: $white-color;
+transition: all .25s cubic-bezier(.4, 0, .2, 1);
 }
-
+.focused:hover {
+    transition: color .25s cubic-bezier(.4, 0, .2, 1);
+        color: #020201;
+}

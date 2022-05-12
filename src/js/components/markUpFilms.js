@@ -1,8 +1,23 @@
-import { IMG_URL } from '../utils/constants';
+import { IMG_URL, STORAGE_KEY_MOVIES } from '../utils/constants';
 import { convertIdInGenre, movieGenresManipulationsMarkup } from './genres.js';
+import { checkFilmsSearched } from './filters-genres';
+import {refsLibrary} from './header';
+
+
+export function setItemsToLocalStorage(data) {
+  localStorage.setItem(STORAGE_KEY_MOVIES, JSON.stringify(data));
+};
 
 export default function markUpFilms(data) {
-  console.log(data);
+  console.log('markUpFilmsData', data);
+  refsLibrary.filtersWrapper.style.display = 'contents';
+// <<<<<<< feature/genres-refactor
+  checkFilmsSearched(data);
+  setItemsToLocalStorage(data);
+// =======
+//   console.log('markUpFilmsData', data);
+//   setItemsToLS(data);
+// >>>>>>> dev
   return data.map(
     ({
       poster_path: posterPath,
@@ -16,19 +31,25 @@ export default function markUpFilms(data) {
       let genre = convertIdInGenre(genreIds[i]);
       movieGenres.push(genre);
       };
+      
     return `  
        <li class="card-item" id="${movieId}">                
         <div class="card-item__image-box">
-          <img src="${IMG_URL + posterPath}" alt="Poster of ${title? title:""}" class="card-item__image" />
+          <img src="${IMG_URL + posterPath}" alt="Poster of ${
+          title ? title : ''
+        }" onerror="this.src='https://michaelnakache.com/wp-content/uploads/2018/08/movie-poster-coming-soon-2.png';" class="card-item__image" />
         </div>
         <p class="card-item__text">${title}<br />
-         <span class="card-item__text--orange">${movieGenresManipulationsMarkup(movieGenres)} | ${movieDate?movieDate.slice(0, 4):''}</span>
+         <span class="card-item__text--orange">${movieGenresManipulationsMarkup(movieGenres)} | ${
+          movieDate ? movieDate.slice(0, 4) : 'No release date'
+        }</span>
         </p>   
         </li>    
        `;
-  }).join('');
-};
-
+      },
+    )
+    .join('');
+}
 
 // Це функція для відмалювання розмітки в бібліотеці(черзі)
 // function markUpFilmsForLib(data) {
