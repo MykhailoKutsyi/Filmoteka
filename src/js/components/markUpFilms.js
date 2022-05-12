@@ -1,6 +1,7 @@
 import { IMG_URL, STORAGE_KEY_MOVIES } from '../utils/constants';
 import { convertIdInGenre, movieGenresManipulationsMarkup } from './genres.js';
 import { checkFilmsSearched } from './filters-genres';
+import {refsLibrary} from './header';
 
 
 export function setItemsToLocalStorage(data) {
@@ -9,6 +10,7 @@ export function setItemsToLocalStorage(data) {
 
 export default function markUpFilms(data) {
   console.log('markUpFilmsData', data);
+  refsLibrary.filtersWrapper.style.display = 'contents';
 // <<<<<<< feature/genres-refactor
   checkFilmsSearched(data);
   setItemsToLocalStorage(data);
