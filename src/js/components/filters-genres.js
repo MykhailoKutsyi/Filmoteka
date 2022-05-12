@@ -8,7 +8,7 @@ const filtersHideContainer = document.querySelector('.js-hide');
 const filtersList = document.querySelector('.js-filters-list');
 let valueEl = document.getElementById('filters-values');
 const filtersBtn = document.querySelector('.filters__filter');
-let moviesList= document.querySelector('.films-list')
+let moviesList = document.querySelector('.films-list');
 
 const text = "You've chosen: ";
 let filters = [];
