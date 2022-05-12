@@ -8,7 +8,7 @@ import { showErrorSearch, removeErrorSearch } from './searchError';
 // header activity
 
 const homeNavEl = document.querySelector('.nav__link-home');
-const libraryNavEl = document.querySelector('.nav__link-library');
+export const libraryNavEl = document.querySelector('.nav__link-library');
 const headerEl = document.querySelector('.header');
 const searchForm = document.querySelector('.search');
 const searchInput = document.querySelector('.search__input');
@@ -38,6 +38,8 @@ function onHomeClick(event) {
   refsLibrary.watchedList.classList.add('visually-hidden');
   pageNumWrapper.innerHTML = '';
   filmsList.innerHTML = '';
+  refsLibrary.watchedBtn.removeEventListener('click', renderWatchedLibrary);
+refsLibrary.queueBtn.removeEventListener('click', renderQueueLibrary);
   pushFetch();
 };
 
@@ -52,6 +54,9 @@ function onLibraryClick(event) {
   headerEl.classList.add('header-library');
   libraryNavEl.disabled = true;
   pageNumWrapper.innerHTML = '';
+  refsLibrary.watchedBtn.addEventListener('click', renderWatchedLibrary);
+  refsLibrary.queueBtn.addEventListener('click', renderQueueLibrary);
+  renderWatchedLibrary(event);
 };
 
 libraryButtons.classList.add('visually-hidden');
