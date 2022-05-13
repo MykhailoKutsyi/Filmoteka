@@ -1,4 +1,5 @@
 import { API_KEY, URL } from '../utils/constants';
+import { showLoader, hideLoader } from '../components/spinner';
 
 export const axios = require('axios');
 
@@ -9,8 +10,10 @@ export const getTrendingMovies = () => {
 };
 
 export const getMovieById = movieId => {
+  // showLoader()
   const url = `${URL}movie/${movieId}?api_key=${API_KEY}`;
   const response = axios.get(url);
+  // hideLoader()
   return response;
 };
 

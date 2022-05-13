@@ -1,3 +1,7 @@
+.switchers {
+  position: relative;
+}
+
 .dark-theme {
   color: $white-color;
   background-color: rgb(1, 1, 1);
@@ -63,11 +67,12 @@
 }
 
 .switch {
+  position: absolute;
+  right: 95px;
   border-radius: 0.75em;
   color: #fdea7b;
   display: flex;
   align-items: center;
-  margin: 0 80px 0 auto;
   padding: 0.15em;
   width: 3em;
   height: 1.5em;

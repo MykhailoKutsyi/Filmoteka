@@ -11,7 +11,12 @@
     <nav class="navigation">
       <ul class="list menu">
         <li class="navigation__item">
-          <a href="#" class="navigation__link nav__link-home current open-home-btn">home</a>
+          <a
+            href="#"
+            class="navigation__link nav__link-home current open-home-btn"
+            data-translatable
+            >Home // Головна // Główna</a
+          >
         </li>
         <li class="navigation__item">
           <a href="#" class="navigation__link nav__link-library open-my-library-btn">my library</a>
@@ -40,6 +45,42 @@
   <p class="js_search-error visually-hidden">
     Search result not successful. Enter the correct movie name and
   </p>
-  <!-- Переключатель темы -->
-  <input class="switch" type="checkbox" id="theme-check" />
+
+  <div class="container switchers">
+    <!-- theme switcher -->
+    <input class="switch" type="checkbox" id="theme-check" />
+
+    <!-- language switcher -->
+    <div class="lang">
+      <svg class="lang-site__link3" width="21" height="14">
+        <use href="./images/sprite.svg#flag-eng"></use>
+      </svg>
+
+      <ul class="lang-site">
+        <li class="lang-site__item">
+          <a href="#" id="uk" class="lang-site__link--other link">
+            <svg width="21" height="14">
+              <use href="./images/sprite.svg#flag-ua"></use>
+            </svg>
+          </a>
+        </li>
+
+        <li class="lang-site__item">
+          <a href="#" id="en" class="lang-site__link--other link">
+            <svg width="21" height="14">
+              <use href="./images/sprite.svg#flag-eng"></use>
+            </svg>
+          </a>
+        </li>
+
+        <li class="lang-site__item">
+          <a href="#" id="pl" class="lang-site__link--other link">
+            <svg width="21" height="14">
+              <use href="./images/sprite.svg#flag-pol"></use>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </header>
