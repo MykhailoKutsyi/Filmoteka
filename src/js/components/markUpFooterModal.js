@@ -1,5 +1,5 @@
-import githubIcon from '../../images/github.png';
-import linkedinIcon from '../../images/linkedin.png';
+import githubIcon from '../../images/footer/github.png';
+import linkedinIcon from '../../images/footer/linkedin.png';
 
 export default function markUpFooterModal(data) {
   return data

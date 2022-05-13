@@ -2,6 +2,8 @@ import { getSearchMoviePage } from '../services/API';
 import { refs, pageNumWrapper } from './hero';
 import { markUp } from './header';
 import { setItemsToLocalStorage } from './markUpFilms';
+import { hederRef } from './arrowTopBottom/on-top';
+import { scrollTo } from './arrowTopBottom/scrollTo';
 
 export function getPageNum() {
   return Number(sessionStorage['calculatedPageNum']);
@@ -59,19 +61,23 @@ function onSearchPageMarkupChange() {
 function onStartBtn() {
   sessionStorage.setItem('calculatedPageNum', 1);
   onSearchPageMarkupChange();
+  scrollTo(hederRef);
 }
 
 function onEndBtn() {
   sessionStorage.setItem('calculatedPageNum', sessionStorage['maxPages']);
   onSearchPageMarkupChange();
+  scrollTo(hederRef);
 }
 
 function onMinusBtn() {
   sessionStorage.setItem('calculatedPageNum', getPageNum() - 1);
   onSearchPageMarkupChange();
+  scrollTo(hederRef);
 }
 
 function onPlusBtn() {
   sessionStorage.setItem('calculatedPageNum', getPageNum() + 1);
   onSearchPageMarkupChange();
+  scrollTo(hederRef);
 }
