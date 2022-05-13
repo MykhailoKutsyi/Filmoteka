@@ -54,7 +54,7 @@
 .loader .face:nth-child(1) {
   width: 70%;
   height: 70%;
-  color: #ff6b08;
+  color: $orange-color;
   border-color: currentColor transparent transparent currentColor;
   border-width: 0.2em 0.2em 0em 0em;
   --deg: -45deg;
@@ -64,7 +64,7 @@
 .loader .face:nth-child(2) {
   width: 100%;
   height: 100%;
-  color: #ff6b08;
+  color: $orange-color;
   border-color: currentColor currentColor transparent transparent;
   border-width: 0.2em 0em 0em 0.2em;
   --deg: -135deg;
@@ -74,7 +74,7 @@
 .loader .face:nth-child(3) {
   width: 130%;
   height: 130%;
-  color: #ff6b08;
+  color: $orange-color;
   border-color: currentColor transparent transparent currentColor;
   border-width: 0.2em 0.2em 0em 0em;
   --deg: -45deg;
@@ -84,7 +84,7 @@
 .loader .face:nth-child(4) {
   width: 40%;
   height: 40%;
-  color: #ff6b08;
+  color: $orange-color;
   border-color: currentColor currentColor transparent transparent;
   border-width: 0.2em 0em 0em 0.2em;
   --deg: -135deg;

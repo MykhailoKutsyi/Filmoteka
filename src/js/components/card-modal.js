@@ -2,6 +2,7 @@ import { getMovieById } from '../services/API';
 import { IMG_URL } from '../utils/constants';
 import { convertIdInGenre, movieGenresModalMarkup } from './genres.js';
 import { librarys } from './addLibraryBtn';
+import { showSpinner, hideSpinner } from './spinner';
 
 export const modalRefs = {
   backdrop: document.querySelector('.item-modal-backdrop'),
@@ -33,6 +34,7 @@ export function onEventListnerSet(element) {
 }
 
 export function onClick(e) {
+  showSpinner();
   onModalMarkupPrepair(e.currentTarget.id);
   modalRefs.backdrop.classList.remove('is-hidden');
   modalRefs.backdrop.addEventListener('click', onBackdropClick);
@@ -60,6 +62,7 @@ export function onModalMarkupPrepair(filmId) {
 export function onDataPrepair(d) {
   const data = d.data;
   onModalMarkup(data);
+  hideSpinner();
 }
 
 export function onModalMarkup({

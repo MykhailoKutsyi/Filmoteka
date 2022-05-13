@@ -1,6 +1,7 @@
 import { getTrendingMoviesPage } from '../services/API';
 import { setItemsToLocalStorage } from './markUpFilms';
 import { refs, markUp, pageNumWrapper } from './hero';
+import { showSpinner, hideSpinner } from './spinner';
 
 export function getPageNum() {
   return Number(sessionStorage['calculatedPageNum']);
@@ -46,10 +47,12 @@ function onMarkupClean() {
 }
 
 function onTrendingPageMarkupChange() {
+showSpinner();
   onMarkupClean();
   getTrendingMoviesPage(sessionStorage['calculatedPageNum']).then(data => {
     setItemsToLocalStorage(data.data);
     markUp(data.data);
+    hideSpinner();
   });
 }
 

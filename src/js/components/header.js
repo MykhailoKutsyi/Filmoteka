@@ -4,6 +4,7 @@ import { onCardsSelect } from './card-modal';
 import { renderWatchedLibrary, renderQueueLibrary } from './libraryRender';
 import { makePagesMarkup, onPageBtnsSelect, getPageNum } from './on-pagination-search';
 import { pageNumWrapper, pushFetch } from './hero';
+import { showSpinner, hideSpinner } from './spinner';
 
 // header activity
 
@@ -82,6 +83,7 @@ function onSubmitForm(e) {
 }
 
 function pushFetchSearch(movie) {
+  showSpinner();
   sessionStorage.setItem('calculatedPageNum', 1);
   sessionStorage.setItem('movieName', movie);
   pageNumWrapper.innerHTML = '';
@@ -89,9 +91,11 @@ function pushFetchSearch(movie) {
     const response = getSearchMovie(movie);
     return response.then(data => {
       markUp(data.data);
+      hideSpinner();
     });
   } catch (error) {
     console.log(error);
+    hideSpinner();
   }
 }
 

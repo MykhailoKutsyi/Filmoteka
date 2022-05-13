@@ -1,4 +1,5 @@
 import * as basicLightbox from 'basiclightbox';
+import { showSpinner, hideSpinner } from './spinner';
 import { API_KEY, URL } from '../utils/constants';
 
 function createTrailerLink(elementRef) {
@@ -6,6 +7,7 @@ function createTrailerLink(elementRef) {
 
   trailerBtn.forEach(el =>
     el.addEventListener('click', e => {
+      showSpinner();
       drawModalForTrailler(e.target.dataset.id);
     }),
   );
@@ -21,8 +23,10 @@ function createTrailerLink(elementRef) {
 `);
         instance.show();
         modalClBtTrailer(instance);
+        hideSpinner();
       })
       .catch(() => {
+        hideSpinner();
         const instance = basicLightbox.create(`
     <img width="980" height="525" src="https://moviemaker.minitool.com/images/uploads/articles/2020/08/youtube-video-not-available/youtube-video-not-available-1.png" alt="no found trailer" class="trailer_video">
       `);
