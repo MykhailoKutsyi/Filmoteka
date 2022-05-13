@@ -4,8 +4,9 @@ import { onCardsSelect } from './card-modal';
 import { renderWatchedLibrary, renderQueueLibrary } from './libraryRender';
 import { makePagesMarkup, onPageBtnsSelect, getPageNum } from './on-pagination-search';
 import { pageNumWrapper, pushFetch } from './hero';
-import { showErrorSearch, removeErrorSearch } from './searchError';
+import { showErrorSearch } from './searchError';
 import { showSpinner, hideSpinner } from './spinner';
+import Swal from 'sweetalert2';
 
 
 // header activity
@@ -76,22 +77,49 @@ const refs = {
   imagesList: document.querySelector('.films-list'),
 };
 
+// function onSubmitForm(e) {
+//   e.preventDefault();
+//   if (!searchInput.value) {
+//     return;
+//   }
+//   pushFetchSearch(searchInput.value);
+//   if (!searchInput.value) {
+//     return;
+//   }
+//   pushFetch(searchInput.value);
+//   if (showErrorSearch) {
+//     e.currentTarget.reset();
+//   }
+// }
+
 function onSubmitForm(e) {
   e.preventDefault();
-  if (!searchInput.value) {
-    return;
-  }
+  
+  if (searchInput.value === '') return Swal.fire({
+  position: 'top',
+  // icon: 'error',
+  title: 'Please enter a search movie',
+  showConfirmButton: false,
+    timer: 1500,
+    background: "darkgray",
+    color:"black"
+});
+  // if (!searchInput.value) {
+  //   return;
+  // }
   pushFetchSearch(searchInput.value);
+  // console.log('your films')
   if (!searchInput.value) {
     return;
   }
-  pushFetch(searchInput.value);
-  showErrorSearch();
-  setTimeout(removeErrorSearch,2000);
+  // pushFetch(searchInput.value);
+  // showErrorSearch();
+  // setTimeout(removeErrorSearch,2000);
   if (showErrorSearch) { 
     e.currentTarget.reset();
   }
 }
+
 
 function pushFetchSearch(movie) {
   showSpinner();
