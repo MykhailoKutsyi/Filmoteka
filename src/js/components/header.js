@@ -4,7 +4,9 @@ import { onCardsSelect } from './card-modal';
 import { renderWatchedLibrary, renderQueueLibrary } from './libraryRender';
 import { makePagesMarkup, onPageBtnsSelect, getPageNum } from './on-pagination-search';
 import { pageNumWrapper, pushFetch } from './hero';
+import { showErrorSearch, removeErrorSearch } from './searchError';
 import { showSpinner, hideSpinner } from './spinner';
+
 
 // header activity
 
@@ -80,6 +82,15 @@ function onSubmitForm(e) {
     return;
   }
   pushFetchSearch(searchInput.value);
+  if (!searchInput.value) {
+    return;
+  }
+  pushFetch(searchInput.value);
+  showErrorSearch();
+  setTimeout(removeErrorSearch,2000);
+  if (showErrorSearch) { 
+    e.currentTarget.reset();
+  }
 }
 
 function pushFetchSearch(movie) {

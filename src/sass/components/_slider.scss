@@ -19,6 +19,22 @@
   margin-right: 8px;
 }
 
+.slider-card {
+  display: inline-block;
+  text-align: center;
+}
+.card-item__image {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+}
+
+.card-item__image:hover {
+  -webkit-transform: scale(1.3);
+  transform: scale(1.3);
+}
+
 .slider-title {
   padding-top: 5px;
   padding-bottom: 5px;
