@@ -1,11 +1,10 @@
-import {refsLibrary} from './header';
+import { refsLibrary } from './header';
 import { convertIdInGenre, movieGenresManipulationsMarkup } from './genres.js';
 import { IMG_URL } from '../utils/constants';
 import markUpFilms from './markUpFilms';
-import {onCardsSelect} from './card-modal';
+import { onCardsSelect } from './card-modal';
 
 // import { renderWatchedLibrary, renderQueueLibrary} from './libraryRender'
-
 
 // export const refsLibrary = {
 //     watchedBtn: document.querySelector('.library-btn_watched'),
@@ -25,30 +24,29 @@ import {onCardsSelect} from './card-modal';
 
 export function renderWatchedLibrary(e) {
   e.preventDefault();
-  refsLibrary.watchedBtn.classList.add('library-active-btn')
-  refsLibrary.queueBtn.classList.remove('library-active-btn')
+  refsLibrary.watchedBtn.classList.add('library-active-btn');
+  refsLibrary.queueBtn.classList.remove('library-active-btn');
   const libData = JSON.parse(localStorage.getItem('WatchedLibrary'));
-  console.log(libData);
+  // console.log(libData);
   markUpLib(libData);
   refsLibrary.filtersWrapper.style.display = 'none';
 }
 
 export function renderQueueLibrary(e) {
   e.preventDefault();
-  refsLibrary.watchedBtn.classList.remove('library-active-btn')
-  refsLibrary.queueBtn.classList.add('library-active-btn')
+  refsLibrary.watchedBtn.classList.remove('library-active-btn');
+  refsLibrary.queueBtn.classList.add('library-active-btn');
   const libData = JSON.parse(localStorage.getItem('QueueLibrary'));
   markUpLib(libData);
   refsLibrary.filtersWrapper.style.display = 'none';
 }
 
 function markUpLib(data) {
-  console.log(refsLibrary.watchedList);
+  // console.log(refsLibrary.watchedList);
   refsLibrary.watchedList.innerHTML = '';
   refsLibrary.watchedList.insertAdjacentHTML('beforeend', markUpFilms(data));
   onCardsSelect();
 }
-
 
 // класи для кнопок
 
@@ -57,7 +55,6 @@ function markUpLib(data) {
 
 // додатковий параметр який має приходити =>
 // release_date: movieDate,
-
 
 //кінець card-modal.js
 
@@ -78,20 +75,6 @@ function markUpLib(data) {
 // );
 // }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // function markUpFilmsLib(data) {
 //   console.log(data);
 //   return data
@@ -111,8 +94,8 @@ function markUpLib(data) {
 //           let genre = convertIdInGenre(arrGenresid[i]);
 //           movieGenres.push(genre);
 //         }
-//         return `  
-//        <li class="card-item" id="${id}">                
+//         return `
+//        <li class="card-item" id="${id}">
 //         <div class="card-item__image-box">
 //           <img src="${IMG_URL + posterPath}" alt="Poster of ${
 //           title ? title : ''
@@ -122,15 +105,13 @@ function markUpLib(data) {
 //          <span class="card-item__text--orange">${movieGenresManipulationsMarkup(movieGenres)} | ${
 //           movieDate ? movieDate.slice(0, 4) : ''
 //         }</span>
-//         </p>   
-//         </li>    
+//         </p>
+//         </li>
 //        `;
 //       },
 //     )
 //     .join('');
 // }
-
-
 
 // Це функція для відмалювання розмітки в бібліотеці(черзі)
 // export function markUpFilmsForLib(data) {

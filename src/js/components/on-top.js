@@ -1,7 +1,7 @@
 
 const arrowTop = document.querySelector('#arrowTop');
 const arrowBottom = document.querySelector('#arrowBottom');
-const hederRef = document.querySelector('.header');
+export const hederRef = document.querySelector('.header');
 const footer = document.querySelector('.footer');
 
 window.addEventListener('scroll', showArrows);
@@ -11,7 +11,7 @@ arrowTop.addEventListener('click', function () {
 });
 arrowBottom.addEventListener('click', function () {
   // висота HTML-сторінки
-  let htmlHeight = document.documentElement.scrollHeight;
+  // let htmlHeight = document.documentElement.scrollHeight;
   // scrollTo(pageXOffset, htmlHeight);
     scrollTo(footer);
 });
@@ -30,7 +30,7 @@ function showArrows() {
       arrowTop.classList.add('arrow--show')
   }
 }
-function scrollTo(element) {
+export function scrollTo(element) {
   window.scroll({
     left: 0, 
     top: element.offsetTop, 

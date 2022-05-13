@@ -26,7 +26,7 @@ export function pushFetch() {
     const response = getTrendingMovies(pageNum);
     sessionStorage.setItem('calculatedPageNum', pageNum);
     return response.then(({ data }) => {
-      console.log('data', data);
+      // console.log('data', data);
 
       markUp(data);
     });
@@ -40,7 +40,7 @@ export function pushFetch() {
 // };
 
 export function markUp(data) {
-  console.log('markUp', data);
+  // console.log('markUp', data);
   refs.imagesList.insertAdjacentHTML('beforeend', markUpFilms(data.results));
   pageNumWrapper.insertAdjacentHTML('beforeend', makePagesMarkup(getPageNum()));
   sessionStorage.setItem('maxPages', data.total_pages);

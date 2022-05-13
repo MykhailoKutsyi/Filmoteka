@@ -18,7 +18,7 @@ function pushFetch () {
 function saveLocalStorage() {
     pushFetch()
         .then((genres) => {   
-            console.log(genres)
+            // console.log(genres)
             localStorage.setItem(STORAGE_KEY_GENRES, JSON.stringify(genres));
             genres.forEach(genre => markupFiltersOfGenres(genre));
             checkForChosenGenres();
