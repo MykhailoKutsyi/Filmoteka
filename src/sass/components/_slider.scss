@@ -23,13 +23,14 @@
   display: inline-block;
   text-align: center;
 }
- .card-item__image {
+.card-item__image {
   -webkit-transform: scale(1);
   transform: scale(1);
   -webkit-transition: .3s ease-in-out;
   transition: .3s ease-in-out;
 }
-.card-item__image:hover{
+
+.card-item__image:hover {
   -webkit-transform: scale(1.3);
   transform: scale(1.3);
 }
