@@ -7,6 +7,7 @@ import { pageNumWrapper, pushFetch } from './hero';
 import { showErrorSearch, removeErrorSearch } from './searchError';
 import { showSpinner, hideSpinner } from './spinner';
 
+
 // header activity
 
 const homeNavEl = document.querySelector('.nav__link-home');
@@ -85,7 +86,7 @@ function onSubmitForm(e) {
     return;
   }
   pushFetch(searchInput.value);
-   showErrorSearch();
+  showErrorSearch();
   setTimeout(removeErrorSearch,2000);
   if (showErrorSearch) { 
     e.currentTarget.reset();
