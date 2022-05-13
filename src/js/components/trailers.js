@@ -1,30 +1,34 @@
 import * as basicLightbox from 'basiclightbox';
+import { showSpinner, hideSpinner } from './spinner';
+import { API_KEY, URL } from '../utils/constants';
 
 function createTrailerLink(elementRef) {
   const trailerBtn = elementRef;
 
   trailerBtn.forEach(el =>
     el.addEventListener('click', e => {
+      showSpinner();
       drawModalForTrailler(e.target.dataset.id);
     }),
   );
 
   function drawModalForTrailler(id) {
-    const ApiKey = 'e1780eaef9609cf3d5283262d6798136';
-    const url = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${ApiKey}&language=en-US`;
+    const url = `${URL}/movie/${id}/videos?api_key=${API_KEY}&language=en-US`;
     fetch(url)
       .then(response => response.json())
       .then(data => {
         const id = data.results[0].key;
         const instance = basicLightbox.create(`
-  <iframe width="1400" height="700" src='https://www.youtube.com/embed/${id}'frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe width="980" height="525" src='https://www.youtube.com/embed/${id}'frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 `);
         instance.show();
         modalClBtTrailer(instance);
+        hideSpinner();
       })
       .catch(() => {
+        hideSpinner();
         const instance = basicLightbox.create(`
-    <img width="1400" height="700" src="https://moviemaker.minitool.com/images/uploads/articles/2020/08/youtube-video-not-available/youtube-video-not-available-1.png" alt="no found trailer" class="trailer_video">
+    <img width="980" height="525" src="https://moviemaker.minitool.com/images/uploads/articles/2020/08/youtube-video-not-available/youtube-video-not-available-1.png" alt="no found trailer" class="trailer_video">
       `);
 
         instance.show();

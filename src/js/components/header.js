@@ -5,6 +5,8 @@ import { renderWatchedLibrary, renderQueueLibrary } from './libraryRender';
 import { makePagesMarkup, onPageBtnsSelect, getPageNum } from './on-pagination-search';
 import { pageNumWrapper, pushFetch } from './hero';
 import { showErrorSearch, removeErrorSearch } from './searchError';
+import { showSpinner, hideSpinner } from './spinner';
+
 // header activity
 
 const homeNavEl = document.querySelector('.nav__link-home');
@@ -21,6 +23,7 @@ export const refsLibrary = {
   queueBtn: document.querySelector('.library-btn_queue'),
   watchedList: document.querySelector('.films-list-watched'),
   queueList: document.querySelector('.films-list-queue'),
+  filtersWrapper: document.querySelector('.filters')
 };
 
 libraryNavEl.addEventListener('click', onLibraryClick);
@@ -90,6 +93,7 @@ function onSubmitForm(e) {
 }
 
 function pushFetchSearch(movie) {
+  showSpinner();
   sessionStorage.setItem('calculatedPageNum', 1);
   sessionStorage.setItem('movieName', movie);
   pageNumWrapper.innerHTML = '';
@@ -97,9 +101,11 @@ function pushFetchSearch(movie) {
     const response = getSearchMovie(movie);
     return response.then(data => {
       markUp(data.data);
+      hideSpinner();
     });
   } catch (error) {
     console.log(error);
+    hideSpinner();
   }
 }
 

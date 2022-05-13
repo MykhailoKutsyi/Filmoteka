@@ -12,3 +12,4 @@ import './components/slider';
 import '../../node_modules/basiclightbox/dist/basicLightbox.min.css';
 import './components/on-pagination-trending';
 import './components/on-pagination-search';
+import './components/spinner';
