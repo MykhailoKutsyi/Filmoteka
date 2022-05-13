@@ -17,7 +17,6 @@ container.insertAdjacentHTML(
 
 export const pageNumWrapper = document.querySelector('.pages-numbers-wrapper');
 
-// modalRefs.cardModalCloseBtn.addEventListener('click', onCardModalClose);
 export let pageNum = 1;
 pushFetch();
 
@@ -26,18 +25,12 @@ export function pushFetch() {
     const response = getTrendingMovies(pageNum);
     sessionStorage.setItem('calculatedPageNum', pageNum);
     return response.then(({ data }) => {
-      // console.log('data', data);
-
       markUp(data);
     });
   } catch (error) {
     console.log(error);
   }
 }
-
-// function markUp(data) {
-//   markUpFilms(data.results);
-// };
 
 export function markUp(data) {
   // console.log('markUp', data);
@@ -47,22 +40,3 @@ export function markUp(data) {
   onPageBtnsSelect();
   onCardsSelect();
 }
-
-// let isScrolled = false;
-
-// const infiniteScroll = () => {
-//   if (window.scrollY > (document.body.offsetHeight ,1) && !isScrolled) {
-// isScrolled = true;
-// pageNum +=1;
-// pushFetch(pageNum);
-// setTimeout(() => {
-//   isScrolled = false;
-
-// }, 0);
-// }
-// }
-
-// window.onscroll = function () { infiniteScroll(); }
-// window.onload = () => {
-//   getTrendingMovies(pageNum);
-// }

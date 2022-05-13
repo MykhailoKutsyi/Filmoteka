@@ -128,6 +128,7 @@ export function onModalMarkup({
       </div>
     </div>`,
   );
+  
   const genresArray = allGenres.flatMap(genre => genre.id);
   librarys({
     poster_path: posterPath,

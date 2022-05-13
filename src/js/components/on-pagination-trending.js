@@ -2,8 +2,8 @@ import { getTrendingMoviesPage } from '../services/API';
 import { setItemsToLocalStorage } from './markUpFilms';
 import { refs, markUp, pageNumWrapper } from './hero';
 import { showSpinner, hideSpinner } from './spinner';
-import { scrollTo } from './on-top';
-import { hederRef } from './on-top';
+import { hederRef } from './arrowTopBottom/on-top';
+import { scrollTo } from './arrowTopBottom/scrollTo';
 
 export function getPageNum() {
   return Number(sessionStorage['calculatedPageNum']);

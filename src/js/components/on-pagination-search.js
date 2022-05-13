@@ -2,8 +2,8 @@ import { getSearchMoviePage } from '../services/API';
 import { refs, pageNumWrapper } from './hero';
 import { markUp } from './header';
 import { setItemsToLocalStorage } from './markUpFilms';
-import { scrollTo } from './on-top';
-import { hederRef } from './on-top';
+import { hederRef } from './arrowTopBottom/on-top';
+import { scrollTo } from './arrowTopBottom/scrollTo';
 
 export function getPageNum() {
   return Number(sessionStorage['calculatedPageNum']);

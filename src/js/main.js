@@ -5,7 +5,7 @@ import './components/header';
 import './components/filters-genres';
 import './components/onFooterLinkClick';
 import './components/theme';
-import './components/on-top';
+import './components/arrowTopBottom/on-top';
 import './components/card-modal';
 import './components/trailers';
 import './components/slider';

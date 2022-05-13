@@ -58,7 +58,6 @@ function onLibraryClick(event) {
   refsLibrary.queueList.classList.remove('visually-hidden');
   searchForm.classList.add('visually-hidden');
   headerEl.classList.add('header-library');
-  // watchedBtn.classList.add('library-btn-current');
   libraryNavEl.disabled = true;
   pageNumWrapper.innerHTML = '';
   searchInput.value = '';
@@ -77,39 +76,21 @@ const refs = {
   imagesList: document.querySelector('.films-list'),
 };
 
-// function onSubmitForm(e) {
-//   e.preventDefault();
-//   if (!searchInput.value) {
-//     return;
-//   }
-//   pushFetchSearch(searchInput.value);
-//   if (!searchInput.value) {
-//     return;
-//   }
-//   pushFetch(searchInput.value);
-//   if (showErrorSearch) {
-//     e.currentTarget.reset();
-//   }
-// }
-
 function onSubmitForm(e) {
   e.preventDefault();
 
   if (searchInput.value === '')
     return Swal.fire({
       position: 'top',
-      // icon: 'error',
       title: 'Please enter a search movie',
       showConfirmButton: false,
       timer: 1500,
       background: 'darkgray',
       color: 'black',
     });
-  // if (!searchInput.value) {
-  //   return;
-  // }
+  
   pushFetchSearch(searchInput.value);
-  // console.log('your films')
+  
   if (!searchInput.value) {
     return;
   }
