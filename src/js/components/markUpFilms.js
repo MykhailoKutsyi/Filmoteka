@@ -2,7 +2,8 @@ import { IMG_URL, STORAGE_KEY_MOVIES } from '../utils/constants';
 import { convertIdInGenre, movieGenresManipulationsMarkup } from './genres.js';
 import { checkFilmsSearched } from './filters-genres';
 import {refsLibrary} from './header';
-
+import { showErrorSearch,removeErrorSearch}from './searchError'
+import Swal from 'sweetalert2';
 
 export function setItemsToLocalStorage(data) {
   localStorage.setItem(STORAGE_KEY_MOVIES, JSON.stringify(data));
@@ -14,6 +15,20 @@ export default function markUpFilms(data) {
 // <<<<<<< feature/genres-refactor
   checkFilmsSearched(data);
   setItemsToLocalStorage(data);
+  if (data.length === 0) { 
+      Swal.fire({
+  position: 'top',
+  // icon: 'error',
+  title: 'Search result not successful',
+  showConfirmButton: false,
+        timer: 1500,
+        background: "orange",
+        color:"black"
+        
+})
+      // showErrorSearch();
+      // setTimeout(removeErrorSearch, 2000);
+  }
 // =======
 //   console.log('markUpFilmsData', data);
 //   setItemsToLS(data);
@@ -31,7 +46,7 @@ export default function markUpFilms(data) {
       let genre = convertIdInGenre(genreIds[i]);
       movieGenres.push(genre);
       };
-      
+    
     return `  
        <li class="card-item" id="${movieId}">                
         <div class="card-item__image-box">
