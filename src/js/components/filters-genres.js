@@ -10,7 +10,7 @@ let valueEl = document.getElementById('filters-values');
 const filtersBtn = document.querySelector('.filters__filter');
 let moviesList = document.querySelector('.films-list');
 
-const text = "You've chosen: ";
+const text = ": ";
 let filters = [];
 
 filtersBtn.addEventListener('click', onFilterBtnClick);

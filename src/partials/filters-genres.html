@@ -1,13 +1,29 @@
 <!DOCTYPE html>
 <div class="container">
-    <div class="filters">
-        <button  class="filters__choose filters__btn">Choose your favorite genres</button>
-        <p class="filters__text">*You can sort movies on the current page</p>
-        <div class="filters__genres-hidden js-hide">            
-            <ul class="filters__list js-filters-list">
-            </ul>
-            <p id="filters-values" class="filters__values">You've chosen:</p>
-            <button type="button" class="filters__filter filters__btn">filter movies on the current page </button>
-        </div>
+  <div class="filters">
+    <button
+      class="filters__choose filters__btn"
+      data-ua="Виберіть свої улюблені жанри"
+      data-pl="Wybierz swoje ulubione gatunki"
+    >
+      Choose your favorite genres
+    </button>
+    <p
+      class="filters__text"
+      data-ua="*Ви можете сортувати фільми на поточній сторінці"
+      data-pl="*Możesz sortować filmy na bieżącej stronie"
+    >
+      *You can sort movies on the current page
+    </p>
+    <div class="filters__genres-hidden js-hide">
+      <ul class="filters__list js-filters-list"></ul>
+      <div class="filters__values filters__center">
+        <span class="filters__chosen" data-ua="Ви обрали" data-pl="Wybrałeś">You've chosen</span>
+        <p id="filters-values" class="filters__values"></p>
+      </div>
+      <button type="button" class="filters__filter filters__btn">
+        filter movies on the current page
+      </button>
     </div>
+  </div>
 </div>

@@ -2,6 +2,9 @@ import * as basicLightbox from 'basiclightbox';
 import { showSpinner, hideSpinner } from './spinner';
 import { API_KEY, URL } from '../utils/constants';
 
+let lang = localStorage.getItem('active-language') ? localStorage.getItem('active-language') : 'en';
+(lang === 'ua') && (lang = 'uk')
+
 function createTrailerLink(elementRef) {
   const trailerBtn = elementRef;
 
@@ -13,7 +16,7 @@ function createTrailerLink(elementRef) {
   );
 
   function drawModalForTrailler(id) {
-    const url = `${URL}/movie/${id}/videos?api_key=${API_KEY}&language=en-US`;
+    const url = `${URL}/movie/${id}/videos?api_key=${API_KEY}&language=${lang}`;
     fetch(url)
       .then(response => response.json())
       .then(data => {

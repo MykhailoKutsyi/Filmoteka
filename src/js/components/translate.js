@@ -1,20 +1,51 @@
 const api = {lang: 'en'}
 
-let language = '';
-
 const html = document.querySelector('html');
 
+const activeLanguage = localStorage.getItem('active-language') ? localStorage.getItem('active-language') : 'en';
+
 const use = {
-  uk: document.querySelector('#uk use').getAttribute('href'),
+  ua: document.querySelector('#ua use').getAttribute('href'),
   en: document.querySelector('#en use').getAttribute('href'),
   pl: document.querySelector('#pl use').getAttribute('href'),
+  heart: document.querySelector('.footer__text use').getAttribute('href'),
+  footerModal: document.querySelector('.js-open-modal').getAttribute('href'),
 }
 
-const activeLanguage = localStorage.getItem('active-language') ? localStorage.getItem('active-language') : 'en';
+function onLanguageChange(lang) {
+  document.body.classList.remove('ua');
+  document.body.classList.remove('en');
+  document.body.classList.remove('pl');
+  document.body.classList.add(lang);
+
+  // setThemeInfoToLocalStorage();
+};
+
+onLanguageChange(activeLanguage)
+html.setAttribute('lang', activeLanguage);
+// const translates = {
+//   ua: "Шукати фільми...",
+//   en: "Search films...",
+//   pl: "Szukaj filmów...",
+// }
 
 document.querySelector('.currentFlag').insertAdjacentHTML('afterbegin', `<use href="${use[activeLanguage]}"></use>`)
 
 const currentUse = document.querySelector('.currentFlag use');
+
+
+const refs = {
+  footerText: document.querySelector('.footer__text'),
+  teamLink: document.querySelector('.js-open-modal'),
+};
+
+refs.teamLink.insertAdjacentHTML('beforebegin', `<span class="footer__lang--ua">&copy; 2022 | Усі права захищено | Розроблено з <svg width="14px" height="12"><use href="${use.heart}"></use></svg> </span>`)
+refs.teamLink.insertAdjacentHTML('beforebegin', `<span class="footer__lang--pl">&copy; 2022 | Wszelkie prawa zastrzeżone | opracowany z <svg width="14px" height="12"><use href="${use.heart}"></use></svg> </span>`)
+
+
+// const placeholder = document.querySelector('.search input');
+// console.log(placeholder.getAttribute('placeholder'));
+// placeholder.setAttribute('placeholder', `${translates[activeLanguage]}`)
 
 function domI18n(options) {
   options = options || {};
@@ -50,10 +81,9 @@ function domI18n(options) {
       if (enableLog) {
         console.error(lang + ' is not compatible with any language provided');
       }
-      lang = defaultLanguage;
-      html.setAttribute('lang', defaultLanguage.slice(0, 2));
+      lang = defaultLanguage;      
     }
-    language = lang;
+
     return lang;
   }
 
@@ -162,39 +192,26 @@ function domI18n(options) {
 const i18n = domI18n({
   selector: '[data-translatable]',
   separator: ' // ',
-  languages: ['en', 'uk', 'pl'],
+  languages: ['en', 'ua', 'pl'],
   defaultLanguage: 'en',
 });
 
-const eng = document.getElementById('en');
-const ukr = document.getElementById('uk');
-const pol = document.getElementById('pl');
-
-eng.addEventListener('click', evt => {
+const listenerLanguage = document.querySelector('.lang-site');
+listenerLanguage.addEventListener('click', function(evt) {
   evt.preventDefault();
-  currentUse.setAttribute('href', use.en);
-  i18n.changeLanguage('en');
-  html.setAttribute('lang', 'en');
-  api.language = `${language}`;
-  localStorage.setItem('active-language', 'en');
+  const selectedLanguageHref = evt.target.getAttribute('href');
+  const selectedLanguage = selectedLanguageHref.slice(selectedLanguageHref.length - 2, selectedLanguageHref.length);
+  translateAttributes(selectedLanguage);
+  onLanguageChange(selectedLanguage);
+  html.setAttribute('lang', selectedLanguage);
 });
 
-ukr.addEventListener('click', evt => {
-  evt.preventDefault();
-  currentUse.setAttribute('href', use.uk);
-  i18n.changeLanguage('uk');
-  html.setAttribute('lang', 'uk');  
-  api.language = `${language}`;
-  localStorage.setItem('active-language', 'uk');
-});
+function translateAttributes(lang) {
+  currentUse.setAttribute('href', use[lang]);
+  i18n.changeLanguage(lang);
+  html.setAttribute('lang', lang);
+  localStorage.setItem('active-language', lang);
+  api.language = lang;
+};
 
-pol.addEventListener('click', evt => {
-  evt.preventDefault();
-  currentUse.setAttribute('href', use.pl);
-  i18n.changeLanguage('pl');
-  html.setAttribute('lang', 'pl'); 
-  api.language = `${language}`;
-  localStorage.setItem('active-language', 'pl');
-});
-
-export {language}
+export {activeLanguage}
