@@ -50,9 +50,13 @@ function onEscape(e) {
 
 function onClose() {
   modalRefs.backdrop.classList.add('is-hidden');
-  modalRefs.cardModal.innerHTML = '';
   modalRefs.backdrop.removeEventListener('click', onBackdropClick);
   document.body.removeEventListener('keydown', onEscape);
+  setTimeout(cleanModal, 300);
+}
+
+function cleanModal() {
+  modalRefs.cardModal.innerHTML = '';
 }
 
 export function onModalMarkupPrepair(filmId) {
@@ -68,13 +72,13 @@ export function onDataPrepair(d) {
 export function onModalMarkup({
   poster_path: posterPath,
   genres: allGenres,
-  title: title,
+  title,
   original_title: origTitle,
   vote_average: vote,
   vote_count: voteNum,
-  popularity: popularity,
-  overview: overview,
-  id: id,
+  popularity,
+  overview,
+  id,
   release_date: movieDate,
 }) {
   let arr = [];
@@ -134,13 +138,13 @@ export function onModalMarkup({
   myLibrary({
     poster_path: posterPath,
     genre_ids: genresArray,
-    title: title,
+    title,
     original_title: origTitle,
     vote_average: vote,
     vote_count: voteNum,
     popularity: popularity,
-    overview: overview,
-    id: id,
+    overview,
+    id,
     release_date: movieDate,
   });
 }
