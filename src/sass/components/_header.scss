@@ -34,38 +34,38 @@
 
 .header-home {
     background-image: linear-gradient(90deg, rgba(0, 0, 0, .56), rgba(0, 0, 0, .56)),
-    url(/images/header-background-image-desktop.jpg);
+    url(/images/header/header-background-image-desktop.jpg);
 
     @media screen and (min-width: 1024px) {
     background-image: linear-gradient(90deg, rgba(0, 0, 0, .56), rgba(0, 0, 0, .56)),
-        url(/images/header-background-image-desktop.jpg);
+        url(/images/header/header-background-image-desktop.jpg);
 }
 };
 
 .header-library {
     background-position: bottom;
     background-image: linear-gradient(90deg, rgba(0, 0, 0, .56), rgba(0, 0, 0, .56)),
-    url(/images/header-library-mob.jpg);
+    url(/images/header/header-library-mob.jpg);
     
     @media screen and (min-width: 768px) {
         background-image: linear-gradient(90deg, rgba(0, 0, 0, .56), rgba(0, 0, 0, .56)),
-            url(/images/library.jpg);
+            url(/images/header/library.jpg);
     }
 };
 
 .header-library {
     background-color: #000;
-    background-image: linear-gradient(90deg, rgba(0, 0, 0, .56), rgba(0, 0, 0, .56)), url(/images/my-library-mobile.jpg);
+    background-image: linear-gradient(90deg, rgba(0, 0, 0, .56), rgba(0, 0, 0, .56)), url(/images/my-library/my-library-mobile.jpg);
     background-position: 50%;
     background-repeat: no-repeat;
     background-size: cover;
 
     @media screen and (min-width: 768px) and (max-width: 1023px) {
-        background-image: linear-gradient(90deg, rgba(0, 0, 0, .56), rgba(0, 0, 0, .56)), url(/images/my-library-tablet.jpg);
+        background-image: linear-gradient(90deg, rgba(0, 0, 0, .56), rgba(0, 0, 0, .56)), url(/images/my-library/my-library-tablet.jpg);
     }
 
     @media screen and (min-width: 1024px) {
-        background-image: linear-gradient(90deg, rgba(0, 0, 0, .56), rgba(0, 0, 0, .56)), url(/images/my-library-desktop.jpg);
+        background-image: linear-gradient(90deg, rgba(0, 0, 0, .56), rgba(0, 0, 0, .56)), url(/images/my-library/my-library-desktop.jpg);
     }
 };
 
@@ -110,6 +110,11 @@
     }
 };
 
+.header__logo:hover,
+.header__logo:focus {
+    stroke: #ff6b08;
+}
+
 .header__title {
     font-size: 30px;
     line-height: 1.72;
@@ -153,6 +158,14 @@
     bottom: 0px;
     background-color: #ff6b08;
 };
+
+.nav__link-home:hover {
+    color: #818181;
+}
+
+.nav__link-library:hover {
+    color: #818181;
+}
 
 .search {
     display: flex;
@@ -251,12 +264,17 @@
     }
 };
 
-.library-active-btn {
+.library-btn:hover,
+.library-btn:focus {
     background: #FF6B01;
-    box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
-    border: #FF6B01;
-    border-radius: 5px;
-    transition: background .3s cubic-bezier(.4, 0, .2, 1),
-        border .3s cubic-bezier(.4, 0, .2, 1),
-        box-shadow .3s cubic-bezier(.4, 0, .2, 1);
-};
+        box-shadow: 0px 8px 43px rgb(255 107 1 / 60%);
+        border: #FF6B01;
+        border-radius: 5px;
+        transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1), border 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.library-btn-current {
+        background: #FF6B01;
+        box-shadow: 0px 8px 43px rgb(255 107 1 / 60%);
+        border: #FF6B01;
+        border-radius: 5px;
+}

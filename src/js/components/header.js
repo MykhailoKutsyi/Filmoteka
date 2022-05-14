@@ -4,7 +4,9 @@ import { onCardsSelect } from './card-modal';
 import { renderWatchedLibrary, renderQueueLibrary } from './libraryRender';
 import { makePagesMarkup, onPageBtnsSelect, getPageNum } from './on-pagination-search';
 import { pageNumWrapper, pushFetch } from './hero';
+import { showErrorSearch } from './searchError';
 import { showSpinner, hideSpinner } from './spinner';
+import Swal from 'sweetalert2';
 
 // header activity
 
@@ -15,14 +17,14 @@ const searchForm = document.querySelector('.search');
 const searchInput = document.querySelector('.search__input');
 const libraryButtons = document.querySelector('.header-buttons-library');
 const filmsList = document.querySelector('.films-list');
-const filtersSection = document.querySelector('.filters')
+const filtersSection = document.querySelector('.filters');
 
 export const refsLibrary = {
   watchedBtn: document.querySelector('.library-btn_watched'),
   queueBtn: document.querySelector('.library-btn_queue'),
   watchedList: document.querySelector('.films-list-watched'),
   queueList: document.querySelector('.films-list-queue'),
-  filtersWrapper: document.querySelector('.filters')
+  filtersWrapper: document.querySelector('.filters'),
 };
 
 libraryNavEl.addEventListener('click', onLibraryClick);
@@ -42,11 +44,10 @@ function onHomeClick(event) {
   pageNumWrapper.innerHTML = '';
   filmsList.innerHTML = '';
   refsLibrary.watchedBtn.removeEventListener('click', renderWatchedLibrary);
-refsLibrary.queueBtn.removeEventListener('click', renderQueueLibrary);
+  refsLibrary.queueBtn.removeEventListener('click', renderQueueLibrary);
   pushFetch();
-  filtersSection.classList.remove('visually-hidden')
-
-};
+  filtersSection.classList.remove('visually-hidden');
+}
 
 function onLibraryClick(event) {
   homeNavEl.classList.remove('current');
@@ -59,11 +60,12 @@ function onLibraryClick(event) {
   headerEl.classList.add('header-library');
   libraryNavEl.disabled = true;
   pageNumWrapper.innerHTML = '';
+  searchInput.value = '';
   refsLibrary.watchedBtn.addEventListener('click', renderWatchedLibrary);
   refsLibrary.queueBtn.addEventListener('click', renderQueueLibrary);
   renderWatchedLibrary(event);
-  filtersSection.classList.add('visually-hidden')
-};
+  filtersSection.classList.add('visually-hidden');
+}
 
 libraryButtons.classList.add('visually-hidden');
 
@@ -76,10 +78,28 @@ const refs = {
 
 function onSubmitForm(e) {
   e.preventDefault();
+
+  if (searchInput.value === '')
+    return Swal.fire({
+      position: 'top',
+      title: 'Please enter a search movie',
+      showConfirmButton: false,
+      timer: 1500,
+      background: 'darkgray',
+      color: 'black',
+    });
+  
+  pushFetchSearch(searchInput.value);
+  
   if (!searchInput.value) {
     return;
   }
-  pushFetchSearch(searchInput.value);
+  // pushFetch(searchInput.value);
+  // showErrorSearch();
+  // setTimeout(removeErrorSearch,2000);
+  if (showErrorSearch) {
+    e.currentTarget.reset();
+  }
 }
 
 function pushFetchSearch(movie) {
@@ -100,10 +120,14 @@ function pushFetchSearch(movie) {
 }
 
 export function markUp(data) {
-  console.log('onSearch', data);
+  // console.log('onSearch', data);
   refs.imagesList.innerHTML = '';
   refs.imagesList.insertAdjacentHTML('beforeend', markUpFilms(data.results));
   pageNumWrapper.insertAdjacentHTML('beforeend', makePagesMarkup(getPageNum()));
+  if (data.total_results === 0) {
+    pageNumWrapper.innerHTML = '';
+    return;
+  }
   sessionStorage.setItem('maxPages', data.total_pages);
   onPageBtnsSelect();
   onCardsSelect();
