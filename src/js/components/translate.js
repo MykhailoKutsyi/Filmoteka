@@ -1,8 +1,10 @@
-const api = {lang: 'en'}
+import { markUp } from './header';
+
+const api = { lang: 'en' }
 
 const html = document.querySelector('html');
 
-const activeLanguage = localStorage.getItem('active-language') ? localStorage.getItem('active-language') : 'en';
+let activeLanguage = localStorage.getItem('active-language') ? localStorage.getItem('active-language') : 'en';
 
 const use = {
   ua: document.querySelector('#ua use').getAttribute('href'),
@@ -204,6 +206,8 @@ listenerLanguage.addEventListener('click', function(evt) {
   translateAttributes(selectedLanguage);
   onLanguageChange(selectedLanguage);
   html.setAttribute('lang', selectedLanguage);
+  const data = JSON.parse(localStorage.getItem(`data-${selectedLanguage}`));
+  markUp(data);
 });
 
 function translateAttributes(lang) {
@@ -213,5 +217,7 @@ function translateAttributes(lang) {
   localStorage.setItem('active-language', lang);
   api.language = lang;
 };
+
+(activeLanguage === 'ua') && (activeLanguage = 'uk')
 
 export {activeLanguage}

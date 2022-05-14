@@ -9,6 +9,8 @@ export function renderWatchedLibrary(e) {
   refsLibrary.watchedBtn.classList.add('library-active-btn');
   refsLibrary.queueBtn.classList.remove('library-active-btn');
   const libData = JSON.parse(localStorage.getItem('WatchedLibrary'));
+  console.log(libData);
+  console.log(localStorage.getItem('WatchedLibrary'));
   markUpLib(libData);
   refsLibrary.filtersWrapper.style.display = 'none';
 }
