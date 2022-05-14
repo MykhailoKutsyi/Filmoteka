@@ -107,7 +107,7 @@ function renderFilteredMovies(movie) {
   }
   movieEl.innerHTML = `
         <div class="card-item__image-box">
-        <img src="${IMG_URL + movie.poster_path}" alt="Poster of ${
+        <img src="${IMG_URL + movie.poster_path}" onerror="this.src='https://michaelnakache.com/wp-content/uploads/2018/08/movie-poster-coming-soon-2.png';" alt="Poster of ${
     movie.title
   }" class="card-item__image" />
         </div>
