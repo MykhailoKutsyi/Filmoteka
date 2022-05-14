@@ -16,6 +16,7 @@ const libraryButtons = document.querySelector('.header-buttons-library');
 const filmsList = document.querySelector('.films-list');
 const filtersSection = document.querySelector('.filters');
 const imagesList = document.querySelector('.films-list');
+const logo = document.querySelector('.logo');
 
 export const refsLibrary = {
   watchedBtn: document.querySelector('.library-btn_watched'),
@@ -27,6 +28,7 @@ export const refsLibrary = {
 
 libraryNavEl.addEventListener('click', onLibraryClick);
 homeNavEl.addEventListener('click', onHomeClick);
+logo.addEventListener('click', onHomeClick);
 refsLibrary.watchedBtn.addEventListener('click', renderWatchedLibrary);
 refsLibrary.queueBtn.addEventListener('click', renderQueueLibrary);
 
