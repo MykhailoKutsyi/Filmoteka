@@ -64,7 +64,7 @@ function onLibraryClick(event) {
   refsLibrary.watchedBtn.addEventListener('click', renderWatchedLibrary);
   refsLibrary.queueBtn.addEventListener('click', renderQueueLibrary);
   renderWatchedLibrary(event);
-  filtersSection.classList.add('visually-hidden');
+    filtersSection.classList.add('visually-hidden');
 }
 
 libraryButtons.classList.add('visually-hidden');
