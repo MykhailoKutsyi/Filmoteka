@@ -2,6 +2,7 @@ import markUpFilms from './markUpFilms';
 import { getTrendingMovies } from '../services/API';
 import { onCardsSelect } from './card-modal';
 import { makePagesMarkup, onPageBtnsSelect, getPageNum } from './on-pagination-trending';
+import { showSpinner, hideSpinner } from './spinner';
 
 export const refs = {
   imagesList: document.querySelector('.films-list'),
@@ -22,12 +23,15 @@ pushFetch();
 
 export function pushFetch() {
   try {
+    showSpinner();
     const response = getTrendingMovies(pageNum);
     sessionStorage.setItem('calculatedPageNum', pageNum);
     return response.then(({ data }) => {
       markUp(data);
+      hideSpinner();
     });
   } catch (error) {
+    hideSpinner();
     console.log(error);
   }
 }
