@@ -33,7 +33,6 @@ export function pushFetch() {
 }
 
 export function markUp(data) {
-  // console.log('markUp', data);
   refs.imagesList.insertAdjacentHTML('beforeend', markUpFilms(data.results));
   pageNumWrapper.insertAdjacentHTML('beforeend', makePagesMarkup(getPageNum()));
   sessionStorage.setItem('maxPages', data.total_pages);

@@ -1,4 +1,4 @@
-import { getSearchMoviePage } from '../services/API';
+import { getSearchMovie } from '../services/API';
 import { refs, pageNumWrapper } from './hero';
 import { markUp } from './header';
 import { setItemsToLocalStorage } from './markUpFilms';
@@ -50,12 +50,10 @@ function onMarkupClean() {
 
 function onSearchPageMarkupChange() {
   onMarkupClean();
-  getSearchMoviePage(sessionStorage['movieName'], sessionStorage['calculatedPageNum']).then(
-    data => {
-      setItemsToLocalStorage(data.data);
-      markUp(data.data);
-    },
-  );
+  getSearchMovie(sessionStorage['movieName'], sessionStorage['calculatedPageNum']).then(data => {
+    setItemsToLocalStorage(data.data);
+    markUp(data.data);
+  });
 }
 
 function onStartBtn() {

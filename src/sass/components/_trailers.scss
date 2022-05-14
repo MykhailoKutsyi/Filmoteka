@@ -11,13 +11,12 @@
 
   border: 0;
   outline: none;
-  background-image: url('../images/trailers/icons8-play-button-2.svg');
+  background-image: url('../images/trailers/icon-youtube.svg');
   background-color: transparent;
 }
 
 .btn-youtube-text {
   position: absolute;
-  font-family: 'Roboto', sans-serif;
   font-size: 18px;
   color: #c4302b;
   cursor: pointer;
@@ -35,8 +34,6 @@
   width: 230px;
 
   pointer-events: none;
-  font-family: 'Roboto', sans-serif;
-
   background-color: rgba(255, 255, 255, 0.8);
 
   border-radius: 5px;

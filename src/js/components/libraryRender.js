@@ -1,6 +1,4 @@
 import { refsLibrary } from './header';
-import { convertIdInGenre, movieGenresManipulationsMarkup } from './genres.js';
-import { IMG_URL } from '../utils/constants';
 import markUpFilms from './markUpFilms';
 import { onCardsSelect } from './card-modal';
 
@@ -21,7 +19,7 @@ export function renderQueueLibrary(e) {
   markUpLib(libData);
   refsLibrary.filtersWrapper.style.display = 'none';
 }
-
+``;
 function markUpLib(data) {
   refsLibrary.watchedList.innerHTML = '';
   refsLibrary.watchedList.insertAdjacentHTML('beforeend', markUpFilms(data));

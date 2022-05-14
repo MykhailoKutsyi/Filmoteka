@@ -2,8 +2,14 @@ import { API_KEY, URL } from '../utils/constants';
 
 export const axios = require('axios');
 
-export const getTrendingMovies = () => {
-  const url = `${URL}trending/movie/day?api_key=${API_KEY}`;
+export const getTrendingMovies = page => {
+  const url = `${URL}trending/movie/day?api_key=${API_KEY}&page=${page}`;
+  const response = axios.get(url);
+  return response;
+};
+
+export const getWeekTrendingMovies = () => {
+  const url = `${URL}trending/movie/week?api_key=${API_KEY}`;
   const response = axios.get(url);
   return response;
 };
@@ -14,8 +20,8 @@ export const getMovieById = movieId => {
   return response;
 };
 
-export const getSearchMovie = movie => {
-  const url = `${URL}search/movie?api_key=${API_KEY}&query=${movie}`;
+export const getSearchMovie = (movie, page) => {
+  const url = `${URL}search/movie?api_key=${API_KEY}&query=${movie}&page=${page}`;
   const response = axios.get(url);
   return response;
 };
@@ -26,14 +32,8 @@ export const getGenres = () => {
   return response;
 };
 
-export const getTrendingMoviesPage = page => {
-  const url = `${URL}trending/movie/day?api_key=${API_KEY}&page=${page}`;
-  const response = axios.get(url);
-  return response;
-};
-
-export function getSearchMoviePage(movie, page) {
-  const url = `${URL}search/movie?api_key=${API_KEY}&query=${movie}&page=${page}`;
+export function getVideos(movieId) {
+  const url = `${URL}/movie/${movieId}/videos?api_key=${API_KEY}&language=en-US`;
   const response = axios.get(url);
   return response;
 }
