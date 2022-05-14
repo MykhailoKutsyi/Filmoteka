@@ -4,20 +4,18 @@ import { onCardsSelect } from './card-modal';
 import { renderWatchedLibrary, renderQueueLibrary } from './libraryRender';
 import { makePagesMarkup, onPageBtnsSelect, getPageNum } from './on-pagination-search';
 import { pageNumWrapper, pushFetch } from './hero';
-import { showErrorSearch } from './searchError';
 import { showSpinner, hideSpinner } from './spinner';
 import Swal from 'sweetalert2';
 
-// header activity
-
-const homeNavEl = document.querySelector('.nav__link-home');
 export const libraryNavEl = document.querySelector('.nav__link-library');
+const homeNavEl = document.querySelector('.nav__link-home');
 const headerEl = document.querySelector('.header');
 const searchForm = document.querySelector('.search');
 const searchInput = document.querySelector('.search__input');
 const libraryButtons = document.querySelector('.header-buttons-library');
 const filmsList = document.querySelector('.films-list');
 const filtersSection = document.querySelector('.filters');
+const imagesList = document.querySelector('.films-list');
 
 export const refsLibrary = {
   watchedBtn: document.querySelector('.library-btn_watched'),
@@ -64,17 +62,12 @@ function onLibraryClick(event) {
   refsLibrary.watchedBtn.addEventListener('click', renderWatchedLibrary);
   refsLibrary.queueBtn.addEventListener('click', renderQueueLibrary);
   renderWatchedLibrary(event);
-    filtersSection.classList.add('visually-hidden');
+  filtersSection.classList.add('visually-hidden');
 }
 
 libraryButtons.classList.add('visually-hidden');
 
-// search by word
 searchForm.addEventListener('submit', onSubmitForm);
-
-const refs = {
-  imagesList: document.querySelector('.films-list'),
-};
 
 function onSubmitForm(e) {
   e.preventDefault();
@@ -88,17 +81,11 @@ function onSubmitForm(e) {
       background: 'darkgray',
       color: 'black',
     });
-  
+
   pushFetchSearch(searchInput.value);
-  
+
   if (!searchInput.value) {
     return;
-  }
-  // pushFetch(searchInput.value);
-  // showErrorSearch();
-  // setTimeout(removeErrorSearch,2000);
-  if (showErrorSearch) {
-    e.currentTarget.reset();
   }
 }
 
@@ -108,7 +95,7 @@ function pushFetchSearch(movie) {
   sessionStorage.setItem('movieName', movie);
   pageNumWrapper.innerHTML = '';
   try {
-    const response = getSearchMovie(movie);
+    const response = getSearchMovie(movie, sessionStorage['calculatedPageNum']);
     return response.then(data => {
       markUp(data.data);
       hideSpinner();
@@ -121,13 +108,23 @@ function pushFetchSearch(movie) {
 
 export function markUp(data) {
   // console.log('onSearch', data);
-  refs.imagesList.innerHTML = '';
-  refs.imagesList.insertAdjacentHTML('beforeend', markUpFilms(data.results));
-  pageNumWrapper.insertAdjacentHTML('beforeend', makePagesMarkup(getPageNum()));
   if (data.total_results === 0) {
     pageNumWrapper.innerHTML = '';
+    Swal.fire({
+      position: 'top',
+      title: 'Search result not successful',
+      showConfirmButton: false,
+      timer: 1500,
+      background: 'orange',
+      color: 'black',
+    });
     return;
   }
+  pageNumWrapper.innerHTML = '';
+  imagesList.innerHTML = '';
+  imagesList.insertAdjacentHTML('beforeend', markUpFilms(data.results));
+  pageNumWrapper.insertAdjacentHTML('beforeend', makePagesMarkup(getPageNum()));
+
   sessionStorage.setItem('maxPages', data.total_pages);
   onPageBtnsSelect();
   onCardsSelect();

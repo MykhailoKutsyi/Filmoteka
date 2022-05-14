@@ -4,3 +4,5 @@ export const URL = 'https://api.themoviedb.org/3/';
 export const STORAGE_KEY_GENRES = 'genres';
 export const STORAGE_KEY_MOVIES = 'movies';
 export const STORAGE_KEY_FILTERS = 'filters';
+export const STORAGE_KEY_WATCHED = 'WatchedLibrary';
+export const STORAGE_KEY_QUEUE = 'QueueLibrary';
