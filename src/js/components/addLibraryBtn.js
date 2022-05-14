@@ -1,4 +1,4 @@
-import { libraryNavEl } from './header';
+import { refsLibrary } from './header';
 import { renderWatchedLibrary, renderQueueLibrary } from './libraryRender';
 import { STORAGE_KEY_WATCHED } from '../utils/constants';
 import { STORAGE_KEY_QUEUE } from '../utils/constants';
@@ -35,47 +35,66 @@ export function myLibrary(dataMovie) {
       btnQueueChangeAdd();
     }
   }
+  function currentLS(e){
+      if (e.currentTarget.classList.contains('add-watch')){
+      return STORAGE_KEY_WATCHED
+    }else{
+     return STORAGE_KEY_QUEUE
+    };
+  };
 
-  function addToWatched(e) {
+  function addToLibrary(e) {
     e.preventDefault();
-    const dataToSave = JSON.parse(localStorage.getItem(STORAGE_KEY_WATCHED));
+    let currentLsKey = currentLS(e);
+    const dataToSave = JSON.parse(localStorage.getItem(currentLsKey));
     dataToSave.push(dataMovie);
     const dataToSaveString = JSON.stringify(dataToSave);
-    localStorage.setItem(STORAGE_KEY_WATCHED, dataToSaveString);
-    watchedLibraryChange(e);
-    btnWatchedChangeRemove();
+    localStorage.setItem(currentLsKey, dataToSaveString);
+    LibraryChange(e);
+    if(currentLsKey === STORAGE_KEY_WATCHED){btnWatchedChangeRemove()}
+      else{
+         btnQueueChangeRemove();
+      
+    };
   }
-  function addToQueue(e) {
-    e.preventDefault();
-    const dataToSave = JSON.parse(localStorage.getItem(STORAGE_KEY_QUEUE));
-    dataToSave.push(dataMovie);
-    const dataToSaveString = JSON.stringify(dataToSave);
-    localStorage.setItem(STORAGE_KEY_QUEUE, dataToSaveString);
-    queueLibraryChange(e);
-    btnQueueChangeRemove();
-  }
+  // function addToQueue(e) {
+  //   e.preventDefault();
+  //   const dataToSave = JSON.parse(localStorage.getItem(STORAGE_KEY_QUEUE));
+  //   dataToSave.push(dataMovie);
+  //   const dataToSaveString = JSON.stringify(dataToSave);
+  //   localStorage.setItem(STORAGE_KEY_QUEUE, dataToSaveString);
+  //   queueLibraryChange(e);
+  //   btnQueueChangeRemove();
+  // }
 
-  function removeMovieFromWatched(e) {
+  function removeFromLibrary(e) {
     e.preventDefault();
-    const dataToChange = JSON.parse(localStorage.getItem(STORAGE_KEY_WATCHED));
+    let currentLsKey = currentLS(e);
+    const dataToChange = JSON.parse(localStorage.getItem(currentLsKey));
     const movieIndex = dataToChange.findIndex(movie => movie.id === dataMovie.id);
     dataToChange.splice(movieIndex, 1);
     const dataToSave = JSON.stringify(dataToChange);
-    localStorage.setItem(STORAGE_KEY_WATCHED, dataToSave);
-    watchedLibraryChange(e);
-    btnWatchedChangeAdd();
-  }
+    localStorage.setItem(currentLsKey, dataToSave);
+    LibraryChange(e);
+    if(currentLsKey === STORAGE_KEY_QUEUE){btnQueueChangeAdd();}
+      else{
+         btnWatchedChangeAdd()
+      
+    };
+    }
 
-  function removeMovieFromQueue(e) {
-    e.preventDefault();
-    const dataToChange = JSON.parse(localStorage.getItem(STORAGE_KEY_QUEUE));
-    const movieIndex = dataToChange.findIndex(movie => movie.id === dataMovie.id);
-    dataToChange.splice(movieIndex, 1);
-    const dataToSave = JSON.stringify(dataToChange);
-    localStorage.setItem(STORAGE_KEY_QUEUE, dataToSave);
-    queueLibraryChange(e);
-    btnQueueChangeAdd();
-  }
+  
+
+  // function removeMovieFromQueue(e) {
+  //   e.preventDefault();
+  //   const dataToChange = JSON.parse(localStorage.getItem(STORAGE_KEY_QUEUE));
+  //   const movieIndex = dataToChange.findIndex(movie => movie.id === dataMovie.id);
+  //   dataToChange.splice(movieIndex, 1);
+  //   const dataToSave = JSON.stringify(dataToChange);
+  //   localStorage.setItem(STORAGE_KEY_QUEUE, dataToSave);
+  //   queueLibraryChange(e);
+  //   btnQueueChangeAdd();
+  // }
 
   function checkHelperWatched() {
     if (localStorage.getItem(STORAGE_KEY_WATCHED) === null) {
@@ -94,41 +113,44 @@ export function myLibrary(dataMovie) {
   }
 
   function btnWatchedChangeRemove() {
-    btnRefs.addToWatchedBtn.removeEventListener('click', addToWatched);
+    btnRefs.addToWatchedBtn.removeEventListener('click', addToLibrary);
     btnRefs.addToWatchedBtn.textContent = 'Remove from Watched';
-    btnRefs.addToWatchedBtn.addEventListener('click', removeMovieFromWatched);
+    btnRefs.addToWatchedBtn.addEventListener('click', removeFromLibrary);
     btnRefs.addToWatchedBtn.classList.add('focused');
   }
 
   function btnWatchedChangeAdd() {
-    btnRefs.addToWatchedBtn.removeEventListener('click', removeMovieFromWatched);
+    btnRefs.addToWatchedBtn.removeEventListener('click', removeFromLibrary);
     btnRefs.addToWatchedBtn.textContent = 'Add to watched';
-    btnRefs.addToWatchedBtn.addEventListener('click', addToWatched);
+    btnRefs.addToWatchedBtn.addEventListener('click', addToLibrary);
     btnRefs.addToWatchedBtn.classList.remove('focused');
+  }
+   function btnQueueChangeAdd() {
+    btnRefs.addToQueueBtn.removeEventListener('click', removeFromLibrary);
+    btnRefs.addToQueueBtn.textContent = 'Add to Queue';
+    btnRefs.addToQueueBtn.addEventListener('click', addToLibrary);
+    btnRefs.addToQueueBtn.classList.remove('focused');
   }
 
   function btnQueueChangeRemove() {
-    btnRefs.addToQueueBtn.removeEventListener('click', addToQueue);
+    btnRefs.addToQueueBtn.removeEventListener('click', addToLibrary);
     btnRefs.addToQueueBtn.textContent = 'Remove from Queue';
-    btnRefs.addToQueueBtn.addEventListener('click', removeMovieFromQueue);
+    btnRefs.addToQueueBtn.addEventListener('click', removeFromLibrary);
     btnRefs.addToQueueBtn.classList.add('focused');
   }
 
-  function btnQueueChangeAdd() {
-    btnRefs.addToQueueBtn.removeEventListener('click', removeMovieFromQueue);
-    btnRefs.addToQueueBtn.textContent = 'Add to Queue';
-    btnRefs.addToQueueBtn.addEventListener('click', addToQueue);
-    btnRefs.addToQueueBtn.classList.remove('focused');
-  }
+ 
 }
 
-function watchedLibraryChange(e) {
-  if (libraryNavEl.classList.contains('current')) {
+function LibraryChange(e) {
+  if (refsLibrary.watchedBtn.classList.contains('library-btn-current')) {
     renderWatchedLibrary(e);
-  }
-}
-function queueLibraryChange(e) {
-  if (libraryNavEl.classList.contains('current')) {
+  }else{
     renderQueueLibrary(e);
   }
 }
+// function queueLibraryChange(e) {
+//   if (refsLibrary.queueBtn.classList.contains('library-btn-current')) {
+//     renderQueueLibrary(e);
+//   }
+// }
