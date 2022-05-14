@@ -1,21 +1,20 @@
-class filmsAPIService {
-  constructor() {
-    this.currentPage = 1; // можна використовувати для пагінації
-    this.lang = 'uk';
-    this.allGenres = [];
-  }
-}
-
-const api = new filmsAPIService();
+const api = {lang: 'en'}
 
 let language = '';
 
 const html = document.querySelector('html');
-// const use = document.querySelector('.lang-site__link3 use');
-// const useU = document.querySelector('#uk use');
-// const auseU = useU.getAttribute('href')
-// console.log(use.href, useU.href, auseU);
 
+const use = {
+  uk: document.querySelector('#uk use').getAttribute('href'),
+  en: document.querySelector('#en use').getAttribute('href'),
+  pl: document.querySelector('#pl use').getAttribute('href'),
+}
+
+const activeLanguage = localStorage.getItem('active-language') ? localStorage.getItem('active-language') : 'en';
+
+document.querySelector('.currentFlag').insertAdjacentHTML('afterbegin', `<use href="${use[activeLanguage]}"></use>`)
+
+const currentUse = document.querySelector('.currentFlag use');
 
 function domI18n(options) {
   options = options || {};
@@ -29,15 +28,12 @@ function domI18n(options) {
   const noCacheAttr = 'data-no-cache';
   const translatableAttr = 'data-translatable-attr';
   let translatableCache = {};
-  let currentLanguage = getLanguage(options.currentLanguage);
+  let currentLanguage = getLanguage(localStorage.getItem('active-language'));
 
   function getLanguage(lang) {
     // If no current language was provided, uses default browser language
     if (!lang) {
-      lang = window.navigator.languages
-        ? window.navigator.languages[0]
-        : window.navigator.language || window.navigator.userLanguage;
-      html.setAttribute('lang', window.navigator.languages.slice(0, 2));
+      lang = 'en'
     }
 
     // If language isn't on languages arr, try using a less specific ref
@@ -57,7 +53,6 @@ function domI18n(options) {
       lang = defaultLanguage;
       html.setAttribute('lang', defaultLanguage.slice(0, 2));
     }
-    //console.log(lang)
     language = lang;
     return lang;
   }
@@ -171,35 +166,35 @@ const i18n = domI18n({
   defaultLanguage: 'en',
 });
 
-console.log(i18n);
-
 const eng = document.getElementById('en');
 const ukr = document.getElementById('uk');
 const pol = document.getElementById('pl');
-const input = document.getElementById('input');
-
 
 eng.addEventListener('click', evt => {
   evt.preventDefault();
+  currentUse.setAttribute('href', use.en);
   i18n.changeLanguage('en');
   html.setAttribute('lang', 'en');
-  console.log('eng')
-  api.language = `${language}`
+  api.language = `${language}`;
+  localStorage.setItem('active-language', 'en');
 });
 
 ukr.addEventListener('click', evt => {
   evt.preventDefault();
-  // use.setAttribute('href', auseU)
+  currentUse.setAttribute('href', use.uk);
   i18n.changeLanguage('uk');
   html.setAttribute('lang', 'uk');  
-  api.language = `${language}`
+  api.language = `${language}`;
+  localStorage.setItem('active-language', 'uk');
 });
 
 pol.addEventListener('click', evt => {
   evt.preventDefault();
+  currentUse.setAttribute('href', use.pl);
   i18n.changeLanguage('pl');
   html.setAttribute('lang', 'pl'); 
-  api.language = `${language}`
+  api.language = `${language}`;
+  localStorage.setItem('active-language', 'pl');
 });
 
 export {language}

@@ -19,14 +19,23 @@
           >
         </li>
         <li class="navigation__item">
-          <a href="#" class="navigation__link nav__link-library open-my-library-btn">my library</a>
+          <a
+            href="#"
+            class="navigation__link nav__link-library open-my-library-btn"
+            data-translatable
+            >my library // бібліотека // biblioteka</a
+          >
         </li>
       </ul>
     </nav>
   </div>
   <div class="header-buttons-library">
-    <button class="library-btn library-btn_watched">WATCHED</button>
-    <button class="library-btn library-btn_queue">QUEUE</button>
+    <button class="library-btn library-btn_watched" data-translatable>
+      Watched // Переглянуто // Obejrzane
+    </button>
+    <button class="library-btn library-btn_queue" data-translatable>
+      Queue // Черга // Kolejka
+    </button>
   </div>
   <form class="search" id="search-form">
     <input
@@ -42,8 +51,10 @@
       </svg>
     </button>
   </form>
-  <p class="js_search-error visually-hidden">
-    Search result not successful. Enter the correct movie name and
+  <p class="js_search-error visually-hidden" data-translatable>
+    Search result not successful. Enter the correct movie name and try again! // Результат пошуку не
+    вдалий. Введіть правильну назву фільму та повторіть спробу! // Wynik wyszukiwania nie powiódł
+    się. Wpisz poprawną nazwę filmu i spróbuj ponownie!
   </p>
 
   <div class="container switchers">
@@ -52,9 +63,7 @@
 
     <!-- language switcher -->
     <div class="lang">
-      <svg class="lang-site__link3" width="21" height="14">
-        <use href="./images/sprite.svg#flag-eng"></use>
-      </svg>
+      <svg class="currentFlag" width="21" height="14"></svg>
 
       <ul class="lang-site">
         <li class="lang-site__item">
