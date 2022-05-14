@@ -103,7 +103,7 @@
 
 .header__logo:hover,
 .header__logo:focus {
-  stroke: #ff6b08;
+  stroke: $orange-color;
 }
 
 .header__title {
@@ -146,11 +146,11 @@
   width: 100%;
   height: 3px;
   bottom: 0px;
-  background-color: #ff6b08;
+  background-color: $orange-color;
 }
 
 .library-active-btn {
-  background-color: #ff6b08;
+  background-color: $orange-color;
 }
 
 .nav__link-home:hover {

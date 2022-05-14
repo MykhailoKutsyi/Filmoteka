@@ -18,7 +18,7 @@
     padding: 8px 15px;
 
     &:hover{
-        background-color: #FF6B08;
+        background-color: $orange-color;
             color: #fff;;
     }
 }
@@ -65,8 +65,8 @@
 }
 
 .filters__checkbox:checked+label {
-    border: 2px solid #FF6B08;
-    background-color: #FF6B08;
+    border: 2px solid $orange-color;
+    background-color: $orange-color;
     color: #fff;
     transition: all .2s;
 }

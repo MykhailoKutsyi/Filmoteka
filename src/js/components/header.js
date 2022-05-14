@@ -32,9 +32,9 @@ logo.addEventListener('click', onHomeClick);
 refsLibrary.watchedBtn.addEventListener('click', renderWatchedLibrary);
 refsLibrary.queueBtn.addEventListener('click', renderQueueLibrary);
 
-function onHomeClick(event) {
+function onHomeClick() {
   libraryNavEl.classList.remove('current');
-  event.target.classList.add('current');
+  homeNavEl.classList.add('current');
   headerEl.classList.remove('header-library');
   searchForm.classList.remove('visually-hidden');
   libraryButtons.classList.add('visually-hidden');
