@@ -6,8 +6,8 @@ const filtersWrapper = document.querySelector('.filters');
 const filtersOpenBtn = document.querySelector('.filters__choose');
 const filtersHideContainer = document.querySelector('.js-hide');
 const filtersList = document.querySelector('.js-filters-list');
-let valueEl = document.getElementById('filters-values');
 const filtersBtn = document.querySelector('.filters__filter');
+let valueEl = document.getElementById('filters-values');
 let moviesList = document.querySelector('.films-list');
 
 const text = ": ";
@@ -90,7 +90,6 @@ function onFilterBtnClick() {
       let genreIds = movie.genre_ids;
       let op = filterNum.every(element => genreIds.indexOf(element) > -1);
       if (op === true) {
-        // console.log(movie)
         renderFilteredMovies(movie);
       }
     }
@@ -108,7 +107,7 @@ function renderFilteredMovies(movie) {
   }
   movieEl.innerHTML = `
         <div class="card-item__image-box">
-        <img src="${IMG_URL + movie.poster_path}" alt="Poster of ${
+        <img src="${IMG_URL + movie.poster_path}" onerror="this.src='https://michaelnakache.com/wp-content/uploads/2018/08/movie-poster-coming-soon-2.png';" alt="Poster of ${
     movie.title
   }" class="card-item__image" />
         </div>

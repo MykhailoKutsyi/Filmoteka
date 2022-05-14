@@ -1,7 +1,7 @@
 import { getMovieById } from '../services/API';
 import { IMG_URL } from '../utils/constants';
 import { convertIdInGenre, movieGenresModalMarkup } from './genres.js';
-import { librarys } from './addLibraryBtn';
+import { myLibrary } from './addLibraryBtn';
 import { showSpinner, hideSpinner } from './spinner';
 
 export const modalRefs = {
@@ -50,9 +50,13 @@ function onEscape(e) {
 
 function onClose() {
   modalRefs.backdrop.classList.add('is-hidden');
-  modalRefs.cardModal.innerHTML = '';
   modalRefs.backdrop.removeEventListener('click', onBackdropClick);
   document.body.removeEventListener('keydown', onEscape);
+  setTimeout(cleanModal, 300);
+}
+
+function cleanModal() {
+  modalRefs.cardModal.innerHTML = '';
 }
 
 export function onModalMarkupPrepair(filmId) {
@@ -68,13 +72,13 @@ export function onDataPrepair(d) {
 export function onModalMarkup({
   poster_path: posterPath,
   genres: allGenres,
-  title: title,
+  title,
   original_title: origTitle,
   vote_average: vote,
   vote_count: voteNum,
-  popularity: popularity,
-  overview: overview,
-  id: id,
+  popularity,
+  overview,
+  id,
   release_date: movieDate,
 }) {
   let arr = [];
@@ -83,10 +87,11 @@ export function onModalMarkup({
     arr.push(realGenre);
   }
 
-
   modalRefs.cardModal.insertAdjacentHTML(
     'beforeend',
-    `<div class="item-modal__img-box"><img src="${IMG_URL + posterPath}" onerror="this.src='https://michaelnakache.com/wp-content/uploads/2018/08/movie-poster-coming-soon-2.png';" alt="Poster of ${
+    `<div class="item-modal__img-box"><img src="${
+      IMG_URL + posterPath
+    }" onerror="this.src='https://michaelnakache.com/wp-content/uploads/2018/08/movie-poster-coming-soon-2.png';" alt="Poster of ${
       title ? title : 'Unavailable'
     }" class="item-modal__img" /></div>
     <div class="item-modal__desc-box">
@@ -128,18 +133,18 @@ export function onModalMarkup({
       </div>
     </div>`,
   );
-  
+
   const genresArray = allGenres.flatMap(genre => genre.id);
-  librarys({
+  myLibrary({
     poster_path: posterPath,
     genre_ids: genresArray,
-    title: title,
+    title,
     original_title: origTitle,
     vote_average: vote,
     vote_count: voteNum,
     popularity: popularity,
-    overview: overview,
-    id: id,
+    overview,
+    id,
     release_date: movieDate,
   });
 }

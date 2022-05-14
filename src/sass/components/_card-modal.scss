@@ -14,7 +14,7 @@ h4 {
     align-items: center;
     z-index: 101;
     overflow: auto;
-    // transition: opacity .3s cubic-bezier(.4, 0, .2, 1), visibility .3s cubic-bezier(.4, 0, .2, 1);
+    transition: opacity $cubic, visibility $cubic;
 
     &.is-hidden {
         opacity: 0;

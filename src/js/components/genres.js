@@ -2,24 +2,21 @@ import { getGenres } from '../services/API';
 import { STORAGE_KEY_GENRES } from '../utils/constants';
 import { checkForChosenGenres, markupFiltersOfGenres } from './filters-genres';
 
-saveLocalStorage();
+pushFetch();
 
 function pushFetch() {
   try {
     const response = getGenres();
-    return response.then(data => data.data.genres);
+    return response.then(({ data }) => saveLocalStorage(data.genres));
   } catch (error) {
     console.log(error);
   }
 }
 
-function saveLocalStorage() {
-  pushFetch().then(genres => {
-    // console.log(genres)
-    localStorage.setItem(STORAGE_KEY_GENRES, JSON.stringify(genres));
-    genres.forEach(genre => markupFiltersOfGenres(genre));
-    checkForChosenGenres();
-  });
+function saveLocalStorage(data) {
+  localStorage.setItem(STORAGE_KEY_GENRES, JSON.stringify(data));
+  data.map(genre => markupFiltersOfGenres(genre));
+  checkForChosenGenres();
 }
 
 export function convertIdInGenre(id) {

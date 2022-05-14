@@ -1,5 +1,5 @@
 import Glide from '@glidejs/glide';
-import { API_KEY, URL } from '../utils/constants';
+import { getWeekTrendingMovies } from '../services/API';
 import filmsCardSliderTpl from './card-films-slider.hbs';
 import trailer from './trailers.js';
 
@@ -21,20 +21,21 @@ const glide = new Glide('.glide', {
 glide.mount();
 
 function renderTrendy() {
-  const url = `${URL}trending/all/week?api_key=${API_KEY}&language=${lang}`;
-  return fetch(url)
-  
-    .then(response => response.json())
-    .then(({ results }) => {
-      return results;
-    })
-    .then(renderSliderFilms)
-    .catch(err => {
-      sliderContainer.innerHTML = `<img class="catch-error-pagination" src="${errorUrl}" />`;
-    });
+  try {
+    const response = getWeekTrendingMovies();
+    return response
+      .then(({ data }) => {
+        renderSliderFilms(data.results);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  } catch (error) {
+    console.log(error);
+  }
 }
 
-function renderSliderFilms(articles) {
-  sliderContainer.innerHTML = filmsCardSliderTpl(articles);
+function renderSliderFilms(data) {
+  sliderContainer.innerHTML = filmsCardSliderTpl(data);
   trailer.createTrailerLink(document.querySelectorAll('.btn-youtube-slider'));
 }

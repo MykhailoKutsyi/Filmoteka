@@ -2,8 +2,6 @@ import { IMG_URL, STORAGE_KEY_MOVIES } from '../utils/constants';
 import { convertIdInGenre, movieGenresManipulationsMarkup } from './genres.js';
 import { checkFilmsSearched } from './filters-genres';
 import { refsLibrary } from './header';
-import { showErrorSearch, removeErrorSearch } from './searchError';
-import Swal from 'sweetalert2';
 
 export function setItemsToLocalStorage(data) {
   localStorage.setItem(STORAGE_KEY_MOVIES, JSON.stringify(data));
@@ -13,18 +11,7 @@ export default function markUpFilms(data) {
   refsLibrary.filtersWrapper.style.display = 'contents';
   checkFilmsSearched(data);
   setItemsToLocalStorage(data);
-  if (data.length === 0) {
-    Swal.fire({
-      position: 'top',
-      title: 'Search result not successful',
-      showConfirmButton: false,
-      timer: 1500,
-      background: 'orange',
-      color: 'black',
-    });
-    // showErrorSearch();
-    // setTimeout(removeErrorSearch, 2000);
-  }
+
   return data
     .map(
       ({
