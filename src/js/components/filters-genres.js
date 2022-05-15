@@ -34,6 +34,11 @@ function onCheckboxClick() {
   }
 
   if (filters.length === 0) {
+    moviesList.innerHTML = '';
+    let allMovies = localStorage.getItem(STORAGE_KEY_MOVIES);
+    for (const movie of JSON.parse(allMovies)) {      
+        renderFilteredMovies(movie);
+    }
     localStorage.removeItem(STORAGE_KEY_FILTERS);
   }
 
@@ -128,6 +133,9 @@ function renderFilteredMovies(movie) {
 }
 
 export function checkFilmsSearched(data) {
+  if (!data) {
+    return;
+  }
   if (data.length === 0) {
     filtersWrapper.classList.add('filters__genres-hidden');
   } else {
