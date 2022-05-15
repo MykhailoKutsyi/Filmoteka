@@ -16,12 +16,10 @@ const textContents = {
   home: ['Home', 'Головна', 'Główna', document.querySelector('.open-home-btn')],
   watched: ['Watched', 'Переглянуто', 'Obejrzane', document.querySelector('.library-btn_watched')],
   queue: ['Queue', 'Черга', 'Kolejka', document.querySelector('.library-btn_queue')],
-  searchError: ['Search result not successful. Enter the correct movie name and try again!', 'Результат пошуку не вдалий. Введіть правильну назву фільму та повторіть спробу!', 'Wynik wyszukiwania nie powiódł się. Wpisz poprawną nazwę filmu i spróbuj ponownie!', document.querySelector('.js_search-error')],
   modalFooterTitle: ['Developers teammate', 'Розробники', 'Deweloperzy', document.querySelector('.modal__title')],
   openModalFooter: ['GoIT Students', 'Студентами GoIT', 'przez Studentów GoIT', document.querySelector('.js-open-modal')],
   filtersChoose: ['Choose your favorite genres', 'Виберіть свої улюблені жанри', 'Wybierz swoje ulubione gatunki', document.querySelector('.filters__choose')],
   filtersText: ['*You can sort movies on the current page', '*Ви можете сортувати фільми на поточній сторінці', '*Możesz sortować filmy na bieżącej stronie', document.querySelector('.filters__text')],
-  filtersValues: ["You've chosen: ", 'Ви обрали: ', 'Wybrałeś: ', document.querySelector('#filters-values')],
   filtersFilter: ['filter movies on the current page', 'фільтрувати фільми на поточній сторінці', 'filtruj filmy na stronie tsurrent', document.querySelector('.filters__filter')],
   sliderTitle: ['Trending movies', 'Популярні фільми', 'Popularne filmy', document.querySelector('.slider-title')],
 };
@@ -60,8 +58,8 @@ refs.listenerLanguage.addEventListener('click', function(evt) {
   const selectedLanguage = selectedLanguageHref.slice(selectedLanguageHref.length - 2, selectedLanguageHref.length);
   translateAttributes(selectedLanguage);
   onLanguageChange(selectedLanguage);
-  markUp(JSON.parse(localStorage.getItem(`data-${selectedLanguage}`)));
   saveLocalStorage(JSON.parse(localStorage.getItem(`genres-${selectedLanguage}`)).genres);
+  markUp(JSON.parse(localStorage.getItem(`data-${selectedLanguage}`)));
   translateTextContent(selectedLanguage);
   translatePlaceholder(selectedLanguage);
 });

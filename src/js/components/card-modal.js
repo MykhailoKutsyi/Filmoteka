@@ -1,11 +1,8 @@
 import { getMovieById } from '../services/API';
-import { API_KEY, URL } from '../utils/constants';
 import { convertIdInGenre, movieGenresModalMarkup } from './genres.js';
 import { myLibrary } from './addLibraryBtn';
 import { showSpinner, hideSpinner } from './spinner';
 import { IMG_URL } from '../utils/constants';
-import { activeLang } from '../components/translate';
-import { axios } from '../services/API';
 
 export const modalRefs = {
   backdrop: document.querySelector('.item-modal-backdrop'),
@@ -64,15 +61,11 @@ function cleanModal() {
 
 export function onModalMarkupPrepair(filmId) {
   getMovieById(filmId).then(onDataPrepair);
-  (activeLang !== 'uk') && axios.get(`${URL}movie/${filmId}?api_key=${API_KEY}&language=uk`).then(({ data }) => { localStorage.setItem('movie-ua', `${JSON.stringify(data)}`) });
-  (activeLang !== 'en') && axios.get(`${URL}movie/${filmId}?api_key=${API_KEY}&language=en`).then(({ data }) => { localStorage.setItem('movie-en', `${JSON.stringify(data)}`) });
-  (activeLang !== 'pl') && axios.get(`${URL}movie/${filmId}?api_key=${API_KEY}&language=pl`).then(({ data }) => { localStorage.setItem('movie-pl', `${JSON.stringify(data)}`) });
 }
 
 export function onDataPrepair(d) {
-  const activeLanguage = localStorage.getItem('active-language') ? localStorage.getItem('active-language') : 'en';
   const data = d.data;
-  onModalMarkup(JSON.parse(localStorage.getItem(`movie-${activeLanguage}`)));
+  onModalMarkup(data);
   hideSpinner();
 }
 
@@ -101,7 +94,8 @@ export function onModalMarkup({
     originalTitle: ['Original Title', 'Оригінальна назва', 'Tytuł oryginalny'],
     genre: ['Genre', 'Жанр', 'Gatunek filmowy'],
     about: ['About', 'Про фільм', 'O filmie'],
-    addToWatched: ['add to Watched', 'додати до Див', 'dodaj do obserwowanych'],
+    // addToWatched: ['add to Watched', 'додати до Див', 'dodaj do obserwowanych'],
+    unavailable: ['Unavailable', 'Недоступно', 'Niedostępne'],
   };
 
   modalRefs.cardModal.insertAdjacentHTML(
@@ -109,31 +103,31 @@ export function onModalMarkup({
     `<div class="item-modal__img-box"><img src="${
       IMG_URL + posterPath
     }" onerror="this.src='https://michaelnakache.com/wp-content/uploads/2018/08/movie-poster-coming-soon-2.png';" alt="Poster of ${
-      title ? title : 'Unavailable'
+      title ? title : `${textContents.unavailable[indexLang]}`
     }" class="item-modal__img" /></div>
     <div class="item-modal__desc-box">
-      <h3 class="item-modal__title">${title ? title : 'Unavailable'}</h3>
+      <h3 class="item-modal__title">${title ? title : `${textContents.unavailable[indexLang]}`}</h3>
       <ul class="item-modal__txt">
         <li class="item-modal__txt-line">
           <p class="item-modal__txt-prop">${textContents.vote[indexLang]}</p>
         <p class="item-modal__txt-prop-value item-modal__txt-prop-value--num">
           <span class="item-modal__txt-prop-value--orange">${
-            vote ? vote : 'Unavailable'
+            vote ? vote : `${textContents.unavailable[indexLang]}`
           }</span><span class="item-modal__txt-prop-value--slash">/</span><span>${
-      voteNum ? voteNum : 'Unavailable'
+      voteNum ? voteNum : `${textContents.unavailable[indexLang]}`
     }</span
         ></p>
       </li>
         <li class="item-modal__txt-line">
           <p class="item-modal__txt-prop">${textContents.popularity[indexLang]}</p>
         <p class="item-modal__txt-prop-value item-modal__txt-prop-value--num">${
-          popularity ? popularity : 'Unavailable'
+          popularity ? popularity : `${textContents.unavailable[indexLang]}`
         }</p>
       </li>
         <li class="item-modal__txt-line">
           <p class="item-modal__txt-prop">${textContents.originalTitle[indexLang]}</p>
         <p class="item-modal__txt-prop-value item-modal__txt-prop-value--up">${
-          origTitle ? origTitle : 'Unavailable'
+          origTitle ? origTitle : `${textContents.unavailable[indexLang]}`
         }</p>
       </li>
         <li class="item-modal__txt-line">
@@ -143,9 +137,9 @@ export function onModalMarkup({
       </ul>
 
       <h4 class="item-modal__subtitle">${textContents.about[indexLang]}</h4>
-      <p class="item-modal__desc">${overview ? overview : 'Unavailable'}</p>
+      <p class="item-modal__desc">${overview ? overview : `${textContents.unavailable[indexLang]}`}</p>
       <div class="item-modal__btns">
-        <button class="item-modal__btn add-watch">${textContents.addToWatched[indexLang]}</button>
+        <button class="item-modal__btn add-watch">Add to watched</button>
         <button class="item-modal__btn add-queue">add to queue</button>
       </div>
     </div>`,

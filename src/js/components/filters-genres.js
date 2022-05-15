@@ -1,7 +1,6 @@
 import { convertIdInGenre, movieGenresManipulationsMarkup } from './genres';
 import { IMG_URL, STORAGE_KEY_MOVIES, STORAGE_KEY_FILTERS } from '../utils/constants';
 import { onCardsSelect } from './card-modal';
-import { textContents } from './translate';
 
 const filtersWrapper = document.querySelector('.filters');
 const filtersOpenBtn = document.querySelector('.filters__choose');
@@ -11,7 +10,7 @@ const filtersBtn = document.querySelector('.filters__filter');
 let valueEl = document.getElementById('filters-values');
 let moviesList = document.querySelector('.films-list');
 
-const text = valueEl.textContent;
+let text = '';
 let filters = [];
 
 filtersBtn.addEventListener('click', onFilterBtnClick);
@@ -19,12 +18,16 @@ filtersBtn.addEventListener('click', onFilterBtnClick);
 // ================ filters container listener=======================
 
 filtersOpenBtn.addEventListener('click', () => {
+  ['! choose a genre !', '! виберіть жанр !', '! wybierz gatunek !'].includes(valueEl.textContent) && (valueEl.textContent = '');
   filtersHideContainer.classList.toggle('filters__genres-hidden');
 });
 
 // ================ checkbox listener=================
 
 function onCheckboxClick() {
+  const indexLang = ['en', 'ua', 'pl'].indexOf(localStorage.getItem('active-language') ? localStorage.getItem('active-language') : 'en');
+  const texts = ["You've chosen: ", 'Ви обрали: ', 'Wybrałeś: '];
+  text = texts[indexLang];
   if (this.checked == true) {
     filters.push(this.value);
     valueEl.innerHTML = text + filters.map(filter => convertIdInGenre(Number(filter))).join(', ');
@@ -34,11 +37,6 @@ function onCheckboxClick() {
   }
 
   if (filters.length === 0) {
-    moviesList.innerHTML = '';
-    let allMovies = localStorage.getItem(STORAGE_KEY_MOVIES);
-    for (const movie of JSON.parse(allMovies)) {      
-        renderFilteredMovies(movie);
-    }
     localStorage.removeItem(STORAGE_KEY_FILTERS);
   }
 
@@ -51,12 +49,7 @@ function onCheckboxClick() {
 // ========================= markup filters-genres ========================
 
 export function markupFiltersOfGenres(genre) {
-  // const filtersMarkupOld = 
-  // if (document.querySelector('.filters__item')) {
-  // document.querySelector('.filters__item').parentNode.removeChild(document.querySelector('.filters__item'));
-// }
   const filtersMarkup = document.createElement('li');
-  // filtersList.removeChild(filtersMarkup);
   filtersMarkup.classList.add('filters__item');
   filtersMarkup.innerHTML = `
         <input type="checkbox" value="${genre.id}" class="filters__checkbox js-filters-check" id="${genre.id}">
@@ -72,10 +65,14 @@ export function markupFiltersOfGenres(genre) {
 // ================ check in local storage if there are already chosen genres ======
 
 export function checkForChosenGenres() {
+  const indexLang = ['en', 'ua', 'pl'].indexOf(localStorage.getItem('active-language') ? localStorage.getItem('active-language') : 'en');
+  const texts = ["You've chosen: ", 'Ви обрали: ', 'Wybrałeś: '];
+  text = texts[indexLang];
   if (localStorage.getItem(STORAGE_KEY_FILTERS) === null) {
     return;
   } else {
     let arr = localStorage.getItem(STORAGE_KEY_FILTERS);
+    filters = [];
     JSON.parse(arr).forEach(el => {
       const element = document.querySelector(`input[id='${el}']`);
       element.checked = true;
@@ -90,8 +87,11 @@ export function checkForChosenGenres() {
 // ========================== filter button event=========
 
 function onFilterBtnClick() {
+  const indexLang = ['en', 'ua', 'pl'].indexOf(localStorage.getItem('active-language') ? localStorage.getItem('active-language') : 'en');
+  const texts = ['! choose a genre !', '! виберіть жанр !', '! wybierz gatunek !'];
+  text = texts[indexLang];
   if (filters.length === 0) {
-    valueEl.innerHTML = '! choose a genre !';
+    valueEl.innerHTML = text;
     return;
   } else {
     let filterNum = filters.map(filter => Number(filter));
@@ -133,9 +133,6 @@ function renderFilteredMovies(movie) {
 }
 
 export function checkFilmsSearched(data) {
-  if (!data) {
-    return;
-  }
   if (data.length === 0) {
     filtersWrapper.classList.add('filters__genres-hidden');
   } else {

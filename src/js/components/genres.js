@@ -22,13 +22,10 @@ export function saveLocalStorage(data) {
   (activeLang !== 'pl') && axios.get(`${URL}genre/movie/list?api_key=${API_KEY}&language=pl`).then(({ data }) => { localStorage.setItem('genres-pl', `${JSON.stringify(data)}`) });
   localStorage.setItem(STORAGE_KEY_GENRES, JSON.stringify(data));
 
-  // if (document.querySelector('.filters__item')) {console.log(document.querySelector('.filters__item'));
-  //   document.querySelector('.filters__item').parentNode.removeChild(document.querySelector('.filters__item'));
-  // }
-  var element = document.querySelector('.js-filters-list');
-while (element.firstChild) {
+  const element = document.querySelector('.js-filters-list');
+  while (element.firstChild) {
   element.removeChild(element.firstChild);
-}
+  };
 
   data.map(genre => markupFiltersOfGenres(genre));
   checkForChosenGenres();
