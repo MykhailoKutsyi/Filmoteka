@@ -33,6 +33,11 @@ function onCheckboxClick() {
   }
 
   if (filters.length === 0) {
+    moviesList.innerHTML = '';
+    let allMovies = localStorage.getItem(STORAGE_KEY_MOVIES);
+    for (const movie of JSON.parse(allMovies)) {      
+        renderFilteredMovies(movie);
+    }
     localStorage.removeItem(STORAGE_KEY_FILTERS);
   }
 
