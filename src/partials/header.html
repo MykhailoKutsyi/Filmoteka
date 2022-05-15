@@ -11,65 +11,27 @@
     <nav class="navigation">
       <ul class="list menu">
         <li class="navigation__item">
-          <a
-            href="#"
-            class="navigation__link nav__link-home current open-home-btn"
-            data-translatable
-            >Home // Головна // Główna</a
-          >
+          <a href="#" class="navigation__link nav__link-home current open-home-btn"></a>
         </li>
         <li class="navigation__item">
-          <a
-            href="#"
-            class="navigation__link nav__link-library open-my-library-btn"
-            data-translatable
-            >my library // бібліотека // biblioteka</a
-          >
+          <a href="#" class="navigation__link nav__link-library open-my-library-btn"></a>
         </li>
       </ul>
     </nav>
   </div>
   <div class="header-buttons-library">
-    <button class="library-btn library-btn_watched" data-translatable>
-      Watched // Переглянуто // Obejrzane
-    </button>
-    <button class="library-btn library-btn_queue" data-translatable>
-      Queue // Черга // Kolejka
-    </button>
+    <button class="library-btn library-btn_watched"></button>
+    <button class="library-btn library-btn_queue"></button>
   </div>
-  <form class="search" id="search-form" data-translatable>
-    <input
-      class="search__input"
-      type="text"
-      name="searchQuery"
-      autocomplete="off"
-      placeholder="Search films..."
-    />
-    <input
-      class="search__input"
-      type="text"
-      name="searchQuery"
-      autocomplete="off"
-      placeholder="Пошук фільмів..."
-    />
-    <input
-      class="search__input"
-      type="text"
-      name="searchQuery"
-      autocomplete="off"
-      placeholder="Znajdź film..."
-    />
+  <form class="search" id="search-form">
+    <input class="search__input" type="text" name="searchQuery" autocomplete="off" />
     <button type="submit" class="search__button">
       <svg class="search__button-icon search-icon">
         <use href="/images/sprite.svg#icon-search"></use>
       </svg>
     </button>
   </form>
-  <p class="js_search-error visually-hidden" data-translatable>
-    Search result not successful. Enter the correct movie name and try again! // Результат пошуку не
-    вдалий. Введіть правильну назву фільму та повторіть спробу! // Wynik wyszukiwania nie powiódł
-    się. Wpisz poprawną nazwę filmu i spróbuj ponownie!
-  </p>
+  <p class="js_search-error visually-hidden"></p>
 
   <div class="container switchers">
     <!-- theme switcher -->

@@ -48,15 +48,6 @@
     display: contents;
   }
 
-  .js-open-modal {
-    visibility: hidden;
-
-    &::before {
-    visibility: visible;
-    content: attr(data-ua);
-    }
-  }
-
   .slider-title {
     visibility: hidden;
     padding-left: 130px;
@@ -108,15 +99,6 @@
 
   .footer__lang--pl {
     display: contents;
-  }
-
-  .js-open-modal {
-    visibility: hidden;
-
-    &::before {
-      visibility: visible;
-      content: attr(data-pl);
-    }
   }
 
   .slider-title {
