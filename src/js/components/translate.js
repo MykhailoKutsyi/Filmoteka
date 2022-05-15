@@ -18,22 +18,43 @@ const textContents = {
   searchError: ['Search result not successful. Enter the correct movie name and try again!', 'Результат пошуку не вдалий. Введіть правильну назву фільму та повторіть спробу!', 'Wynik wyszukiwania nie powiódł się. Wpisz poprawną nazwę filmu i spróbuj ponownie!', document.querySelector('.js_search-error')],
   modalFooterTitle: ['Developers teammate', 'Розробники', 'Deweloperzy', document.querySelector('.modal__title')],
   openModalFooter: ['GoIT Students', 'Студентами GoIT', 'przez Studentów GoIT', document.querySelector('.js-open-modal')],
+  filtersChoose: ['Choose your favorite genres', 'Виберіть свої улюблені жанри', 'Wybierz swoje ulubione gatunki', document.querySelector('.filters__choose')],
+  filtersText: ['*You can sort movies on the current page', '*Ви можете сортувати фільми на поточній сторінці', '*Możesz sortować filmy na bieżącej stronie', document.querySelector('.filters__text')],
+  filtersValues: ["You've chosen: ", 'Ви обрали: ', 'Wybrałeś: ', document.querySelector('#filters-values')],
+  filtersFilter: ['filter movies on the current page', 'фільтрувати фільми на поточній сторінці', 'filtruj filmy na stronie tsurrent', document.querySelector('.filters__filter')],
+  sliderTitle: ['Trending movies', 'Популярні фільми', 'Popularne filmy', document.querySelector('.slider-title')],
 };
 
 const placeholders = {
   searchForm: ['Search films...', 'Пошук фільмів...', 'Znajdź film...', document.querySelector('.search__input')],
-}
+};
 
 const attributesHref = {
   ua: document.querySelector('#ua use').getAttribute('href'),
   en: document.querySelector('#en use').getAttribute('href'),
   pl: document.querySelector('#pl use').getAttribute('href'),
   heart: document.querySelector('.footer__text use').getAttribute('href'),
-}
+};
+
+// const texts = {
+//   other: [', Other', ', Інші', ', Inne'],
+// };
+
+// const translations = {};
 
 let activeLanguage = localStorage.getItem('active-language') ? localStorage.getItem('active-language') : 'en';
 
-onLanguageChange(activeLanguage)
+// translateTexts(activeLanguage, 'other')
+
+// function translateTexts(lang, text) {
+//   languages.forEach((el, index) => {
+//     (el === lang) && (Object.keys(texts).forEach(e => {
+//       (e === text) && (translations[text] = texts[text][index])
+//     }))
+//   });
+// };
+
+onLanguageChange(activeLanguage);
 
 function onLanguageChange(lang) {
   languages.forEach(el => document.body.classList.remove(el));
@@ -57,6 +78,8 @@ refs.listenerLanguage.addEventListener('click', function(evt) {
   markUp(JSON.parse(localStorage.getItem(`data-${selectedLanguage}`)));
   translateTextContent(selectedLanguage);
   translatePlaceholder(selectedLanguage);
+  // activeLanguage = selectedLanguage;
+  // translateTexts(selectedLanguage, 'other')
 });
 
 function translateAttributes(lang) {
@@ -86,4 +109,6 @@ function translatePlaceholder(lang) {
 
 (activeLanguage === 'ua') && (activeLanguage = 'uk');
 
-export {activeLanguage}
+console.log(activeLanguage);
+
+export {activeLanguage, textContents}

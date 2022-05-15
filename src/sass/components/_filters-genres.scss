@@ -1,8 +1,8 @@
-.filters{
+.filters {
     margin-top: 30px;
 }
 
-.filters__btn{
+.filters__btn {
     color: #818181;
     font-size: 14px;
     font-weight: 700;
@@ -17,26 +17,26 @@
     margin-bottom: 15px;
     padding: 8px 15px;
 
-    &:hover{
+    &:hover {
         background-color: $orange-color;
-            color: #fff;;
+        color: #fff;
+        ;
     }
 }
 
-.filters__text{
+.filters__text {
     text-align: center;
     color: #818181;
 }
 
-.filters__genres-hidden{
+.filters__genres-hidden {
     display: none;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
 }
 
-.filters__values{
-    display: inline;
+.filters__values {
     color: #818181;
     font-size: 14px;
     font-weight: 700;
@@ -47,7 +47,7 @@
     padding: 8px;
 }
 
-.filters__list{
+.filters__list {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -55,7 +55,7 @@
     justify-content: center;
 }
 
-.filters__item{
+.filters__item {
     margin: 3px;
 }
 
@@ -72,13 +72,13 @@
     transition: all .2s;
 }
 
-.filters__checkbox{
+.filters__checkbox {
     display: absolute;
     position: absolute;
     opacity: 0;
 }
 
-.filters__label{
+.filters__label {
     display: inline-block;
     background-color: rgba(255, 255, 255, .9);
     border: 2px solid rgba(139, 139, 139, .3);
@@ -103,6 +103,3 @@
         transition: transform .3s ease-in-out;
     }
 }
-
-
-

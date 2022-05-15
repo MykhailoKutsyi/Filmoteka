@@ -4,6 +4,10 @@ import { convertIdInGenre, movieGenresModalMarkup } from './genres.js';
 import { myLibrary } from './addLibraryBtn';
 import { showSpinner, hideSpinner } from './spinner';
 
+// let activeLanguage = localStorage.getItem('active-language') ? localStorage.getItem('active-language') : 'en';
+
+let activeLanguage = '';
+
 export const modalRefs = {
   backdrop: document.querySelector('.item-modal-backdrop'),
   cardModalCloseBtn: document.querySelector('button.item-modal__close-btn'),
@@ -16,11 +20,15 @@ export function onCardModalClose(e) {
   onClose();
 }
 
-export function onCardsSelect() {
+export function onCardsSelect(activeLang) {
   const cards = document.querySelectorAll('.card-item');
+  activeLanguage = activeLang
 
+  console.log(activeLang);
   cards.forEach(onEventListnerSet);
 }
+
+console.log(activeLanguage);
 
 function onBackdropClick(e) {
   if (e.target !== e.currentTarget) {

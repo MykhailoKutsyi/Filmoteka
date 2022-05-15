@@ -1,6 +1,7 @@
 import { convertIdInGenre, movieGenresManipulationsMarkup } from './genres';
 import { IMG_URL, STORAGE_KEY_MOVIES, STORAGE_KEY_FILTERS } from '../utils/constants';
 import { onCardsSelect } from './card-modal';
+import { textContents } from './translate';
 
 const filtersWrapper = document.querySelector('.filters');
 const filtersOpenBtn = document.querySelector('.filters__choose');
@@ -10,7 +11,7 @@ const filtersBtn = document.querySelector('.filters__filter');
 let valueEl = document.getElementById('filters-values');
 let moviesList = document.querySelector('.films-list');
 
-const text = ": ";
+const text = valueEl.textContent;
 let filters = [];
 
 filtersBtn.addEventListener('click', onFilterBtnClick);
