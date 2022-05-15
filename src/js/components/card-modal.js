@@ -3,6 +3,8 @@ import { convertIdInGenre, movieGenresModalMarkup } from './genres.js';
 import { myLibrary } from './addLibraryBtn';
 import { showSpinner, hideSpinner } from './spinner';
 import { IMG_URL } from '../utils/constants';
+import { axios } from '../services/API';
+import { API_KEY, URL } from '../utils/constants';
 
 export const modalRefs = {
   backdrop: document.querySelector('.item-modal-backdrop'),
@@ -61,6 +63,10 @@ function cleanModal() {
 
 export function onModalMarkupPrepair(filmId) {
   getMovieById(filmId).then(onDataPrepair);
+
+  axios.get(`${URL}movie/${filmId}?api_key=${API_KEY}&language=uk`).then(({ data }) => { localStorage.setItem('film-ua', `${JSON.stringify(data)}`) });
+  axios.get(`${URL}movie/${filmId}?api_key=${API_KEY}&language=en`).then(({ data }) => { localStorage.setItem('film-en', `${JSON.stringify(data)}`) });
+  axios.get(`${URL}movie/${filmId}?api_key=${API_KEY}&language=pl`).then(({ data }) => { localStorage.setItem('film-pl', `${JSON.stringify(data)}`) });
 }
 
 export function onDataPrepair(d) {
