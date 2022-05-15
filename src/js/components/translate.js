@@ -1,4 +1,5 @@
 import { markUp } from './header';
+import { saveLocalStorage } from './genres';
 
 const languages = ['en', 'ua', 'pl'];
 
@@ -36,23 +37,7 @@ const attributesHref = {
   heart: document.querySelector('.footer__text use').getAttribute('href'),
 };
 
-// const texts = {
-//   other: [', Other', ', Інші', ', Inne'],
-// };
-
-// const translations = {};
-
 let activeLanguage = localStorage.getItem('active-language') ? localStorage.getItem('active-language') : 'en';
-
-// translateTexts(activeLanguage, 'other')
-
-// function translateTexts(lang, text) {
-//   languages.forEach((el, index) => {
-//     (el === lang) && (Object.keys(texts).forEach(e => {
-//       (e === text) && (translations[text] = texts[text][index])
-//     }))
-//   });
-// };
 
 onLanguageChange(activeLanguage);
 
@@ -76,10 +61,9 @@ refs.listenerLanguage.addEventListener('click', function(evt) {
   translateAttributes(selectedLanguage);
   onLanguageChange(selectedLanguage);
   markUp(JSON.parse(localStorage.getItem(`data-${selectedLanguage}`)));
+  saveLocalStorage(JSON.parse(localStorage.getItem(`genres-${selectedLanguage}`)).genres);
   translateTextContent(selectedLanguage);
   translatePlaceholder(selectedLanguage);
-  // activeLanguage = selectedLanguage;
-  // translateTexts(selectedLanguage, 'other')
 });
 
 function translateAttributes(lang) {
@@ -108,7 +92,5 @@ function translatePlaceholder(lang) {
 };
 
 (activeLanguage === 'ua') && (activeLanguage = 'uk');
-
-console.log(activeLanguage);
 
 export {activeLanguage, textContents}

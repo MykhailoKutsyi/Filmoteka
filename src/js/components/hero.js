@@ -47,5 +47,5 @@ export function markUp(data) {
   pageNumWrapper.insertAdjacentHTML('beforeend', makePagesMarkup(getPageNum()));
   sessionStorage.setItem('maxPages', data.total_pages);
   onPageBtnsSelect();
-  onCardsSelect(activeLanguage);
+  onCardsSelect();
 }

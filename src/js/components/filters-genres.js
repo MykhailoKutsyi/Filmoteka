@@ -46,7 +46,12 @@ function onCheckboxClick() {
 // ========================= markup filters-genres ========================
 
 export function markupFiltersOfGenres(genre) {
+  // const filtersMarkupOld = 
+  // if (document.querySelector('.filters__item')) {
+  // document.querySelector('.filters__item').parentNode.removeChild(document.querySelector('.filters__item'));
+// }
   const filtersMarkup = document.createElement('li');
+  // filtersList.removeChild(filtersMarkup);
   filtersMarkup.classList.add('filters__item');
   filtersMarkup.innerHTML = `
         <input type="checkbox" value="${genre.id}" class="filters__checkbox js-filters-check" id="${genre.id}">

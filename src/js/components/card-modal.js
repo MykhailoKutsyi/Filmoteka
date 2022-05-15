@@ -1,12 +1,11 @@
 import { getMovieById } from '../services/API';
-import { IMG_URL } from '../utils/constants';
+import { API_KEY, URL } from '../utils/constants';
 import { convertIdInGenre, movieGenresModalMarkup } from './genres.js';
 import { myLibrary } from './addLibraryBtn';
 import { showSpinner, hideSpinner } from './spinner';
-
-// let activeLanguage = localStorage.getItem('active-language') ? localStorage.getItem('active-language') : 'en';
-
-let activeLanguage = '';
+import { IMG_URL } from '../utils/constants';
+import { activeLang } from '../components/translate';
+import { axios } from '../services/API';
 
 export const modalRefs = {
   backdrop: document.querySelector('.item-modal-backdrop'),
@@ -20,15 +19,11 @@ export function onCardModalClose(e) {
   onClose();
 }
 
-export function onCardsSelect(activeLang) {
+export function onCardsSelect() {
   const cards = document.querySelectorAll('.card-item');
-  activeLanguage = activeLang
 
-  console.log(activeLang);
   cards.forEach(onEventListnerSet);
 }
-
-console.log(activeLanguage);
 
 function onBackdropClick(e) {
   if (e.target !== e.currentTarget) {
@@ -69,11 +64,15 @@ function cleanModal() {
 
 export function onModalMarkupPrepair(filmId) {
   getMovieById(filmId).then(onDataPrepair);
+  (activeLang !== 'uk') && axios.get(`${URL}movie/${filmId}?api_key=${API_KEY}&language=uk`).then(({ data }) => { localStorage.setItem('movie-ua', `${JSON.stringify(data)}`) });
+  (activeLang !== 'en') && axios.get(`${URL}movie/${filmId}?api_key=${API_KEY}&language=en`).then(({ data }) => { localStorage.setItem('movie-en', `${JSON.stringify(data)}`) });
+  (activeLang !== 'pl') && axios.get(`${URL}movie/${filmId}?api_key=${API_KEY}&language=pl`).then(({ data }) => { localStorage.setItem('movie-pl', `${JSON.stringify(data)}`) });
 }
 
 export function onDataPrepair(d) {
+  const activeLanguage = localStorage.getItem('active-language') ? localStorage.getItem('active-language') : 'en';
   const data = d.data;
-  onModalMarkup(data);
+  onModalMarkup(JSON.parse(localStorage.getItem(`movie-${activeLanguage}`)));
   hideSpinner();
 }
 
@@ -95,6 +94,16 @@ export function onModalMarkup({
     arr.push(realGenre);
   }
 
+  const indexLang = ['en', 'ua', 'pl'].indexOf(localStorage.getItem('active-language') ? localStorage.getItem('active-language') : 'en');
+  const textContents = {
+    vote: ['Vote/Votes', 'Голосування/Голоси', 'Głosowanie/Głosy'],
+    popularity: ['Popularity', 'Популярність', 'Popularność'],
+    originalTitle: ['Original Title', 'Оригінальна назва', 'Tytuł oryginalny'],
+    genre: ['Genre', 'Жанр', 'Gatunek filmowy'],
+    about: ['About', 'Про фільм', 'O filmie'],
+    addToWatched: ['add to Watched', 'додати до Див', 'dodaj do obserwowanych'],
+  };
+
   modalRefs.cardModal.insertAdjacentHTML(
     'beforeend',
     `<div class="item-modal__img-box"><img src="${
@@ -106,7 +115,7 @@ export function onModalMarkup({
       <h3 class="item-modal__title">${title ? title : 'Unavailable'}</h3>
       <ul class="item-modal__txt">
         <li class="item-modal__txt-line">
-          <p class="item-modal__txt-prop">Vote/Votes</p>
+          <p class="item-modal__txt-prop">${textContents.vote[indexLang]}</p>
         <p class="item-modal__txt-prop-value item-modal__txt-prop-value--num">
           <span class="item-modal__txt-prop-value--orange">${
             vote ? vote : 'Unavailable'
@@ -116,27 +125,27 @@ export function onModalMarkup({
         ></p>
       </li>
         <li class="item-modal__txt-line">
-          <p class="item-modal__txt-prop">Popularity</p>
+          <p class="item-modal__txt-prop">${textContents.popularity[indexLang]}</p>
         <p class="item-modal__txt-prop-value item-modal__txt-prop-value--num">${
           popularity ? popularity : 'Unavailable'
         }</p>
       </li>
         <li class="item-modal__txt-line">
-          <p class="item-modal__txt-prop">Original Title</p>
+          <p class="item-modal__txt-prop">${textContents.originalTitle[indexLang]}</p>
         <p class="item-modal__txt-prop-value item-modal__txt-prop-value--up">${
           origTitle ? origTitle : 'Unavailable'
         }</p>
       </li>
         <li class="item-modal__txt-line">
-          <p class="item-modal__txt-prop">Genre</p>
+          <p class="item-modal__txt-prop">${textContents.genre[indexLang]}</p>
         <p class="item-modal__txt-prop-value">${movieGenresModalMarkup(arr)}</p>
       </li>
       </ul>
 
-      <h4 class="item-modal__subtitle">About</h4>
+      <h4 class="item-modal__subtitle">${textContents.about[indexLang]}</h4>
       <p class="item-modal__desc">${overview ? overview : 'Unavailable'}</p>
       <div class="item-modal__btns">
-        <button class="item-modal__btn add-watch">add to Watched</button>
+        <button class="item-modal__btn add-watch">${textContents.addToWatched[indexLang]}</button>
         <button class="item-modal__btn add-queue">add to queue</button>
       </div>
     </div>`,
