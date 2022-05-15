@@ -8,7 +8,7 @@ export function setItemsToLocalStorage(data) {
 }
 
 export default function markUpFilms(data) {
-  refsLibrary.filtersWrapper.style.display = 'contents';
+  if (!data) { return; };
   checkFilmsSearched(data);
   setItemsToLocalStorage(data);
 

@@ -122,6 +122,9 @@ function renderFilteredMovies(movie) {
 }
 
 export function checkFilmsSearched(data) {
+  if (!data) {
+    return;
+  }
   if (data.length === 0) {
     filtersWrapper.classList.add('filters__genres-hidden');
   } else {
