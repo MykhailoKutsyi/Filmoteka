@@ -36,6 +36,7 @@ export function onEventListnerSet(element) {
 export function onClick(e) {
   showSpinner();
   onModalMarkupPrepair(e.currentTarget.id);
+  document.body.classList.add('scroll-off');
   modalRefs.backdrop.classList.remove('is-hidden');
   modalRefs.backdrop.addEventListener('click', onBackdropClick);
   document.body.addEventListener('keydown', onEscape);
@@ -49,6 +50,7 @@ function onEscape(e) {
 }
 
 function onClose() {
+  document.body.classList.remove('scroll-off');
   modalRefs.backdrop.classList.add('is-hidden');
   modalRefs.backdrop.removeEventListener('click', onBackdropClick);
   document.body.removeEventListener('keydown', onEscape);
