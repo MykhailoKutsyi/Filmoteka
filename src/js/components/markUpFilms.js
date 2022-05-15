@@ -1,14 +1,15 @@
 import { IMG_URL, STORAGE_KEY_MOVIES } from '../utils/constants';
 import { convertIdInGenre, movieGenresManipulationsMarkup } from './genres.js';
 import { checkFilmsSearched } from './filters-genres';
-import { refsLibrary } from './header';
 
 export function setItemsToLocalStorage(data) {
   localStorage.setItem(STORAGE_KEY_MOVIES, JSON.stringify(data));
 }
 
 export default function markUpFilms(data) {
-  if (!data) { return; };
+  if (!data) {
+    return;
+  }
   checkFilmsSearched(data);
   setItemsToLocalStorage(data);
 
