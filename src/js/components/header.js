@@ -111,6 +111,8 @@ export function markUp(data) {
   // console.log('onSearch', data);
   if (data.total_results === 0) {
     pageNumWrapper.innerHTML = '';
+    filmsList.innerHTML = '';
+    pushFetch();
     Swal.fire({
       position: 'top',
       title: 'Search result not successful',
