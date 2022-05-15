@@ -10,6 +10,7 @@ const refs = {
 };
 
 function openModal() {
+  document.body.classList.add('scroll-off');
   refs.modal.classList.add('active');
   refs.overlay.classList.add('active');
   document.body.addEventListener('keydown', onEscPress);
@@ -17,6 +18,7 @@ function openModal() {
 }
 
 function closeModal() {
+  document.body.classList.remove('scroll-off');
   refs.modal.classList.remove('active');
   refs.overlay.classList.remove('active');
   document.body.removeEventListener('keydown', onEscPress);
