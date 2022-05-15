@@ -7,8 +7,10 @@ export function renderWatchedLibrary(e) {
   refsLibrary.watchedBtn.classList.add('library-btn-current');
   refsLibrary.queueBtn.classList.remove('library-btn-current');
   const libData = JSON.parse(localStorage.getItem('WatchedLibrary'));
+  if (libData===null) {
+    return;
+  };
   markUpLib(libData);
-  refsLibrary.filtersWrapper.style.display = 'none';
 }
 
 export function renderQueueLibrary(e) {
@@ -16,10 +18,12 @@ export function renderQueueLibrary(e) {
   refsLibrary.watchedBtn.classList.remove('library-btn-current');
   refsLibrary.queueBtn.classList.add('library-btn-current');
   const libData = JSON.parse(localStorage.getItem('QueueLibrary'));
+  if (libData===null) {
+    return;
+  };
   markUpLib(libData);
-  refsLibrary.filtersWrapper.style.display = 'none';
 }
-``;
+
 function markUpLib(data) {
   refsLibrary.watchedList.innerHTML = '';
   refsLibrary.watchedList.insertAdjacentHTML('beforeend', markUpFilms(data));
