@@ -40,8 +40,10 @@ function markUpLib(data) {
 function emptyWatchedLibNtf (e){
   e.preventDefault();
   if(refsLibrary.watchedBtn.classList.contains('library-btn-current') 
+  && libraryNavEl.classList.contains('current')
   && localStorage.getItem(STORAGE_KEY_WATCHED) === '[]'
-  && libraryNavEl.classList.contains('current')){
+  || localStorage.getItem(STORAGE_KEY_WATCHED) === null
+  ){
   refs.emptyLibraryText.classList.remove('visually-hidden');
   }
   else{
@@ -52,8 +54,9 @@ refs.emptyLibraryText.classList.add('visually-hidden');
   function emptyQueueLibNtf (e){
   e.preventDefault();
   if(refsLibrary.queueBtn.classList.contains('library-btn-current') 
-  && localStorage.getItem(STORAGE_KEY_QUEUE) === '[]'
   && libraryNavEl.classList.contains('current')
+  && localStorage.getItem(STORAGE_KEY_QUEUE) === '[]'
+  || localStorage.getItem(STORAGE_KEY_QUEUE) === null
   ){
 refs.emptyLibraryText.classList.remove('visually-hidden');
   }
