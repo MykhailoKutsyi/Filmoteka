@@ -9,35 +9,25 @@
     background-color: $black-color;
   }
 
+  .modal,
   .item-modal,
   .item-modal__close-btn {
     background-color: $black-color;
-  }
-
-  .item-modal__close-btn-icon {
-    fill: $white-color;
   }
 
   .slider-wrapper {
     background-color: transparent;
   }
 
+  .item-modal__close-btn-icon,
   .arrow__icon:hover,
   .arrow__icon:focus {
     fill: $white-color;
   }
 
-  .modal {
-    background-color: $black-color;
-  }
-
-  .slider-card:hover {
-    box-shadow: rgb(255 255 255 / 95%) 0px 1px 20px;
-    transform: scale(1.05, 1.05);
-    transition: 350ms;
-  }
-
-  .card-item:hover {
+  .card-item:hover,
+  .slider-card:hover,
+  .teammate-list__item:hover {
     box-shadow: rgb(255 255 255 / 95%) 0px 1px 20px;
     transform: scale(1.05, 1.05);
     transition: 350ms;
@@ -52,13 +42,16 @@
 
   .teammate-list__item:hover {
     cursor: pointer;
-    box-shadow: rgb(255 255 255 / 95%) 0px 1px 20px;
-    transform: scale(1.05, 1.05);
-    transition: 350ms;
   }
 
   .teammate-list__item--icon {
     content: url(../images/githubBlack.png);
+  }
+
+  .filters__text,
+  .slider-title,
+  .empty-library-text {
+    color: $white-color;
   }
 }
 
