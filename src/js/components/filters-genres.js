@@ -128,12 +128,10 @@ function renderFilteredMovies(movie) {
 
 export function checkFilmsSearched(data) {
   if (!data) {
+    filtersWrapper.classList.add('visually-hidden');
     return;
   }
-  if (data.length === 0) {
-    filtersWrapper.classList.add('filters__genres-hidden');
-  } else {
-    filtersWrapper.classList.remove('filters__genres-hidden');
+  if (data.length !== 0) { 
     filtersHideContainer.classList.add('filters__genres-hidden');
   }
 }
