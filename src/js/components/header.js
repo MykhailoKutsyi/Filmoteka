@@ -3,7 +3,7 @@ import { getSearchMovie } from '../services/API';
 import { onCardsSelect } from './card-modal';
 import { renderWatchedLibrary, renderQueueLibrary } from './libraryRender';
 import { makePagesMarkup, onPageBtnsSelect, getPageNum } from './on-pagination-search';
-import { pageNumWrapper, pushFetch } from './hero';
+import { pageNumWrapper, pushFetch, refs } from './hero';
 import { showSpinner, hideSpinner } from './spinner';
 import Swal from 'sweetalert2';
 
@@ -15,7 +15,7 @@ const searchInput = document.querySelector('.search__input');
 const libraryButtons = document.querySelector('.header-buttons-library');
 const filmsList = document.querySelector('.films-list');
 const filtersSection = document.querySelector('.filters');
-const imagesList = document.querySelector('.films-list');
+export const imagesList = document.querySelector('.films-list');
 const logo = document.querySelector('.logo');
 
 export const refsLibrary = {
@@ -47,6 +47,7 @@ function onHomeClick() {
   refsLibrary.queueBtn.removeEventListener('click', renderQueueLibrary);
   pushFetch();
   filtersSection.classList.remove('visually-hidden');
+  refs.emptyLibraryText.classList.add('visually-hidden');
 }
 
 function onLibraryClick(event) {

@@ -1,8 +1,10 @@
-import { refsLibrary } from './header';
+import { refsLibrary, imagesList, libraryNavEl } from './header';
 import markUpFilms from './markUpFilms';
 import { onCardsSelect } from './card-modal';
 import { STORAGE_KEY_WATCHED, STORAGE_KEY_QUEUE } from '../utils/constants';
 import Swal from 'sweetalert2';
+import {refs} from './hero';
+// import {libraryNavEl} from './header';
 // import { STORAGE_KEY_QUEUE } from '../utils/constants';
 
 export function renderWatchedLibrary(e) {
@@ -34,15 +36,11 @@ function emptyWatchedLibNtf (e){
   e.preventDefault();
   if(refsLibrary.watchedBtn.classList.contains('library-btn-current') 
   && localStorage.getItem(STORAGE_KEY_WATCHED) === '[]'
-  ){
-return Swal.fire({
-      position: 'top',
-      title: 'There are no movies in this library yet',
-      showConfirmButton: false,
-      timer: 2500,
-      background: 'darkgray',
-      color: 'black',
-    });
+  && libraryNavEl.classList.contains('current')){
+  refs.emptyLibraryText.classList.remove('visually-hidden');
+  }
+  else{
+refs.emptyLibraryText.classList.add('visually-hidden');
   }
   }
   
@@ -51,12 +49,10 @@ return Swal.fire({
   if(refsLibrary.queueBtn.classList.contains('library-btn-current') 
   && localStorage.getItem(STORAGE_KEY_QUEUE) === '[]'
   ){
-return Swal.fire({
-      position: 'top',
-      title: 'There are no movies in this library yet',
-      showConfirmButton: false,
-      timer: 2500,
-      background: 'darkgray',
-      color: 'black',
-    });
-  }};
+refs.emptyLibraryText.classList.remove('visually-hidden');
+  }
+  else{
+refs.emptyLibraryText.classList.add('visually-hidden');
+  }
+  };
+

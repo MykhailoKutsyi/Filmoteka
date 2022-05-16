@@ -1,28 +1,36 @@
 .hero-title {
-    font-size: 50px
+  font-size: 50px;
 }
 
 .main-section {
-    @media screen and (max-width: 767px) {
-        padding-top: 20px;
-        padding-bottom: 20px;
-    }
-    @media screen and (min-width: 768px) {
-        padding-top: 60px;
-        padding-bottom: 28px;
-    }
+  @media screen and (max-width: 767px) {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  @media screen and (min-width: 768px) {
+    padding-top: 60px;
+    padding-bottom: 28px;
+  }
 }
 
-.films-list, .films-list-watched, .films-list-queue {
-    display: flex;
-    flex-wrap: wrap;
+.films-list,
+.films-list-watched,
+.films-list-queue {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .main-container {
-    @media screen and (min-width: 320px) {
-            min-height: calc(100vh - 300px);
-        }
-    @media screen and (min-width: 1024px) {
-        min-height: calc(100vh - 600px);
-    }
+  @media screen and (min-width: 320px) {
+    min-height: calc(100vh - 300px);
+  }
+  @media screen and (min-width: 1024px) {
+    min-height: calc(100vh - 600px);
+  }
+}
+.empty-library-text {
+  text-align: center;
+  color: #818181;
+  font-size: large;
+  //   background-color: lightgray;
 }

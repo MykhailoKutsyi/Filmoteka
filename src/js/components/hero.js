@@ -6,6 +6,7 @@ import { showSpinner, hideSpinner } from './spinner';
 
 export const refs = {
   imagesList: document.querySelector('.films-list'),
+  emptyLibraryText: document.querySelector('.empty-library-text'),
 };
 
 export const container = document.querySelector('.main-container');
