@@ -12,7 +12,7 @@
     "image": "https://avatars.githubusercontent.com/u/91278187?v=4",
     "name": "Hordienko Olga",
     "role": "Scrum master",
-    "about": "Реалізація кнопок OnTop, OnBottom.",
+    "about": "Реалізація кнопок OnTop, OnBottom та плавний скрол.",
     "link": "https://github.com/HordiienkoOlha"
   },
   {
@@ -20,7 +20,7 @@
     "image": "https://avatars.githubusercontent.com/u/91738263?v=4",
     "name": "Osadchyi Nikita",
     "role": "Developer",
-    "about": "Оформлення та функціонал блоку Header.",
+    "about": "Верстка та оформлення блоку Header, реалізація пошуку.",
     "link": "https://github.com/NikitaOsa7"
   },
   {
@@ -28,7 +28,7 @@
     "image": "https://avatars.githubusercontent.com/u/91505310?v=4",
     "name": "Sugonyako Aleksey",
     "role": "Developer",
-    "about": "Оформлення блоку Main та модального вікна з детальною інформацією фільму.",
+    "about": "Оформлення основного блоку, реалізація модального вікна з інформацією про фільм, реалізація пагінації.",
     "link": "https://github.com/aleksgtd"
   },
   {
@@ -43,7 +43,7 @@
     "image": "https://avatars.githubusercontent.com/u/62342343?v=4",
     "name": "Orlovskiy Pavlo",
     "role": "Developer",
-    "about": "Реалізація слайдеру з популярними фільмами.",
+    "about": "Реалізація слайдеру з трейлерами популярних фільмів за тиждень.",
     "link": "https://github.com/Lorengreyn"
   },
   {
@@ -67,7 +67,7 @@
     "image": "https://avatars.githubusercontent.com/u/87613282?v=4",
     "name": "Lakhno Oleksandr",
     "role": "Developer",
-    "about": "Додано Фавікон та сповіщення, якщо не знайдено фільм.",
+    "about": "Реалізація сповіщення в загальному стилі, додав флавікон.",
     "link": "https://github.com/OleksandrLakhno"
   },
   {
@@ -75,7 +75,7 @@
     "image": "https://avatars.githubusercontent.com/u/87891790?v=4",
     "name": "Subotin Oleg",
     "role": "Developer",
-    "about": "Реалізація роботи блоку Main, модального вікна картки фільму та фільтрації фільмів за жанрами. ApiLocalstorage.",
+    "about": "Реалізація фільтрації фільмів за жанрами на поточній сторінці. ApiLocalstorage.",
     "link": "https://github.com/OlegSubotin"
   }
 ]
