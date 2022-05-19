@@ -1,8 +1,47 @@
-<header>
-    <form class="search-form" id="search-form">
-        <input type="text" name="searchQuery" autocomplete="off" placeholder="Search films..." />
-        <button type="submit" class="button-submit">Search</button>
-    </form>
-</header>
+<header class="header header-home">
+  <div class="nav__container">
+    <a href="#" class="logo">
+      <svg class="header__logo logo__animation">
+        <use href="./images/sprite.svg#main-logo" width="24px" height="24px"></use>
+      </svg>
+      <span class="header__title">Filmoteka</span>
+    </a>
 
-<h1 class="header">Header</h1>
+//<<<<<<< dev
+    <nav class="navigation">
+      <ul class="list menu">
+        <li class="navigation__item">
+          <a href="#" class="navigation__link nav__link-home current open-home-btn">home</a>
+        </li>
+        <li class="navigation__item">
+          <a href="#" class="navigation__link nav__link-library open-my-library-btn">my library</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div class="header-buttons-library">
+    <button class="library-btn library-btn_watched">WATCHED</button>
+    <button class="library-btn library-btn_queue">QUEUE</button>
+  </div>
+  <form class="search" id="search-form">
+    <input
+      class="search__input"
+      type="text"
+      name="searchQuery"
+      autocomplete="off"
+      placeholder="Search films..."
+    />
+    <button type="submit" class="search__button">
+      <svg class="search__button-icon search-icon">
+        <use href="/images/sprite.svg#icon-search"></use>
+      </svg>
+    </button>
+  </form>
+  <!-- Переключатель темы -->
+  <div class="container">
+    <input class="switch" type="checkbox" id="theme-check" />
+  </div>
+</header>
+//=======
+//<h1 class="header">Header</h1>
+//>>>>>>> main
